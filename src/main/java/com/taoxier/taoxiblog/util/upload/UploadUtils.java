@@ -1,0 +1,73 @@
+package com.taoxier.taoxiblog.util.upload;
+
+
+import com.taoxier.taoxiblog.constant.UploadConstants;
+import com.taoxier.taoxiblog.exception.BadRequestException;
+import com.taoxier.taoxiblog.util.upload.channel.ChannelFactory;
+import com.taoxier.taoxiblog.util.upload.channel.FileUploadChannel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.DependsOn;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
+
+/**
+ * @Description ：图片下载保存工具类
+ * @Author taoxier
+ * @Date 2025/4/22
+ */
+@Component
+@DependsOn("springContextUtils")
+public class UploadUtils {
+    private static RestTemplate restTemplate;
+    private static FileUploadChannel uploadChannel;
+
+    @Autowired
+    public void setRestTemplate(RestTemplate restTemplate) {
+        UploadUtils.restTemplate = restTemplate;
+    }
+
+    @Value("${upload.channel}")
+    public void setNotifyChannel(String channelName) {
+        UploadUtils.uploadChannel = ChannelFactory.getChannel(channelName);
+    }
+
+    //自动为类生成一个包含所有参数的构造函数
+    @AllArgsConstructor
+    @Getter
+    public static class ImageResource {
+        byte[] data;
+        //图片拓展名 jpg png
+        String type;
+    }
+
+    /**
+    * @Description 通过指定方式存储图片
+     * @param image
+    * @Author: taoxier
+    * @Date: 2025/4/22
+    * @Return: java.lang.String
+    */
+    public static String upload(ImageResource image) throws Exception {
+        return uploadChannel.upload(image);
+    }
+
+    /**
+    * @Description 从网络获取图片数据
+     * @param url
+    * @Author: taoxier
+    * @Date: 2025/4/22
+    * @Return: com.taoxier.taoxiblog.util.upload.UploadUtils.ImageResource
+    */
+    public static ImageResource getImageByRequest(String url) {
+        ResponseEntity<byte[]> responseEntity = restTemplate.getForEntity(url, byte[].class);
+        if (UploadConstants.IMAGE.equals(responseEntity.getHeaders().getContentType().getType())) {
+            return new ImageResource(responseEntity.getBody(), responseEntity.getHeaders().getContentType().getSubtype());
+        }
+        throw new BadRequestException("response contentType unlike image");
+    }
+
+}
