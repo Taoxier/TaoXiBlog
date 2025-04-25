@@ -1,6 +1,8 @@
 package com.taoxier.taoxiblog.model.entity;
 
 import java.io.Serializable;
+
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**

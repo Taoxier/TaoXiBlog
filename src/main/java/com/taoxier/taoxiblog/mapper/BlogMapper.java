@@ -5,6 +5,8 @@ import com.taoxier.taoxiblog.model.entity.Blog;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @Description ：
  * @Author taoxier
@@ -13,5 +15,5 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface BlogMapper extends BaseMapper<Blog> {
-
+    List<Blog> getListByTitleAndCategoryId(String title, Integer categoryId);
 }

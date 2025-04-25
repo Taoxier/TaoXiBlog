@@ -31,12 +31,12 @@ public class AboutServiceImpl extends ServiceImpl<AboutMapper, About> implements
     RedisService redisService;
 
     /**
+    * @Description 获取关于信息的映射表
      * @param
-     * @Description 获取关于信息的映射表
-     * @Author: taoxier
-     * @Date: 2025/4/25
-     * @Return: java.util.Map<java.lang.String, java.lang.String>
-     */
+    * @Author: taoxier
+    * @Date: 2025/4/25
+    * @Return: java.util.Map<java.lang.String,java.lang.String>
+    */
     @Override
     public Map<String, String> getAboutInfo() {
         String redisKey = RedisKeyConstants.ABOUT_INFO_MAP;
@@ -59,12 +59,12 @@ public class AboutServiceImpl extends ServiceImpl<AboutMapper, About> implements
     }
 
     /**
+    * @Description 获取关于我的信息供管理者
      * @param
-     * @Description 获取关于我的信息供管理者
-     * @Author: taoxier
-     * @Date: 2025/4/25
-     * @Return: java.util.Map<java.lang.String, java.lang.String>
-     */
+    * @Author: taoxier
+    * @Date: 2025/4/25
+    * @Return: java.util.Map<java.lang.String,java.lang.String>
+    */
     @Override
     public Map<String, String> getAboutSetting() {
         List<About> abouts = this.list();
@@ -76,12 +76,12 @@ public class AboutServiceImpl extends ServiceImpl<AboutMapper, About> implements
     }
 
     /**
+    * @Description 批量修改about
      * @param map
-     * @Description 批量修改about
-     * @Author: taoxier
-     * @Date: 2025/4/25
-     * @Return: void
-     */
+    * @Author: taoxier
+    * @Date: 2025/4/25
+    * @Return: void
+    */
     @Override
     public void updateAbout(Map<String, String> map) {
         Set<String> keySet = map.keySet();
@@ -92,13 +92,13 @@ public class AboutServiceImpl extends ServiceImpl<AboutMapper, About> implements
     }
 
     /**
+    * @Description 修改about单项
      * @param nameEn
      * @param value
-     * @Description 修改about单项
-     * @Author: taoxier
-     * @Date: 2025/4/25
-     * @Return: void
-     */
+    * @Author: taoxier
+    * @Date: 2025/4/25
+    * @Return: void
+    */
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void updateOneAbout(String nameEn, String value) {
@@ -114,12 +114,12 @@ public class AboutServiceImpl extends ServiceImpl<AboutMapper, About> implements
     }
 
     /**
+    * @Description 查询关于我页面评论开关状态
      * @param
-     * @Description 查询关于我页面评论开关状态
-     * @Author: taoxier
-     * @Date: 2025/4/25
-     * @Return: boolean
-     */
+    * @Author: taoxier
+    * @Date: 2025/4/25
+    * @Return: boolean
+    */
     @Override
     public boolean getAboutCommentEnable() {
         // 创建 QueryWrapper 对象，用于构建查询条件
@@ -132,14 +132,13 @@ public class AboutServiceImpl extends ServiceImpl<AboutMapper, About> implements
         return Boolean.parseBoolean(commentEnabledString);
     }
 
-
     /**
+    * @Description 删除关于我页面缓存
      * @param
-     * @Description 删除关于我页面缓存
-     * @Author: taoxier
-     * @Date: 2025/4/25
-     * @Return: void
-     */
+    * @Author: taoxier
+    * @Date: 2025/4/25
+    * @Return: void
+    */
     public void deleteAboutRedisCache() {
         redisService.deleteCacheByKey(RedisKeyConstants.ABOUT_INFO_MAP);
     }

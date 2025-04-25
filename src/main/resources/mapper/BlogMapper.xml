@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.taoxier.taoxiblog.mapper.BlogMapper">
+
+    <!--按标题和分类查询博客List-->
+    <select id="getListByTitleAndCategoryId" resultType="com.taoxier.taoxiblog.model.entity.Blog">
+        <bind name="titlePattern" value="'%' + title + '%'"/>
+        select b.id, b.title, b.first_picture, b.create_time, b.update_time, b.is_published, b.is_recommend, b.is_appreciation,
+        b.is_comment_enabled, b.is_top, b.password,
+        c.id as category_id, c.category_name
+        from blog as b left join category as c on b.category_id=c.id
+        <where>
+            <if test="title!=null and title!=''">
+                b.title like #{titlePattern}
+            </if>
+            <if test="categoryId!=null">
+                and b.category_id=#{categoryId}
+            </if>
+        </where>
+    </select>
+
+</mapper>
