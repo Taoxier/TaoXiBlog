@@ -1,7 +1,7 @@
 package com.taoxier.taoxiblog.util.comment.channel;
 
 
-import com.taoxier.taoxiblog.model.dto.Comment;
+import com.taoxier.taoxiblog.model.dto.CommentDTO;
 
 /**
  * @Description ：评论提醒方式
@@ -17,5 +17,5 @@ public interface CommentNotifyChannel {
     * @Date: 2025/4/22
     * @Return: void
     */
-    void notifyMyself(Comment comment);
+    void notifyMyself(CommentDTO comment);
 }

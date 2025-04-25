@@ -2,12 +2,12 @@ package com.taoxier.taoxiblog.util.comment;
 
 import com.taoxier.taoxiblog.config.properties.BlogProperties;
 import com.taoxier.taoxiblog.enums.CommentPageEnum;
+import com.taoxier.taoxiblog.model.dto.CommentDTO;
 import com.taoxier.taoxiblog.util.MailUtils;
 import com.taoxier.taoxiblog.util.comment.channel.ChannelFactory;
 import com.taoxier.taoxiblog.util.comment.channel.CommentNotifyChannel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import com.taoxier.taoxiblog.model.dto.Comment;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -71,7 +71,7 @@ public class CommentUtils {
      * @Date: 2025/4/22
      * @Return: void
      */
-    public void judgeSendNotify(Comment comment, boolean isVisitorComment, com.taoxier.taoxiblog.util.comment.Comment parentComment) {
+    public void judgeSendNotify(CommentDTO comment, boolean isVisitorComment, com.taoxier.taoxiblog.util.comment.Comment parentComment) {
         if (parentComment != null && !parentComment.getAdminComment() && parentComment.getNotice()) {
             //我回复访客的评论，且对方接收提醒，邮件提醒对方(3)
             //访客回复访客的评论(即使是他自己先前的评论)，且对方接收提醒，邮件提醒对方(6)
@@ -93,7 +93,7 @@ public class CommentUtils {
     * @Date: 2025/4/22
     * @Return: void
     */
-    private void sendMailToParentComment(com.taoxier.taoxiblog.util.comment.Comment parentComment,Comment comment){
+    private void sendMailToParentComment(com.taoxier.taoxiblog.util.comment.Comment parentComment, CommentDTO comment){
         CommentPageEnum commentPageEnum = getCommentPageEnum(comment);
         Map<String, Object> map = new HashMap<>(16);
         map.put("parentNickname", parentComment.getNickname());
@@ -115,7 +115,7 @@ public class CommentUtils {
     * @Date: 2025/4/22
     * @Return: void
     */
-    private void notifyMyself(Comment comment){
+    private void notifyMyself(CommentDTO comment){
         notifyChannel.notifyMyself(comment);
     }
 
@@ -126,7 +126,7 @@ public class CommentUtils {
     * @Date: 2025/4/22
     * @Return: com.taoxier.taoxiblog.enums.CommentPageEnum
     */
-    public static CommentPageEnum getCommentPageEnum(Comment comment){
+    public static CommentPageEnum getCommentPageEnum(CommentDTO comment){
         CommentPageEnum commentPageEnum=CommentPageEnum.UNKNOWN;
         switch (comment.getPage()){
             case 0:

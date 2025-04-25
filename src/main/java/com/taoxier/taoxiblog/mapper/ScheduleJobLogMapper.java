@@ -1,5 +1,7 @@
 package com.taoxier.taoxiblog.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.taoxier.taoxiblog.model.entity.ScheduleJob;
 import com.taoxier.taoxiblog.model.entity.ScheduleJobLog;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -11,6 +13,6 @@ import org.springframework.stereotype.Repository;
  */
 @Mapper
 @Repository
-public interface ScheduleJobLogMapper {
+public interface ScheduleJobLogMapper extends BaseMapper<ScheduleJob> {
 
 }

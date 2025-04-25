@@ -1,5 +1,6 @@
 package com.taoxier.taoxiblog.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.taoxier.taoxiblog.model.entity.OperationLog;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -11,6 +12,6 @@ import org.springframework.stereotype.Repository;
  */
 @Mapper
 @Repository
-public interface OperationLogMapper {
+public interface OperationLogMapper extends BaseMapper<OperationLog> {
 
 }

@@ -1,5 +1,6 @@
 package com.taoxier.taoxiblog.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.taoxier.taoxiblog.model.entity.VisitRecord;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
@@ -11,6 +12,6 @@ import org.springframework.stereotype.Repository;
  */
 @Mapper
 @Repository
-public interface VisitRecordMapper {
+public interface VisitRecordMapper extends BaseMapper<VisitRecord> {
 
 }

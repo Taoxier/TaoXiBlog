@@ -1,8 +1,11 @@
 package com.taoxier.taoxiblog.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.taoxier.taoxiblog.model.entity.Tag;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @Description ：
@@ -11,6 +14,7 @@ import org.springframework.stereotype.Repository;
  */
 @Mapper
 @Repository
-public interface TagMapper {
+public interface TagMapper extends BaseMapper<Tag> {
 
+    List<Tag> getTagListByBlogId(Long blogId);
 }

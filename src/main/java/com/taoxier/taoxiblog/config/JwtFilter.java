@@ -1,6 +1,6 @@
 package com.taoxier.taoxiblog.config;
 
-import com.taoxier.taoxiblog.model.vo.Result;
+import com.taoxier.taoxiblog.model.vo.ResultVO;
 import com.taoxier.taoxiblog.util.JacksonUtils;
 import com.taoxier.taoxiblog.util.JwtUtils;
 import io.jsonwebtoken.Claims;
@@ -50,7 +50,7 @@ public class JwtFilter extends GenericFilter {
             } catch (Exception e) {
                 e.printStackTrace();
                 response.setContentType("application/json;charset=utf-8");
-                Result result = Result.create(403, "凭证已失效，请重新登录！");
+                ResultVO result = ResultVO.create(403, "凭证已失效，请重新登录！");
                 PrintWriter out = response.getWriter();
                 out.write(JacksonUtils.writeValueAsString(result));
                 out.flush();

@@ -2,6 +2,7 @@ package com.taoxier.taoxiblog.util.comment.channel;
 
 import com.taoxier.taoxiblog.config.properties.BlogProperties;
 import com.taoxier.taoxiblog.enums.CommentPageEnum;
+import com.taoxier.taoxiblog.model.dto.CommentDTO;
 import com.taoxier.taoxiblog.util.MailUtils;
 import com.taoxier.taoxiblog.util.comment.CommentUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,6 @@ import org.springframework.boot.autoconfigure.mail.MailProperties;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
-import javax.xml.stream.events.Comment;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,7 +38,7 @@ public class MailChannel implements CommentNotifyChannel{
     * @Return: void
     */
     @Override
-    public void notifyMyself(com.taoxier.taoxiblog.model.dto.Comment comment) {
+    public void notifyMyself(CommentDTO comment) {
         CommentPageEnum commentPageEnum = CommentUtils.getCommentPageEnum(comment);
         Map<String, Object> map = new HashMap<>(16);
         map.put("title", commentPageEnum.getTitle());

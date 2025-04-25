@@ -3,8 +3,7 @@ package com.taoxier.taoxiblog.util.comment.channel;
 import com.taoxier.taoxiblog.config.properties.BlogProperties;
 import com.taoxier.taoxiblog.config.properties.TelegramProperties;
 import com.taoxier.taoxiblog.enums.CommentPageEnum;
-import com.taoxier.taoxiblog.model.dto.Comment;
-import com.taoxier.taoxiblog.util.MailUtils;
+import com.taoxier.taoxiblog.model.dto.CommentDTO;
 import com.taoxier.taoxiblog.util.StringUtils;
 import com.taoxier.taoxiblog.util.comment.CommentUtils;
 import com.taoxier.taoxiblog.util.telegram.TelegramUtils;
@@ -55,7 +54,7 @@ public class TelegramChannel implements CommentNotifyChannel{
     * @Return: void
     */
     @Override
-    public void notifyMyself(Comment comment) {
+    public void notifyMyself(CommentDTO comment) {
         String url = telegramProperties.getApi() + telegramProperties.getToken() + TelegramUtils.SEND_MESSAGE;
         String content = getContent(comment);
         Map<String, Object> messageBody = telegramUtils.getMessageBody(content);
@@ -63,13 +62,13 @@ public class TelegramChannel implements CommentNotifyChannel{
     }
 
     /**
-    * @Description 根据传入的 Comment 对象生成一段包含新评论详细信息的 HTML 格式字符串
+    * @Description 根据传入的 CommentDTO 对象生成一段包含新评论详细信息的 HTML 格式字符串
      * @param comment
     * @Author: taoxier
     * @Date: 2025/4/22
     * @Return: java.lang.String
     */
-    private String getContent(Comment comment) {
+    private String getContent(CommentDTO comment) {
         CommentPageEnum commentPageEnum = CommentUtils.getCommentPageEnum(comment);
         return String.format(
                 "<b>您的文章<a href=\"%s\">《%s》</a>有了新的评论~</b>\n" +

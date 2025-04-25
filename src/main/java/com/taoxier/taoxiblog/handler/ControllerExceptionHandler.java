@@ -2,7 +2,7 @@ package com.taoxier.taoxiblog.handler;
 
 import com.taoxier.taoxiblog.exception.NotFoundException;
 import com.taoxier.taoxiblog.exception.PersistenceException;
-import com.taoxier.taoxiblog.model.vo.Result;
+import com.taoxier.taoxiblog.model.vo.ResultVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -28,11 +28,11 @@ public class ControllerExceptionHandler {
      * @param e 自定义抛出的异常信息
     * @Author: taoxier
     * @Date: 2025/4/22
-    * @Return: com.taoxier.taoxiblog.model.vo.Result
+    * @Return: com.taoxier.taoxiblog.model.vo.ResultVO
     */
-    public Result notFoundExceptionHandler(HttpServletRequest request, NotFoundException e){
+    public ResultVO notFoundExceptionHandler(HttpServletRequest request, NotFoundException e){
         logger.error("Request URL :{},Exception :",request.getRequestURI(),e);
-        return Result.create(404,e.getMessage());
+        return ResultVO.create(404,e.getMessage());
     }
 
     /**
@@ -41,12 +41,12 @@ public class ControllerExceptionHandler {
      * @param e
     * @Author: taoxier
     * @Date: 2025/4/22
-    * @Return: com.taoxier.taoxiblog.model.vo.Result
+    * @Return: com.taoxier.taoxiblog.model.vo.ResultVO
     */
     @ExceptionHandler(PersistenceException.class)
-    public Result persistenceExceptionHandler(HttpServletRequest request, PersistenceException e) {
+    public ResultVO persistenceExceptionHandler(HttpServletRequest request, PersistenceException e) {
         logger.error("Request URL : {}, Exception :", request.getRequestURL(), e);
-        return Result.create(500, e.getMessage());
+        return ResultVO.create(500, e.getMessage());
     }
 
     /**
@@ -55,12 +55,12 @@ public class ControllerExceptionHandler {
      * @param e
     * @Author: taoxier
     * @Date: 2025/4/22
-    * @Return: com.taoxier.taoxiblog.model.vo.Result
+    * @Return: com.taoxier.taoxiblog.model.vo.ResultVO
     */
     @ExceptionHandler(UsernameNotFoundException.class)
-    public Result usernameNotFoundExceptionHandler(HttpServletRequest request, UsernameNotFoundException e) {
+    public ResultVO usernameNotFoundExceptionHandler(HttpServletRequest request, UsernameNotFoundException e) {
         logger.error("Request URL : {}, Exception :", request.getRequestURL(), e);
-        return Result.create(401, "用户名或密码错误！");
+        return ResultVO.create(401, "用户名或密码错误！");
     }
 
     /**
@@ -69,11 +69,11 @@ public class ControllerExceptionHandler {
      * @param e
     * @Author: taoxier
     * @Date: 2025/4/22
-    * @Return: com.taoxier.taoxiblog.model.vo.Result
+    * @Return: com.taoxier.taoxiblog.model.vo.ResultVO
     */
     @ExceptionHandler(Exception.class)
-    public Result exceptionHandler(HttpServletRequest request, Exception e) {
+    public ResultVO exceptionHandler(HttpServletRequest request, Exception e) {
         logger.error("Request URL : {}, Exception :", request.getRequestURL(), e);
-        return Result.create(500, "异常错误");
+        return ResultVO.create(500, "异常错误");
     }
 }
