@@ -13,5 +13,5 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface CategoryMapper extends BaseMapper<Category> {
-
+    List<PageComment> selectPageCommentList(QueryWrapper<PageComment> wrapper);
 }

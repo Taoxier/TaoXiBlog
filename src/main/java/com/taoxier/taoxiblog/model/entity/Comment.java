@@ -1,7 +1,11 @@
 package com.taoxier.taoxiblog.model.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import com.taoxier.taoxiblog.model.vo.BlogIdAndTitleVO;
 import lombok.Data;
 
 /**
@@ -84,4 +88,7 @@ public class Comment implements Serializable {
     private String qq;
 
     private static final long serialVersionUID = 1L;
+
+    private BlogIdAndTitleVO blog;//所属的文章
+    private List<Comment> replyComments = new ArrayList<>();//回复该评论的评论
 }

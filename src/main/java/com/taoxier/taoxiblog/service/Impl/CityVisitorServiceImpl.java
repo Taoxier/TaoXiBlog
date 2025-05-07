@@ -5,12 +5,19 @@ import com.taoxier.taoxiblog.mapper.CityVisitorMapper;
 import com.taoxier.taoxiblog.model.entity.CityVisitor;
 import com.taoxier.taoxiblog.service.CityVisitorService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
- * @Description ：
+ * @Description ：访客记录
  * @Author taoxier
  * @Date 2025/4/25
  */
 @Service
 public class CityVisitorServiceImpl extends ServiceImpl<CityVisitorMapper, CityVisitor> implements CityVisitorService {
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void saveCityVisitor(CityVisitor cityVisitor) {
+        save(cityVisitor);
+    }
 }
