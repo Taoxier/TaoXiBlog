@@ -66,5 +66,10 @@
         where b.id=#{id} and b.is_published=true
     </select>
 
+    <!--查询每个分类的博客数量-->
+    <select id="getCategoryBlogCountList" resultType="com.taoxier.taoxiblog.model.vo.CategoryBlogCountVO">
+            select category_id, count(category_id) as blog_count from blog group by category_id
+    </select>
+
 
 </mapper>

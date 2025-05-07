@@ -1,6 +1,8 @@
 package com.taoxier.taoxiblog.model.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -22,4 +24,6 @@ public class Tag implements Serializable {
     private String color;
 
     private static final long serialVersionUID = 1L;
+
+    private List<Blog> blogs = new ArrayList<>();//该标签下的博客文章
 }

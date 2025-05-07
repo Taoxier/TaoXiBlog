@@ -27,19 +27,7 @@ public interface BlogService extends IService<Blog> {
 
     List<SearchBlogVO> getSearchBlogByQueryAndIsPublished(String query);
 
-    /**
-     * @param
-     * @Description 查询所有博客id和title
-     * @Author: taoxier
-     * @Date: 2025/4/25
-     * @Return: java.util.List<com.taoxier.taoxiblog.model.entity.Blog>
-     */
-    default List<Blog> getIdAndTitleList() {
-        LambdaQueryWrapper<Blog> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.select(Blog::getId, Blog::getTitle)
-                .orderByDesc(Blog::getCreateTime);
-        return this.baseMapper.selectList(queryWrapper);
-    }
+    List<Blog> getIdAndTitleList();
 
     List<NewBlogVO> getNewBlogListByIsPublished();
 

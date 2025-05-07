@@ -8,6 +8,11 @@
         from blog_tag as bt left join tag as t on bt.tag_id=t.id
         where bt.blog_id=#{blogId}
     </select>
-    
-    
+
+    <!--查询每个标签的博客数量-->
+    <select id="getTagBlogCount" resultType="com.taoxier.taoxiblog.model.vo.TagBlogCountVO">
+        select tag_id, count(tag_id) as blog_count from blog_tag group by tag_id
+    </select>
+
+
 </mapper>

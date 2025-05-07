@@ -2,4 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.taoxier.taoxiblog.mapper.VisitLogMapper">
 
+    <select id="selectUUIDAndCreateTimeByYesterday"
+            resultType="com.taoxier.taoxiblog.model.dto.VisitLogUuidTimeDTO">
+            select uuid, create_time from visit_log
+            <where>
+                <if test="ew.sqlSegment != null and ew.sqlSegment != ''">
+                    ${ew.sqlSegment}
+                </if>
+            </where>
+            order by create_time desc
+        </select>
+
 </mapper>

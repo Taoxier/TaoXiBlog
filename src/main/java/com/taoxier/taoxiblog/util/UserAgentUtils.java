@@ -1,5 +1,6 @@
 package com.taoxier.taoxiblog.util;
 
+import com.taoxier.taoxiblog.model.dto.UserAgentDTO;
 import nl.basjes.parse.useragent.UserAgent;
 import nl.basjes.parse.useragent.UserAgentAnalyzer;
 import org.springframework.stereotype.Component;

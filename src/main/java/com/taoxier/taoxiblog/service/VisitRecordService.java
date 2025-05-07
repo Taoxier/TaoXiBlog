@@ -5,6 +5,7 @@ import com.taoxier.taoxiblog.mapper.AboutMapper;
 import com.taoxier.taoxiblog.model.entity.VisitRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @Description ：个人页面的业务层实现
@@ -14,4 +15,6 @@ import org.springframework.stereotype.Service;
 @Service
 public interface VisitRecordService extends IService<VisitRecord> {
 
+    @Transactional(rollbackFor = Exception.class)
+    void saveVisitRecord(VisitRecord visitRecord);
 }

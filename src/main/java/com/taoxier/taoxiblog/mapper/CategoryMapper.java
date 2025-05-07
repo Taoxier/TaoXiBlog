@@ -1,9 +1,13 @@
 package com.taoxier.taoxiblog.mapper;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.taoxier.taoxiblog.model.entity.Category;
+import com.taoxier.taoxiblog.model.vo.PageCommentVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @Description ：
@@ -13,5 +17,5 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface CategoryMapper extends BaseMapper<Category> {
-    List<PageComment> selectPageCommentList(QueryWrapper<PageComment> wrapper);
+
 }

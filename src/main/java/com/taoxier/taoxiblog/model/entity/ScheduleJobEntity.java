@@ -10,7 +10,9 @@ import lombok.Data;
  * @Date 2025/4/22
  */
 @Data
-public class ScheduleJob implements Serializable {
+public class ScheduleJobEntity implements Serializable {
+
+    public static final String JOB_PARAM_KEY = "JOB_PARAM_KEY"; //任务调度参数key
     /**
      * 任务id
      */
@@ -39,7 +41,7 @@ public class ScheduleJob implements Serializable {
     /**
      * 任务状态
      */
-    private Byte status;
+    private Boolean status;
 
     /**
      * 备注

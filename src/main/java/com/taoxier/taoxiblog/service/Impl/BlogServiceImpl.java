@@ -151,6 +151,21 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
     }
 
     /**
+    * @Description 查询所有博客id和title
+     * @param
+    * @Author: taoxier
+    * @Date: 2025/5/7
+    * @Return: java.util.List<com.taoxier.taoxiblog.model.entity.Blog>
+    */
+    @Override
+    public List<Blog> getIdAndTitleList() {
+        LambdaQueryWrapper<Blog> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.select(Blog::getId, Blog::getTitle)
+                .orderByDesc(Blog::getCreateTime);
+        return this.baseMapper.selectList(queryWrapper);
+    }
+
+    /**
      * @param
      * @Description 查询最新公开博客
      * @Author: taoxier

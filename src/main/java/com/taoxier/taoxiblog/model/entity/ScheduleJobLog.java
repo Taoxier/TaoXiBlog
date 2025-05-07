@@ -39,7 +39,7 @@ public class ScheduleJobLog implements Serializable {
     /**
      * 任务执行结果
      */
-    private Byte status;
+    private Boolean status;
 
     /**
      * 异常信息

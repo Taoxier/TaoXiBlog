@@ -2,4 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.taoxier.taoxiblog.mapper.FriendMapper">
 
+    <select id="getFriendVOList" resultType="com.taoxier.taoxiblog.model.vo.FriendVO">
+        select nickname, description, website, avatar from friend where is_published=true order by rand()
+    </select>
 </mapper>
