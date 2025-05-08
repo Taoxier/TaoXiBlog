@@ -1,6 +1,5 @@
 package com.taoxier.taoxiblog.service;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.taoxier.taoxiblog.model.dto.BlogDTO;
 import com.taoxier.taoxiblog.model.dto.BlogVisibilityDTO;
@@ -25,7 +24,7 @@ public interface BlogService extends IService<Blog> {
 
     List<Blog> getListByTitleAndCategoryId(String title, Integer categoryId);
 
-    List<SearchBlogVO> getSearchBlogByQueryAndIsPublished(String query);
+    List<SearchBlogVO> getSearchBlogListByQueryAndIsPublished(String query);
 
     List<Blog> getIdAndTitleList();
 

@@ -123,7 +123,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
      * @Return: java.util.List<com.taoxier.taoxiblog.model.vo.SearchBlogVO>
      */
     @Override
-    public List<SearchBlogVO> getSearchBlogByQueryAndIsPublished(String query) {
+    public List<SearchBlogVO> getSearchBlogListByQueryAndIsPublished(String query) {
         String upperCaseQuery = query.toUpperCase();//大写
         LambdaQueryWrapper<Blog> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(Blog::getIsPublished, true)

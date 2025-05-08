@@ -21,6 +21,6 @@ public interface AboutService extends IService<About> {
     @Transactional(rollbackFor = Exception.class)
     void updateOneAbout(String nameEn, String value);
 
-    boolean getAboutCommentEnable();
+    boolean getAboutCommentEnabled();
 
 }

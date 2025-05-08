@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.taoxier.taoxiblog.exception.PersistenceException;
 import com.taoxier.taoxiblog.mapper.CommentMapper;
 import com.taoxier.taoxiblog.model.dto.CommentDTO;
-import com.taoxier.taoxiblog.model.entity.Comment;
+import com.taoxier.taoxiblog.model.entity.CommentEntity;
 import com.taoxier.taoxiblog.model.vo.PageCommentVO;
 import com.taoxier.taoxiblog.service.CommentService;
 import org.springframework.beans.BeanUtils;
@@ -23,7 +23,7 @@ import java.util.List;
  * @Date 2025/4/25
  */
 @Service
-public class CommentServiceImpl extends ServiceImpl<CommentMapper,Comment> implements CommentService {
+public class CommentServiceImpl extends ServiceImpl<CommentMapper, CommentEntity> implements CommentService {
     @Autowired
     private CommentMapper commentMapper;
 
@@ -34,11 +34,11 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper,Comment> imple
      * @param parentCommentId
     * @Author: taoxier
     * @Date: 2025/5/7
-    * @Return: java.util.List<com.taoxier.taoxiblog.model.entity.Comment>
+    * @Return: java.util.List<com.taoxier.taoxiblog.model.entity.CommentEntity>
     */
     @Override
-    public List<Comment> getListByPageAndParentCommentId(Integer page, Long blogId, Long parentCommentId) {
-        QueryWrapper<Comment> wrapper = new QueryWrapper<>();
+    public List<CommentEntity> getListByPageAndParentCommentId(Integer page, Long blogId, Long parentCommentId) {
+        QueryWrapper<CommentEntity> wrapper = new QueryWrapper<>();
         if (page != null) {
             wrapper.eq("c.page", page);
         }
@@ -46,9 +46,9 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper,Comment> imple
             wrapper.eq("c.blog_id", blogId);
         }
         wrapper.eq("c.parent_comment_id", parentCommentId);
-        List<Comment> comments = commentMapper.selectList(wrapper);
-        for (Comment c : comments) {
-            List<Comment> replyComments = getListByPageAndParentCommentId(page, blogId, c.getId());
+        List<CommentEntity> comments = commentMapper.selectList(wrapper);
+        for (CommentEntity c : comments) {
+            List<CommentEntity> replyComments = getListByPageAndParentCommentId(page, blogId, c.getId());
             c.setReplyComments(replyComments);
         }
         return comments;
@@ -83,11 +83,11 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper,Comment> imple
      * @param id
     * @Author: taoxier
     * @Date: 2025/5/7
-    * @Return: com.taoxier.taoxiblog.model.entity.Comment
+    * @Return: com.taoxier.taoxiblog.model.entity.CommentEntity
     */
     @Override
-    public Comment getCommentById(Long id) {
-        Comment comment = getById(id);
+    public CommentEntity getCommentById(Long id) {
+        CommentEntity comment = getById(id);
         if (comment == null) {
             throw new PersistenceException("评论不存在");
         }
@@ -149,12 +149,12 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper,Comment> imple
     @Override
     public void updateCommentPublishedById(Long commentId, Boolean published) {
         if (!published) {
-            List<Comment> comments = getAllReplyComments(commentId);
-            for (Comment c : comments) {
+            List<CommentEntity> comments = getAllReplyComments(commentId);
+            for (CommentEntity c : comments) {
                 hideComment(c);
             }
         }
-        Comment comment = new Comment();
+        CommentEntity comment = new CommentEntity();
         comment.setId(commentId);
         comment.setIsPublished(published);
         if (!updateById(comment)) {
@@ -173,7 +173,7 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper,Comment> imple
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void updateCommentNoticeById(Long commentId, Boolean notice) {
-        Comment comment = new Comment();
+        CommentEntity comment = new CommentEntity();
         comment.setId(commentId);
         comment.setIsNotice(notice);
         if (!updateById(comment)) {
@@ -191,8 +191,8 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper,Comment> imple
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void deleteCommentById(Long commentId) {
-        List<Comment> comments = getAllReplyComments(commentId);
-        for (Comment c : comments) {
+        List<CommentEntity> comments = getAllReplyComments(commentId);
+        for (CommentEntity c : comments) {
             delete(c);
         }
         if (!removeById(commentId)) {
@@ -210,7 +210,7 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper,Comment> imple
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void deleteCommentsByBlogId(Long blogId) {
-        QueryWrapper<Comment> wrapper = new QueryWrapper<>();
+        QueryWrapper<CommentEntity> wrapper = new QueryWrapper<>();
         wrapper.eq("blog_id", blogId);
         remove(wrapper);
     }
@@ -224,7 +224,7 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper,Comment> imple
     */
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public void updateComment(Comment comment) {
+    public void updateComment(CommentEntity comment) {
         if (!updateById(comment)) {
             throw new PersistenceException("评论修改失败");
         }
@@ -241,7 +241,7 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper,Comment> imple
     */
     @Override
     public int countByPageAndIsPublished(Integer page, Long blogId, Boolean isPublished) {
-        QueryWrapper<Comment> wrapper = new QueryWrapper<>();
+        QueryWrapper<CommentEntity> wrapper = new QueryWrapper<>();
         wrapper.eq("page", page);
         if (isPublished != null) {
             wrapper.eq("is_published", isPublished);
@@ -263,8 +263,8 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper,Comment> imple
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void saveComment(CommentDTO commentDTO) {
-        Comment newComment = new Comment();
-        // 这里需要根据 CommentDTO 的属性赋值给 Comment
+        CommentEntity newComment = new CommentEntity();
+        // 这里需要根据 CommentDTO 的属性赋值给 CommentEntity
         BeanUtils.copyProperties(commentDTO,newComment);
         if (!save(newComment)) {
             throw new PersistenceException("评论失败");
@@ -279,8 +279,8 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper,Comment> imple
     * @Return: void
     */
     @Override
-    public void delete(Comment comment) {
-        for (Comment c : comment.getReplyComments()) {
+    public void delete(CommentEntity comment) {
+        for (CommentEntity c : comment.getReplyComments()) {
             delete(c);
         }
         if (!removeById(comment.getId())) {
@@ -296,11 +296,11 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper,Comment> imple
     * @Return: void
     */
     @Override
-    public void hideComment(Comment comment) {
-        for (Comment c : comment.getReplyComments()) {
+    public void hideComment(CommentEntity comment) {
+        for (CommentEntity c : comment.getReplyComments()) {
             hideComment(c);
         }
-        Comment updateComment = new Comment();
+        CommentEntity updateComment = new CommentEntity();
         updateComment.setId(comment.getId());
         updateComment.setIsPublished(false);
         if (!updateById(updateComment)) {
@@ -313,15 +313,15 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper,Comment> imple
      * @param parentCommentId
     * @Author: taoxier
     * @Date: 2025/5/7
-    * @Return: java.util.List<com.taoxier.taoxiblog.model.entity.Comment>
+    * @Return: java.util.List<com.taoxier.taoxiblog.model.entity.CommentEntity>
     */
     @Override
-    public List<Comment> getAllReplyComments(Long parentCommentId) {
-        QueryWrapper<Comment> wrapper = new QueryWrapper<>();
+    public List<CommentEntity> getAllReplyComments(Long parentCommentId) {
+        QueryWrapper<CommentEntity> wrapper = new QueryWrapper<>();
         wrapper.eq("parent_comment_id", parentCommentId);
-        List<Comment> comments = commentMapper.selectList(wrapper);
-        for (Comment c : comments) {
-            List<Comment> replyComments = getAllReplyComments(c.getId());
+        List<CommentEntity> comments = commentMapper.selectList(wrapper);
+        for (CommentEntity c : comments) {
+            List<CommentEntity> replyComments = getAllReplyComments(c.getId());
             c.setReplyComments(replyComments);
         }
         return comments;

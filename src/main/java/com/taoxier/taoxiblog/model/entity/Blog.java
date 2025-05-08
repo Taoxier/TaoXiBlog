@@ -99,4 +99,6 @@ public class Blog implements Serializable {
     private Long userId;
 
     private static final long serialVersionUID = 1L;
+
+
 }

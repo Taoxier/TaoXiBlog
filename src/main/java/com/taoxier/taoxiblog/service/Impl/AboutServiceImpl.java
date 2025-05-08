@@ -121,7 +121,7 @@ public class AboutServiceImpl extends ServiceImpl<AboutMapper, About> implements
     * @Return: boolean
     */
     @Override
-    public boolean getAboutCommentEnable() {
+    public boolean getAboutCommentEnabled() {
         // 创建 QueryWrapper 对象，用于构建查询条件
         QueryWrapper<About> queryWrapper = new QueryWrapper<>();
         // 设置查询条件，即 name_en 字段等于 "commentEnabled"

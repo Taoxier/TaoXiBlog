@@ -14,7 +14,7 @@ import lombok.Data;
  * @Date 2025/4/22
  */
 @Data
-public class Comment implements Serializable {
+public class CommentEntity implements Serializable {
     private Long id;
 
     /**
@@ -90,5 +90,5 @@ public class Comment implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private BlogIdAndTitleVO blog;//所属的文章
-    private List<Comment> replyComments = new ArrayList<>();//回复该评论的评论
+    private List<CommentEntity> replyComments = new ArrayList<>();//回复该评论的评论
 }

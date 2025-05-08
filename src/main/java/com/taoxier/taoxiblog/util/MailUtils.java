@@ -64,7 +64,7 @@ public class MailUtils {
     * @Return: void
     */
     @Async
-    public void senHtmlTemplateMail(Map<String, Object> map,String toAccount,String subject,String template){
+    public void sendHtmlTemplateMail(Map<String, Object> map,String toAccount,String subject,String template){
         try {
             MimeMessage mimeMessage = javaMailSender.createMimeMessage();
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);

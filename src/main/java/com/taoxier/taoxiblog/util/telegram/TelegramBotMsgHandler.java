@@ -1,8 +1,23 @@
 package com.taoxier.taoxiblog.util.telegram;
 
+import com.taoxier.taoxiblog.config.properties.BlogProperties;
+import com.taoxier.taoxiblog.config.properties.TelegramProperties;
+import com.taoxier.taoxiblog.enums.CommentPageEnum;
+import com.taoxier.taoxiblog.model.dto.CommentDTO;
+import com.taoxier.taoxiblog.model.entity.CommentEntity;
+import com.taoxier.taoxiblog.model.entity.Moment;
+import com.taoxier.taoxiblog.service.CommentService;
+import com.taoxier.taoxiblog.service.MomentService;
+import com.taoxier.taoxiblog.util.comment.CommentUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Map;
+import java.util.TimeZone;
 
 /**
  * @Description ：TelegramBot命令处理
@@ -13,4 +28,279 @@ import org.springframework.stereotype.Component;
 @Lazy
 @Component
 public class TelegramBotMsgHandler {
+    @Autowired
+    private CommentService commentService;
+    @Autowired
+    private MomentService momentService;
+    @Autowired
+    private TelegramUtils telegramUtils;
+    @Autowired
+    private CommentUtils commentUtils;
+    @Autowired
+    private BlogProperties blogProperties;
+    @Autowired
+    private TelegramProperties telegramProperties;
+
+    private SimpleDateFormat simpleDateFormat;
+
+    private static final String CONTENT_UNKNOWN = "";
+
+    private static final String CMD_HELP = "/help";
+    private static final String CMD_HIDE = "/hide";
+    private static final String CMD_SHOW = "/show";
+    private static final String CMD_DEL = "/del";
+    private static final String CMD_REPLY = "/reply";
+    private static final String CMD_MOMENT = "/moment";
+
+    private static final String HELP_MESSAGE = "<b>可用命令如下：</b>\n" +
+            "\n" +
+            "/help - 显示此帮助信息\n" +
+            "/hide [评论ID] - 隐藏评论\n" +
+            "/show [评论ID] - 公开评论\n" +
+            "/del [评论ID] - 删除评论(将删除该评论下的所有子评论)\n" +
+            "/reply [评论ID] [内容] - 回复评论\n" +
+            "/moment [内容] - 发布动态\n" +
+            "\n" +
+            "例如：/reply 123 好！";
+
+    public TelegramBotMsgHandler() {
+        this.simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        this.simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
+    }
+
+    /**
+    * @Description 处理指令
+     * @param message
+    * @Author: taoxier
+    * @Date: 2025/5/8
+    * @Return: void
+    */
+    public void processCommand(String message) {
+        log.debug("message content: {}", message);
+
+        String cmd = message;
+        String content = CONTENT_UNKNOWN;
+        int splitIndex = message.indexOf(" ");
+        if (splitIndex != -1) {
+            cmd = message.substring(0, splitIndex);
+            if (message.length() > splitIndex + 1) {
+                content = message.substring(splitIndex + 1);
+            }
+        }
+        log.debug("cmd: {}, content: {}", cmd, content);
+
+        String result = "";
+        try {
+            switch (cmd) {
+                //按id隐藏评论
+                case CMD_HIDE: {
+                    result = updateCommentStatus(content, false);
+                    break;
+                }
+                //按id公开评论
+                case CMD_SHOW: {
+                    result = updateCommentStatus(content, true);
+                    break;
+                }
+                //按id删除评论
+                case CMD_DEL: {
+                    result = deleteComment(content);
+                    break;
+                }
+                //快捷回复评论
+                case CMD_REPLY: {
+                    result = replyComment(content);
+                    break;
+                }
+                //发动态
+                case CMD_MOMENT: {
+                    result = newMoment(content);
+                    break;
+                }
+                //显示帮助
+                case CMD_HELP: {
+                    result = HELP_MESSAGE;
+                    break;
+                }
+                //未知命令，显示帮助
+                default: {
+                    result = "<b>未知命令</b>\n\n" + HELP_MESSAGE;
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            log.error("processCommand catch exception: {}", e);
+            handleCommandException(e);
+        }
+        sendResult(result);
+    }
+
+    /**
+    * @Description 修改评论公开状态
+     * @param msgContent
+     * @param status
+    * @Author: taoxier
+    * @Date: 2025/5/8
+    * @Return: java.lang.String
+    */
+    private String updateCommentStatus(String msgContent, boolean status) {
+        long commentId = Long.parseLong(msgContent);
+        //先查一遍看看是否存在，不存在的话可以catch到提示信息
+        commentService.getCommentById(commentId);
+        //更新评论状态
+        commentService.updateCommentPublishedById(commentId, status);
+        return String.format(
+                "<b>操作成功！</b>\n" +
+                        "\n" +
+                        "评论ID：%d\n" +
+                        "状态：%s",
+                commentId,
+                status ? "公开" : "隐藏"
+        );
+    }
+
+    /**
+    * @Description 删除评论及其子评论
+     * @param msgContent
+    * @Author: taoxier
+    * @Date: 2025/5/8
+    * @Return: java.lang.String
+    */
+    private String deleteComment(String msgContent) {
+        long commentId = Long.parseLong(msgContent);
+        //先查一遍看看是否存在，不存在的话可以catch到提示信息
+        commentService.getCommentById(commentId);
+        //删除评论及其子评论
+        commentService.deleteCommentById(commentId);
+        return String.format(
+                "<b>删除成功！</b>\n" +
+                        "\n" +
+                        "评论ID：%d\n" +
+                        "该评论及其子评论已删除",
+                commentId
+        );
+    }
+
+    /**
+    * @Description 快捷回复评论
+     * @param msgContent
+    * @Author: taoxier
+    * @Date: 2025/5/8
+    * @Return: java.lang.String
+    */
+    private String replyComment(String msgContent) {
+        //[评论ID] 和 [回复内容] 之间的分隔符
+        int splitIndex2 = msgContent.indexOf(" ");
+        if (splitIndex2 != -1 && msgContent.length() > splitIndex2 + 1) {
+            String commentIdString = msgContent.substring(0, splitIndex2);
+            String commentContent = msgContent.substring(splitIndex2 + 1);
+
+            long commentId = Long.parseLong(commentIdString);
+            //先找到要回复的评论
+            CommentEntity parentComment = commentService.getCommentById(commentId);
+
+            CommentDTO comment = new CommentDTO();
+            comment.setContent(commentContent);
+            comment.setParentCommentId(parentComment.getId());
+            //父评论所在页面
+            Integer page = parentComment.getPage();
+            Long blogId = page == 0 ? parentComment.getBlog().getId() : null;
+            comment.setPage(page);
+            comment.setBlogId(blogId);
+            commentUtils.setAdminCommentByTelegramAction(comment);
+
+            //保存评论
+            commentService.saveComment(comment);
+            //提醒回复对象
+            commentUtils.judgeSendNotify(comment, false, parentComment);
+
+            CommentPageEnum commentPageEnum = CommentUtils.getCommentPageEnum(comment);
+            return String.format(
+                    "<b>回复成功！</b>\n" +
+                            "\n" +
+                            "<b>您在<a href=\"%s\">《%s》</a>给 <b>%s</b> 的快捷回复：</b>\n" +
+                            "\n" +
+                            "<pre>%s</pre>\n" +
+                            "\n" +
+                            "<b>其他信息：</b>\n" +
+                            "评论ID：<code>%d</code>\n" +
+                            "IP：%s\n" +
+                            "时间：<u>%s</u>\n" +
+                            "邮箱：<code>%s</code>\n" +
+                            "状态：%s [<a href=\"%s\">管理评论</a>]\n",
+                    blogProperties.getView() + commentPageEnum.getPath(),
+                    commentPageEnum.getTitle(),
+                    parentComment.getNickname(),
+                    comment.getContent(),
+                    comment.getId(),
+                    comment.getIp(),
+                    simpleDateFormat.format(comment.getCreateTime()),
+                    comment.getEmail(),
+                    comment.getPublished() ? "公开" : "待审核",
+                    blogProperties.getCms() + "/blog/comment/list"
+            );
+        }
+        return "<b>命令格式有误！</b>\n\n" + HELP_MESSAGE;
+    }
+
+    /**
+    * @Description 发布新动态
+     * @param content
+    * @Author: taoxier
+    * @Date: 2025/5/8
+    * @Return: java.lang.String
+    */
+    private String newMoment(String content) {
+        Moment moment = new Moment();
+        moment.setCreateTime(new Date());
+        moment.setContent(content);
+        moment.setLikes(0);
+        moment.setIsPublished(true);
+        momentService.saveMoment(moment);
+
+        return String.format(
+                "<b>动态发布成功！\n</b>" +
+                        "\n" +
+                        "<pre>%s</pre>\n" +
+                        "\n" +
+                        "<b>其他信息：</b>\n" +
+                        "时间：<u>%s</u>\n" +
+                        "状态：%s [<a href=\"%s\">管理动态</a>]\n",
+                content,
+                simpleDateFormat.format(moment.getCreateTime()),
+                moment.getIsPublished() ? "公开" : "隐藏",
+                blogProperties.getCms() + "/blog/moment/list"
+        );
+    }
+
+    /**
+    * @Description 捕获命令处理过程中的全部异常信息并提示
+     * @param e
+    * @Author: taoxier
+    * @Date: 2025/5/8
+    * @Return: void
+    */
+    private void handleCommandException(Exception e) {
+        String result = String.format(
+                "<b>异常错误：</b>\n" +
+                        "exception: %s\n" +
+                        "message: %s",
+                e.getClass(),
+                e.getMessage()
+        );
+        sendResult(result);
+    }
+
+    /**
+    * @Description 发送命令处理结果
+     * @param message
+    * @Author: taoxier
+    * @Date: 2025/5/8
+    * @Return: void
+    */
+    private void sendResult(String message) {
+        String url = telegramProperties.getApi() + telegramProperties.getToken() + TelegramUtils.SEND_MESSAGE;
+        Map<String, Object> messageBody = telegramUtils.getMessageBody(message);
+        telegramUtils.sendByAutoCheckReverseProxy(url, messageBody);
+    }
 }

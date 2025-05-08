@@ -1,0 +1,268 @@
+package com.taoxier.taoxiblog.controller.admin;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.taoxier.taoxiblog.annotation.OperationLogger;
+import com.taoxier.taoxiblog.model.dto.BlogDTO;
+import com.taoxier.taoxiblog.model.dto.BlogVisibilityDTO;
+import com.taoxier.taoxiblog.model.entity.Blog;
+import com.taoxier.taoxiblog.model.entity.Category;
+import com.taoxier.taoxiblog.model.entity.Tag;
+import com.taoxier.taoxiblog.model.entity.User;
+import com.taoxier.taoxiblog.model.vo.ResultVO;
+import com.taoxier.taoxiblog.service.BlogService;
+import com.taoxier.taoxiblog.service.CategoryService;
+import com.taoxier.taoxiblog.service.CommentService;
+import com.taoxier.taoxiblog.service.TagService;
+import com.taoxier.taoxiblog.util.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.*;
+
+/**
+ * @Description ：
+ * @Author taoxier
+ * @Date 2025/5/7
+ */
+@RestController
+@RequestMapping("/admin")
+public class BlogAdminController {
+    @Autowired
+    BlogService blogService;
+    @Autowired
+    CategoryService categoryService;
+    @Autowired
+    TagService tagService;
+    @Autowired
+    CommentService commentService;
+
+    /**
+     * @param title      按标题模糊查询
+     * @param categoryId
+     * @param pageNum
+     * @param pageSize
+     * @Description 获取博客文章列表
+     * @Author: taoxier
+     * @Date: 2025/5/8
+     * @Return: com.taoxier.taoxiblog.model.vo.ResultVO
+     */
+    @GetMapping("/blogs")
+    public ResultVO blogs(@RequestParam(defaultValue = "") String title, @RequestParam(defaultValue = "") Integer categoryId, @RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "10") Integer pageSize) {
+        String orderBy = "create_time desc";//排序
+        PageHelper.startPage(pageNum, pageSize, orderBy);
+        PageInfo<Blog> pageInfo = new PageInfo<>(blogService.getListByTitleAndCategoryId(title, categoryId));
+        List<Category> categories = categoryService.getCategoryList();
+        Map<String, Object> map = new HashMap<>(4);
+        map.put("blogs", pageInfo);
+        map.put("categories", categories);
+        return ResultVO.ok("请求成功", map);
+    }
+
+    /**
+     * @param id
+     * @Description 删除博客文章、删除博客文章下的所有评论、同时维护 blog_tag 表
+     * @Author: taoxier
+     * @Date: 2025/5/8
+     * @Return: com.taoxier.taoxiblog.model.vo.ResultVO
+     */
+    @OperationLogger("删除博客")
+    @DeleteMapping("/blog")
+    public ResultVO delete(@RequestParam Long id) {
+        blogService.deleteBlogTagByBlogId(id);
+        blogService.deleteBlogById(id);
+        commentService.deleteCommentsByBlogId(id);
+        return ResultVO.ok("删除成功");
+    }
+
+    /**
+     * @param
+     * @Description 获取分类列表和标签列表
+     * @Author: taoxier
+     * @Date: 2025/5/8
+     * @Return: com.taoxier.taoxiblog.model.vo.ResultVO
+     */
+    @GetMapping("/categoryAndTag")
+    public ResultVO categoryAndTag() {
+        List<Category> categories = categoryService.getCategoryList();
+        List<Tag> tags = tagService.getTagList();
+        Map<String, Object> map = new HashMap<>(4);
+        map.put("categories", categories);
+        map.put("tags", tags);
+        return ResultVO.ok("请求成功", map);
+    }
+
+    /**
+     * @param id
+     * @param top
+     * @Description 更新博客置顶状态
+     * @Author: taoxier
+     * @Date: 2025/5/8
+     * @Return: com.taoxier.taoxiblog.model.vo.ResultVO
+     */
+    @OperationLogger("更新博客置顶状态")
+    @PutMapping("/blog/top")
+    public ResultVO updateTop(@RequestParam Long id, @RequestParam Boolean top) {
+        blogService.updateBlogTop(id, top);
+        return ResultVO.ok("操作成功");
+    }
+
+    /**
+     * @param id
+     * @param recommend
+     * @Description 更新博客推荐状态
+     * @Author: taoxier
+     * @Date: 2025/5/8
+     * @Return: com.taoxier.taoxiblog.model.vo.ResultVO
+     */
+    @OperationLogger("更新博客推荐状态")
+    @PutMapping("/blog/recommend")
+    public ResultVO updateRecommend(@RequestParam Long id, @RequestParam Boolean recommend) {
+        blogService.updateBlogRecommendById(id, recommend);
+        return ResultVO.ok("操作成功");
+    }
+
+    /**
+     * @param id
+     * @param blogVisibilityDTO
+     * @Description 更新博客可见性状态
+     * @Author: taoxier
+     * @Date: 2025/5/8
+     * @Return: com.taoxier.taoxiblog.model.vo.ResultVO
+     */
+    @OperationLogger("更新博客可见性状态")
+    @PutMapping("blog/{id}/visibility")
+    public ResultVO updateVisibility(@PathVariable Long id, @RequestBody BlogVisibilityDTO blogVisibilityDTO) {
+        blogService.updateBlogVisibilityById(id, blogVisibilityDTO);
+        return ResultVO.ok("操作成功");
+    }
+
+    /**
+     * @param id
+     * @Description 根据id获取博客详情
+     * @Author: taoxier
+     * @Date: 2025/5/8
+     * @Return: com.taoxier.taoxiblog.model.vo.ResultVO
+     */
+    @GetMapping("/blog")
+    public ResultVO getBlog(@RequestParam Long id) {
+        Blog blog = blogService.getBlogById(id);
+        return ResultVO.ok("获取成功", blog);
+    }
+
+    /**
+    * @Description 保存草稿或发布新文章
+     * @param BlogDTO
+    * @Author: taoxier
+    * @Date: 2025/5/8
+    * @Return: com.taoxier.taoxiblog.model.vo.ResultVO
+    */
+    @OperationLogger("发布博客")
+    @PostMapping("/blog")
+    public ResultVO saveBlog(@RequestBody BlogDTO BlogDTO) {
+        return getResult(BlogDTO,"save");
+    }
+
+    @OperationLogger("更新博客")
+    @PostMapping("/blog")
+    public ResultVO updateBlog(@RequestBody BlogDTO BlogDTO) {
+        return getResult(BlogDTO,"update");
+    }
+
+    /**
+    * @Description 执行博客添加或更新操作：校验参数是否合法，添加分类、标签，维护博客标签关联表
+     * @param blogDTO
+     * @param type
+    * @Author: taoxier
+    * @Date: 2025/5/8
+    * @Return: com.taoxier.taoxiblog.model.vo.ResultVO
+    */
+    private ResultVO getResult(BlogDTO blogDTO, String type) {
+        //验证普通字段
+        if (StringUtils.isEmpty(blogDTO.getTitle(), blogDTO.getFirstPicture(), blogDTO.getContent(), blogDTO.getDescription()) || blogDTO.getWords() == null || blogDTO.getWords() < 0) {
+            return ResultVO.error("参数有误");
+        }
+
+        //处理分类
+        Object category = blogDTO.getCate();
+        if (category == null) {
+            return ResultVO.error("分类不能为空");
+        }
+
+        if (category instanceof Integer) {
+            //选择了已存在的分类
+            Category c = categoryService.getCategoryById(((Integer) category).longValue());
+            blogDTO.setCategory(c);
+        } else if (category instanceof String) {
+            //添加新分类
+            //查询分类是否已经存在
+            Category cate = categoryService.getCategoryByName((String) category);
+            if (cate != null) {
+                return ResultVO.error("不可以添加已经存在的分类");
+            }
+
+            Category c = new Category();
+            c.setCategoryName((String) category);
+            categoryService.saveCategory(c);
+            blogDTO.setCategory(c);
+        } else {
+            return ResultVO.error("分类不正确");
+        }
+
+        //处理标签
+        List<Object> tagList = blogDTO.getTagList();
+        List<Tag> tags = new ArrayList<>();
+        for (Object t : tagList) {
+            if (t instanceof Integer) {
+                //选择了已存在的标签
+                Tag tag = tagService.getTagById(((Integer) t).longValue());
+                tags.add(tag);
+            } else if (t instanceof String) {
+                //添加新标签
+                //查询标签是否已存在
+                Tag tag1 = tagService.getTagByName((String) t);
+                if (tag1 != null) {
+                    return ResultVO.error("不可以添加已存在的标签");
+                }
+                Tag newTag=new Tag();
+                newTag.setTagName((String) t);
+                tagService.saveTag(newTag);
+                tags.add(newTag);
+            }else {
+                return ResultVO.error("标签不正确");
+            }
+        }
+
+        Date date=new Date();
+        if (blogDTO.getReadTime()==null||blogDTO.getReadTime()<0){
+            blogDTO.setReadTime((int)Math.round(blogDTO.getWords()/200.0));//粗略计算阅读时长
+        }
+        if (blogDTO.getViews() == null || blogDTO.getViews() < 0) {
+            blogDTO.setViews(0);
+        }
+        if ("save".equals(type)){
+            blogDTO.setCreateTime(date);
+            blogDTO.setUpdateTime(date);
+            User user=new User();
+            user.setId(1L);
+            blogDTO.setUser(user);
+
+            blogService.saveBlog(blogDTO);
+            //关联博客和标签(维护 blog_tag 表)
+            for (Tag t:tags){
+                blogService.saveBlogTag(blogDTO.getId(),t.getId());
+            }
+            return ResultVO.ok("添加成功");
+        }else {
+            blogDTO.setUpdateTime(date);
+            blogService.updateBlog(blogDTO);
+            //关联博客和标签(维护 blog_tag 表)
+            blogService.deleteBlogTagByBlogId(blogDTO.getId());
+            for (Tag t:tags){
+                blogService.saveBlogTag(blogDTO.getId(),t.getId());
+            }
+            return ResultVO.ok("更新成功");
+        }
+    }
+
+}

@@ -185,6 +185,13 @@ public class FriendServiceImpl extends ServiceImpl<FriendMapper, Friend> impleme
         return friendInfo;
     }
 
+    /**
+    * @Description 更新友链页面信息
+     * @param content
+    * @Author: taoxier
+    * @Date: 2025/5/8
+    * @Return: void
+    */
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void updateFriendInfoContent(String content) {
