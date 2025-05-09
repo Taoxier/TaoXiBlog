@@ -16,6 +16,7 @@ import lombok.Data;
 public class Category implements Serializable {
     private Long id;
 
+    @TableField("category_name") // 数据库列名
     private String name;
 
     @TableField(exist = false)
