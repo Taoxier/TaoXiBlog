@@ -1,9 +1,6 @@
 package com.taoxier.taoxiblog.config.properties;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
@@ -13,10 +10,7 @@ import org.springframework.http.client.SimpleClientHttpRequestFactory;
  * @Author taoxier
  * @Date 2025/4/21
  */
-@NoArgsConstructor
-@Getter
-@Setter
-@ToString
+@Data
 @Configuration
 @ConfigurationProperties(prefix = "http.proxy.server")
 public class ProxyProperties {
@@ -33,8 +27,6 @@ public class ProxyProperties {
 
     /**
      * 连接超时(单位毫秒)，通常不应该为0，0为无限超时时间，-1为系统的默认超时时间
-     *
-     * @see SimpleClientHttpRequestFactory#setConnectTimeout(int)
      */
     private Integer timeout;
 }

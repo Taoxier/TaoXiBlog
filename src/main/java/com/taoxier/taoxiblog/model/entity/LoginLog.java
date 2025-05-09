@@ -3,6 +3,7 @@ package com.taoxier.taoxiblog.model.entity;
 import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @Description ：
@@ -59,4 +60,13 @@ public class LoginLog implements Serializable {
     private String userAgent;
 
     private static final long serialVersionUID = 1L;
+
+    public LoginLog(String username, String ip, boolean status, String description, String userAgent) {
+        this.username = username;
+        this.ip = ip;
+        this.status = status;
+        this.description = description;
+        this.createTime = new Date();
+        this.userAgent = userAgent;
+    }
 }

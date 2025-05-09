@@ -8,7 +8,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @Description ：
+ * @Description ：用于需要记录访客访问日志的方法
  * @Author taoxier
  * @Date 2025/4/22
  */
@@ -19,5 +19,5 @@ public @interface VisitLogger {
     /**
      * 访问行为枚举
      */
-    VisitBehavior value() default VisitBehavior.UNKNOWN;
+    VisitBehavior value() default VisitBehavior.UNKNOWN;//默认值
 }

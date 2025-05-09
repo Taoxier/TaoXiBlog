@@ -34,7 +34,7 @@ public class GithubChannel implements FileUploadChannel {
 	private static final String cdnUrl4Github = "https://fastly.jsdelivr.net/gh/%s/%s%s/%s";
 
 	@Autowired
-	private GithubProperties githubProperties;
+	private GithubProperties githubProperties;//github配置
 	@Autowired
 	private RestTemplate restTemplate;
 

@@ -38,8 +38,7 @@ public class MailUtils {
     * @Date: 2025/4/22
     * @Return: void
     */
-    //标识一个方法是异步执行的
-    @Async
+    @Async   //标识一个方法是异步执行的
     public void sendSimpleMail(String toAccount,String subject,String content){
         try {
             SimpleMailMessage mailMessage=new SimpleMailMessage();

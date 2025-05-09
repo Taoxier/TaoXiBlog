@@ -10,6 +10,7 @@ import com.taoxier.taoxiblog.util.HashUtils;
 import com.taoxier.taoxiblog.util.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,12 +22,12 @@ import org.springframework.transaction.interceptor.TransactionAspectSupport;
  * @Date 2025/4/25
  */
 @Service
-public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService, UserDetailsService {
     @Autowired
     private UserMapper userMapper;
 
     /**
-    * @Description 按用户名查询User
+    * @Description 按用户名查询User(根据用户名加载用户信息)
      * @param username
     * @Author: taoxier
     * @Date: 2025/5/7

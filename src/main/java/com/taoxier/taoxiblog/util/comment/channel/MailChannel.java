@@ -52,6 +52,6 @@ public class MailChannel implements CommentNotifyChannel{
         map.put("manageUrl", blogProperties.getCms() + "/comments");
         String toAccount = mailProperties.getUsername();
         String subject = blogProperties.getName() + " 收到新评论";
-        mailUtils.senHtmlTemplateMail(map, toAccount, subject, "owner.html");
+        mailUtils.sendHtmlTemplateMail(map, toAccount, subject, "owner.html");
     }
 }

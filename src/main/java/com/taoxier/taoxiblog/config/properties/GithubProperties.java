@@ -1,9 +1,6 @@
 package com.taoxier.taoxiblog.config.properties;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,10 +9,7 @@ import org.springframework.context.annotation.Configuration;
  * @Author taoxier
  * @Date 2025/4/21
  */
-@NoArgsConstructor
-@Getter
-@Setter
-@ToString
+@Data
 @Configuration
 @ConfigurationProperties(prefix = "upload.github")
 public class GithubProperties {
@@ -26,7 +20,7 @@ public class GithubProperties {
     private String token;
 
     /**
-     * GitHub username
+     * GitHub 用户名
      */
     private String username;
 

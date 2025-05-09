@@ -35,8 +35,7 @@ public class UploadUtils {
         UploadUtils.uploadChannel = ChannelFactory.getChannel(channelName);
     }
 
-    //自动为类生成一个包含所有参数的构造函数
-    @AllArgsConstructor
+    @AllArgsConstructor    //自动为类生成一个包含所有参数的构造函数
     @Getter
     public static class ImageResource {
         byte[] data;

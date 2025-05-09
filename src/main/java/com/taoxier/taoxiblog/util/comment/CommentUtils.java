@@ -32,9 +32,9 @@ import java.util.Map;
 @DependsOn("springContextUtils")
 public class CommentUtils {
     @Autowired
-    private BlogProperties blogProperties;
+    private BlogProperties blogProperties;//博客配置
     @Autowired
-    private MailUtils mailUtils;
+    private MailUtils mailUtils;//邮件配置
     @Autowired
     private AboutService aboutService;
     @Autowired
@@ -71,15 +71,15 @@ public class CommentUtils {
     /**
      *   @Description :判断是否发送提醒
      *   6种情况：
-     *   1.我以父评论提交：不用提醒
+     *   1.我以顶级评论提交：不用提醒
      *   2.我回复我自己：不用提醒
      *   3.我回复访客的评论：只提醒该访客
-     *   4.访客以父评论提交：只提醒我自己
+     *   4.访客以顶级评论提交：只提醒我自己
      *   5.访客回复我的评论：只提醒我自己
-     *   6.访客回复访客的评论(即使是他自己先前的评论)：提醒我自己和他回复的评论
+     *   6.访客回复访客的评论(即使是访客自己先前的评论)：提醒我自己和他回复的评论
      * @param comment          当前收到的评论
      * @param isVisitorComment 是否访客评论
-     * @param parentComment    父评论
+     * @param parentComment    顶级评论
      * @Author: taoxier
      * @Date: 2025/4/22
      * @Return: void
@@ -87,11 +87,11 @@ public class CommentUtils {
     public void judgeSendNotify(CommentDTO comment, boolean isVisitorComment, CommentEntity parentComment) {
         if (parentComment != null && !parentComment.getIsAdminComment() && parentComment.getIsNotice()) {
             //我回复访客的评论，且对方接收提醒，邮件提醒对方(3)
-            //访客回复访客的评论(即使是他自己先前的评论)，且对方接收提醒，邮件提醒对方(6)
+            //访客回复访客的评论(即使是访客自己先前的评论)，且对方接收提醒，邮件提醒对方(6)
             sendMailToParentComment(parentComment, comment);
         }
         if (isVisitorComment) {
-            //访客以父评论提交，只提醒我自己(4)
+            //访客以顶级评论提交，只提醒我自己(4)
             //访客回复我的评论，提醒我自己(5)
             //访客回复访客的评论，不管对方是否接收提醒，都要提醒我有新评论(6)
             notifyMyself(comment);
@@ -100,7 +100,7 @@ public class CommentUtils {
 
     /**
     * @Description 发送邮件提醒回复对象
-     * @param parentComment  父评论
+     * @param parentComment  顶级评论
      * @param comment  当前收到的评论
     * @Author: taoxier
     * @Date: 2025/4/22
@@ -117,7 +117,7 @@ public class CommentUtils {
         map.put("content", comment.getContent());
         map.put("url", blogProperties.getView() + commentPageEnum.getPath());
         String toAccount = parentComment.getEmail();
-        String subject = "您在 " + blogProperties.getName() + " 的评论有了新回复";
+        String subject = "您在博客 " + blogProperties.getName() + " 的评论有了新回复";
         mailUtils.sendHtmlTemplateMail(map, toAccount, subject, "guest.html");
     }
 
@@ -170,7 +170,7 @@ public class CommentUtils {
     /**
     * @Description 查询对应页面评论是否开启
      * @param page 页面分类（0普通文章，1关于我，2友链）
-     * @param blogId 如果page==0，需要博客id参数，校验文章是否公开状态
+     * @param blogId 如果page==0（即普通博客文章），需要博客id参数，校验文章是否公开状态
     * @Author: taoxier
     * @Date: 2025/5/8
     * @Return: com.taoxier.taoxiblog.enums.CommentOpenStateEnum
@@ -178,7 +178,7 @@ public class CommentUtils {
     public CommentOpenStateEnum judgeCommentState(Integer page, Long blogId) {
         switch (page) {
             case PageConstants.BLOG:
-                //普通博客
+                //普通博客文章
                 Boolean commentEnabled = blogService.getCommentEnabledByBlogId(blogId);
                 Boolean published = blogService.getPublishedByBlogId(blogId);
                 if (commentEnabled == null || published == null) {
@@ -230,7 +230,7 @@ public class CommentUtils {
         //根据评论昵称取Hash，保证每一个昵称对应一个头像
         long nicknameHash = HashUtils.getMurmurHash32(comment.getNickname());
         //计算对应的头像
-        long num = nicknameHash % 6 + 1;
+        long num = nicknameHash % 6 + 1;// 1 到 6 的范围，对应6个默认头像（数字可改）
         String avatar = "/img/comment-avatar/" + num + ".jpg";
         comment.setAvatar(avatar);
     }
@@ -295,7 +295,7 @@ public class CommentUtils {
         comment.setNickname(comment.getNickname().trim());
         setCommentRandomAvatar(comment);
 
-        //check website
+        //检查url是否合法
         if (!isValidUrl(comment.getWebsite())) {
             comment.setWebsite("");
         }
