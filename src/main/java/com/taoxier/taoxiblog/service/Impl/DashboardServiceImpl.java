@@ -99,14 +99,14 @@ public class DashboardServiceImpl implements DashboardService {
         // 所有分类名称的 List
         List<String> legend = new ArrayList<>();
         for (Category category : categoryList) {
-            legend.add(category.getCategoryName());
+            legend.add(category.getName());
         }
         // 分类对应的博客数量 List
         List<CategoryBlogCountVO> series = new ArrayList<>();
         if (categoryBlogCountList.size() == categoryList.size()) {
             Map<Long, String> m = new HashMap<>(16);
             for (Category c : categoryList) {
-                m.put(c.getId(), c.getCategoryName());
+                m.put(c.getId(), c.getName());
             }
             for (CategoryBlogCountVO c : categoryBlogCountList) {
                 c.setName(m.get(c.getId()));
@@ -119,7 +119,7 @@ public class DashboardServiceImpl implements DashboardService {
             }
             for (Category c : categoryList) {
                 CategoryBlogCountVO categoryBlogCount = new CategoryBlogCountVO();
-                categoryBlogCount.setName(c.getCategoryName());
+                categoryBlogCount.setName(c.getName());
                 Integer count = m.get(c.getId());
                 if (count == null) {
                     categoryBlogCount.setValue(0);
@@ -151,14 +151,14 @@ public class DashboardServiceImpl implements DashboardService {
         // 所有标签名称的 List
         List<String> legend = new ArrayList<>();
         for (Tag tag : tagList) {
-            legend.add(tag.getTagName());
+            legend.add(tag.getName());
         }
         // 标签对应的博客数量 List
         List<TagBlogCountVO> series = new ArrayList<>();
         if (tagBlogCountList.size() == tagList.size()) {
             Map<Long, String> m = new HashMap<>(64);
             for (Tag t : tagList) {
-                m.put(t.getId(), t.getTagName());
+                m.put(t.getId(), t.getName());
             }
             for (TagBlogCountVO t : tagBlogCountList) {
                 t.setName(m.get(t.getId()));
@@ -171,7 +171,7 @@ public class DashboardServiceImpl implements DashboardService {
             }
             for (Tag t : tagList) {
                 TagBlogCountVO tagBlogCount = new TagBlogCountVO();
-                tagBlogCount.setName(t.getTagName());
+                tagBlogCount.setName(t.getName());
                 Integer count = m.get(t.getId());
                 if (count == null) {
                     tagBlogCount.setValue(0);

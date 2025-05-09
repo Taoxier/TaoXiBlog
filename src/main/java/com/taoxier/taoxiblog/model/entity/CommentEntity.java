@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.taoxier.taoxiblog.model.vo.BlogIdAndTitleVO;
 import lombok.Data;
 
@@ -14,6 +15,7 @@ import lombok.Data;
  * @Date 2025/4/22
  */
 @Data
+@TableName(value = "comment")
 public class CommentEntity implements Serializable {
     private Long id;
 

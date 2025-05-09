@@ -164,7 +164,7 @@ public class BlogAdminController {
     }
 
     @OperationLogger("更新博客")
-    @PostMapping("/blog")
+    @PutMapping("/blog")
     public ResultVO updateBlog(@RequestBody BlogDTO BlogDTO) {
         return getResult(BlogDTO,"update");
     }
@@ -202,7 +202,7 @@ public class BlogAdminController {
             }
 
             Category c = new Category();
-            c.setCategoryName((String) category);
+            c.setName((String) category);
             categoryService.saveCategory(c);
             blogDTO.setCategory(c);
         } else {
@@ -225,7 +225,7 @@ public class BlogAdminController {
                     return ResultVO.error("不可以添加已存在的标签");
                 }
                 Tag newTag=new Tag();
-                newTag.setTagName((String) t);
+                newTag.setName((String) t);
                 tagService.saveTag(newTag);
                 tags.add(newTag);
             }else {

@@ -10,6 +10,7 @@ import java.util.List;
  * @Date 2025/4/25
  */
 @Data
+@NoArgsConstructor
 public class PageResultVO<T> {
 	private Integer totalPage;//总页数
 	private List<T> list;//数据

@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
@@ -16,7 +15,7 @@ import lombok.Data;
 public class Tag implements Serializable {
     private Long id;
 
-    private String tagName;
+    private String name;
 
     /**
      * 标签颜色(可选)

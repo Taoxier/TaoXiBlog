@@ -3,8 +3,8 @@ package com.taoxier.taoxiblog.service.Impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.taoxier.taoxiblog.constant.RedisKeyConstants;
@@ -93,13 +93,20 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
     public Map<Long, Integer> getBlogViewsMap() {
         LambdaQueryWrapper<Blog> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.select(Blog::getId, Blog::getViews);
-        return (Map<Long, Integer>) this.baseMapper.selectList(queryWrapper).stream().map(blog -> {
+
+        return this.baseMapper.selectList(queryWrapper).stream()
+                .map(blog -> {
                     BlogViewDTO blogView = new BlogViewDTO();
                     blogView.setId(blog.getId());
                     blogView.setViews(blog.getViews());
                     return blogView;
                 })
-                .collect(Collectors.toList());
+                .collect(Collectors.toMap(
+                        BlogViewDTO::getId,
+                        BlogViewDTO::getViews,
+                        //合并函数(当出现重复键时，保留已存在的值（existing），丢弃新值（replacement）---map需要key唯一)
+                        (existing,replacement) -> existing
+                ));
     }
 
     /**
@@ -180,13 +187,12 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
             return newBlogListFromRedis;
         }
 
-        //使用分页查询
-        Page<Blog> page = new Page<>(1, newBlogPageSize);
-        LambdaQueryWrapper<Blog> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(Blog::getIsPublished, true)
-                .orderByDesc(Blog::getCreateTime);
-        IPage<Blog> blogIPage = baseMapper.selectPage(page, queryWrapper);
-        List<Blog> blogList = blogIPage.getRecords();
+        // 自动调用 page.close() 清理上下文
+        try (Page<Blog> page = PageHelper.startPage(1, newBlogPageSize)) {
+            LambdaQueryWrapper<Blog> queryWrapper = new LambdaQueryWrapper<>();
+            queryWrapper.eq(Blog::getIsPublished, true)
+                    .orderByDesc(Blog::getCreateTime);
+            List<Blog> blogList = blogMapper.selectList(queryWrapper);
 
         //将blog转为newblog
         List<NewBlogVO> newBlogList = blogList.stream()
@@ -203,8 +209,10 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
                     }
                     return newBlog;
                 }).collect(Collectors.toList());
+        //保存到redis
         redisService.saveListToValue(redisKey, newBlogList);
         return newBlogList;
+    }
     }
 
 
@@ -376,7 +384,9 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         LambdaQueryWrapper<Blog> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(Blog::getIsPublished, true)
                 .eq(Blog::getIsRecommend, true);
-        queryWrapper.apply("ORDER BY rand() LIMIT {0}", randomBlogLimitNum);
+//        queryWrapper.apply("ORDER BY rand() LIMIT ?", randomBlogLimitNum);
+        // 直接拼接参数（适用于内部可控参数，避免 SQL 注入）
+        queryWrapper.last("ORDER BY rand() LIMIT " + randomBlogLimitNum);
         List<Blog> blogs = blogMapper.selectList(queryWrapper);
 
         return blogs.stream()
@@ -400,7 +410,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
 
     /**
      * @param
-     * @Description 删除首页缓存、最新推荐缓存、归档页面缓存、博客浏览量缓存
+     * @Description 删除首页缓存 、最新推荐缓存、归档页面缓存、博客浏览量缓存
      * @Author: taoxier
      * @Date: 2025/4/29
      * @Return: void

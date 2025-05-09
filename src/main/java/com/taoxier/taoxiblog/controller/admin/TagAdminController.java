@@ -94,11 +94,11 @@ public class TagAdminController {
      * @Return: com.taoxier.taoxiblog.model.vo.ResultVO
      */
     private ResultVO getResult(Tag tag, String type) {
-        if (StringUtils.isEmpty(tag.getTagName())) {
+        if (StringUtils.isEmpty(tag.getName())) {
             return ResultVO.error("参数不能为空");
         }
         //查询标签是否已存在
-        Tag tag1 = tagService.getTagByName(tag.getTagName());
+        Tag tag1 = tagService.getTagByName(tag.getName());
         //如果 tag1.getId().equals(tag.getId()) == true 就是更新标签
         if (tag1 != null && !tag1.getId().equals(tag.getId())) {
             return ResultVO.error("该标签已存在");

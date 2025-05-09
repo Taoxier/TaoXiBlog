@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
 /**
@@ -15,7 +16,10 @@ import lombok.Data;
 public class Category implements Serializable {
     private Long id;
 
-    private String categoryName;
+    private String name;
+
+    @TableField(exist = false)
     private List<Blog> blogs = new ArrayList<>();//该分类下的博客文章
+
     private static final long serialVersionUID = 1L;
 }

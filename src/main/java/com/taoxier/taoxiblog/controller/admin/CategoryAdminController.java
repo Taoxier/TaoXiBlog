@@ -94,11 +94,11 @@ public class CategoryAdminController {
     * @Return: com.taoxier.taoxiblog.model.vo.ResultVO
     */
     private ResultVO getResult(Category category, String type) {
-        if (StringUtils.isEmpty(category.getCategoryName())) {
+        if (StringUtils.isEmpty(category.getName())) {
             return ResultVO.error("分类名称不能为空");
         }
         //查询分类是否已存在
-        Category category1 = categoryService.getCategoryByName(category.getCategoryName());
+        Category category1 = categoryService.getCategoryByName(category.getName());
         //如果 category1.getId().equals(category.getId()) == true 就是更新分类
         if (category1 != null && !category1.getId().equals(category.getId())) {
             return ResultVO.error("该分类已存在");

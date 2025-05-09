@@ -43,6 +43,9 @@ logging:
 
 mybatis-plus:
   type-aliases-package: com.taoxier.taoxiblog.model.entity
+  global-config:
+    db-config:
+      page-enable: false  # 禁用 MyBatis-Plus 自带的分页功能
 
 token:
   expireTime: 259200000

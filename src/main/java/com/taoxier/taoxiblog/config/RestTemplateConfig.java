@@ -23,15 +23,15 @@ public class RestTemplateConfig {
     private ProxyProperties proxyProperties;
 
     /**
+    * @Description 默认的RestTemplate
      * @param
-     * @Description 默认的RestTemplate
-     * @Author: taoxier
-     * @Date: 2025/4/22
-     * @Return: org.springframework.data.redis.core.RedisTemplate
-     */
+    * @Author: taoxier
+    * @Date: 2025/5/9
+    * @Return: org.springframework.web.client.RestTemplate
+    */
     @Bean
-    public RedisTemplate redisTemplate() {
-        return new RedisTemplate<>();
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 
     /**

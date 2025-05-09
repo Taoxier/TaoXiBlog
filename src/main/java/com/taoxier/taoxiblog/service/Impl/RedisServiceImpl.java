@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class RedisServiceImpl implements RedisService {
     @Autowired
-    RedisTemplate redisTemplate;
+    RedisTemplate jsonRedisTemplate;
 
     /**
     * @Description  Redis 里指定哈希键下对应页码的博客信息分页结果
@@ -32,8 +32,8 @@ public class RedisServiceImpl implements RedisService {
     */
     @Override
     public PageResultVO<BlogInfoVO> getBlogInfoPageResultHash(String hash , Integer pageNum){
-        if (redisTemplate.opsForHash().hasKey(hash,pageNum)){
-            Object redisResult=redisTemplate.opsForHash().get(hash,pageNum);
+        if (jsonRedisTemplate.opsForHash().hasKey(hash,pageNum)){
+            Object redisResult= jsonRedisTemplate.opsForHash().get(hash,pageNum);
             PageResultVO<BlogInfoVO> pageResult= JacksonUtils.convertValue(redisResult,PageResultVO.class);
             return pageResult;
         }else {
@@ -43,49 +43,49 @@ public class RedisServiceImpl implements RedisService {
 
     @Override
     public void saveKVToHash(String hash,Object key,Object value){
-        redisTemplate.opsForHash().put(hash,key,value);
+        jsonRedisTemplate.opsForHash().put(hash,key,value);
     }
 
     @Override
     public void saveMapToHash(String hash, Map map){
-        redisTemplate.opsForHash().putAll(hash,map);
+        jsonRedisTemplate.opsForHash().putAll(hash,map);
     }
 
     @Override
     public Object getValueByHashKey(String hash,Object key){
-        return redisTemplate.opsForHash().get(hash,key);
+        return jsonRedisTemplate.opsForHash().get(hash,key);
     }
 
     @Override
     public void deleteByHashKey(String hash,Object key){
-        redisTemplate.opsForHash().delete(hash,key);
+        jsonRedisTemplate.opsForHash().delete(hash,key);
     }
 
     @Override
     public <T> List<T> getListByKey(String key){
-        List<T> redisResult=(List<T>) redisTemplate.opsForValue().get(key);
+        List<T> redisResult=(List<T>) jsonRedisTemplate.opsForValue().get(key);
         return redisResult;
     }
 
     @Override
     public  <T> void saveListToValue(String key,List<T> list){
-        redisTemplate.opsForValue().set(key,list);
+        jsonRedisTemplate.opsForValue().set(key,list);
     }
 
     @Override
     public <T> Map<String,T> getMapByKey(String key){
-        Map<String,T> redisResult=(Map<String, T>) redisTemplate.opsForValue().get(key);
+        Map<String,T> redisResult=(Map<String, T>) jsonRedisTemplate.opsForValue().get(key);
         return redisResult;
     }
 
     @Override
     public <T> void saveMapToValue(String key,Map<String,T> map){
-        redisTemplate.opsForValue().set(key,map);
+        jsonRedisTemplate.opsForValue().set(key,map);
     }
 
     @Override
     public <T> T getObjectByKey(String key,Class t){
-        Object redisResult=redisTemplate.opsForValue().get(key);
+        Object redisResult= jsonRedisTemplate.opsForValue().get(key);
         T object=(T)JacksonUtils.convertValue(redisResult,t);
         return object;
     }
@@ -104,7 +104,7 @@ public class RedisServiceImpl implements RedisService {
         if (increment<0){
             throw new RuntimeException("递增因子必须大于0");
         }
-        redisTemplate.opsForHash().increment(hash,key,increment);
+        jsonRedisTemplate.opsForHash().increment(hash,key,increment);
     }
 
     @Override
@@ -112,46 +112,46 @@ public class RedisServiceImpl implements RedisService {
         if (increment < 0) {
             throw new RuntimeException("递增因子必须大于0");
         }
-        redisTemplate.opsForValue().increment(key,increment);
+        jsonRedisTemplate.opsForValue().increment(key,increment);
     }
 
     @Override
     public void saveObjectToValue(String key, Object object) {
-        redisTemplate.opsForValue().set(key, object);
+        jsonRedisTemplate.opsForValue().set(key, object);
     }
 
     @Override
     public void saveValueToSet(String key, Object value) {
-        redisTemplate.opsForSet().add(key, value);
+        jsonRedisTemplate.opsForSet().add(key, value);
     }
 
     @Override
     public int countBySet(String key) {
-        return redisTemplate.opsForSet().size(key).intValue();
+        return jsonRedisTemplate.opsForSet().size(key).intValue();
     }
 
     @Override
     public void deleteValueBySet(String key, Object value) {
-        redisTemplate.opsForSet().remove(key, value);
+        jsonRedisTemplate.opsForSet().remove(key, value);
     }
 
     @Override
     public boolean hasValueInSet(String key, Object value) {
-        return redisTemplate.opsForSet().isMember(key, value);
+        return jsonRedisTemplate.opsForSet().isMember(key, value);
     }
 
     @Override
     public void deleteCacheByKey(String key) {
-        redisTemplate.delete(key);
+        jsonRedisTemplate.delete(key);
     }
 
     @Override
     public boolean hasKey(String key) {
-        return redisTemplate.hasKey(key);
+        return jsonRedisTemplate.hasKey(key);
     }
 
     @Override
     public void expire(String key, long time) {
-        redisTemplate.expire(key, time, TimeUnit.SECONDS);
+        jsonRedisTemplate.expire(key, time, TimeUnit.SECONDS);
     }
 }

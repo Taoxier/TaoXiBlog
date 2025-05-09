@@ -2,6 +2,8 @@ package com.taoxier.taoxiblog.model.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
@@ -10,6 +12,7 @@ import lombok.Data;
  * @Date 2025/4/22
  */
 @Data
+@TableName(value = "schedule_job")
 public class ScheduleJobEntity implements Serializable {
 
     public static final String JOB_PARAM_KEY = "JOB_PARAM_KEY"; //任务调度参数key
