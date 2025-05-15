@@ -119,9 +119,6 @@ public class TagServiceImpl extends ServiceImpl<TagMapper, Tag> implements TagSe
         QueryWrapper<Tag> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("tag_name",name);
         Tag tag=tagMapper.selectOne(queryWrapper);
-        if (tag==null){
-            throw new NotFoundException("标签不存在");
-        }
         return tag;
     }
 

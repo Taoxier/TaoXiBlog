@@ -53,7 +53,7 @@ public interface BlogService extends IService<Blog> {
     void deleteBlogTagByBlogId(Long blogId);
 
     @Transactional(rollbackFor = Exception.class)
-    void saveBlog(BlogDTO blogDTO);
+    Blog saveBlog(BlogDTO blogDTO);
 
     @Transactional(rollbackFor = Exception.class)
     void saveBlogTag(Long blogId, Long tagId);
@@ -81,7 +81,7 @@ public interface BlogService extends IService<Blog> {
     String getBlogPassword(Long id);
 
     @Transactional(rollbackFor = Exception.class)
-    void updateBlog(BlogDTO blogDTO);
+    Blog updateBlog(BlogDTO blogDTO);
 
     int countBlogByIsPublished();
 

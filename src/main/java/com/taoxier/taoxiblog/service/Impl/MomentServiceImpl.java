@@ -58,7 +58,7 @@ public class MomentServiceImpl extends ServiceImpl<MomentMapper,Moment> implemen
         PageHelper.startPage(pageNum, pageSize, orderBy);
         List<Moment> moments = momentMapper.selectList(null);
         for (Moment moment : moments) {
-            if (adminIdentity || moment.getIsPublished()) {
+            if (adminIdentity || moment.getPublished()) {
                 moment.setContent(MarkdownUtils.markdownToHtmlExtensions(moment.getContent()));
             } else {
                 moment.setContent(PRIVATE_MOMENT_CONTENT);
@@ -99,7 +99,7 @@ public class MomentServiceImpl extends ServiceImpl<MomentMapper,Moment> implemen
     public void updateMomentPublishedById(Long momentId, Boolean published) {
         Moment moment = new Moment();
         moment.setId(momentId);
-        moment.setIsPublished(published);
+        moment.setPublished(published);
         if (!updateById(moment)) {
             throw new PersistenceException("操作失败");
         }

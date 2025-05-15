@@ -18,4 +18,7 @@ import java.util.List;
 @Repository
 public interface CommentMapper extends BaseMapper<CommentEntity> {
     List<PageCommentVO> selectPageCommentList(QueryWrapper<PageCommentVO> wrapper);
+
+    CommentEntity getCommentById(Long id);
+
 }

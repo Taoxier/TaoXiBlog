@@ -87,7 +87,7 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, CommentEntity
     */
     @Override
     public CommentEntity getCommentById(Long id) {
-        CommentEntity comment = getById(id);
+        CommentEntity comment = commentMapper.getCommentById(id);
         if (comment == null) {
             throw new PersistenceException("评论不存在");
         }
@@ -156,7 +156,7 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, CommentEntity
         }
         CommentEntity comment = new CommentEntity();
         comment.setId(commentId);
-        comment.setIsPublished(published);
+        comment.setPublished(published);
         if (!updateById(comment)) {
             throw new PersistenceException("操作失败");
         }
@@ -175,7 +175,7 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, CommentEntity
     public void updateCommentNoticeById(Long commentId, Boolean notice) {
         CommentEntity comment = new CommentEntity();
         comment.setId(commentId);
-        comment.setIsNotice(notice);
+        comment.setNotice(notice);
         if (!updateById(comment)) {
             throw new PersistenceException("操作失败");
         }
@@ -302,7 +302,7 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, CommentEntity
         }
         CommentEntity updateComment = new CommentEntity();
         updateComment.setId(comment.getId());
-        updateComment.setIsPublished(false);
+        updateComment.setPublished(false);
         if (!updateById(updateComment)) {
             throw new PersistenceException("操作失败");
         }

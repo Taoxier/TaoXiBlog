@@ -109,8 +109,10 @@ public class DashboardServiceImpl implements DashboardService {
                 m.put(c.getId(), c.getName());
             }
             for (CategoryBlogCountVO c : categoryBlogCountList) {
-                c.setName(m.get(c.getId()));
-                series.add(c);
+                if (c!=null){
+                    c.setName(m.get(c.getId()));
+                    series.add(c);
+                }
             }
         } else {
             Map<Long, Integer> m = new HashMap<>(16);
@@ -161,8 +163,10 @@ public class DashboardServiceImpl implements DashboardService {
                 m.put(t.getId(), t.getName());
             }
             for (TagBlogCountVO t : tagBlogCountList) {
-                t.setName(m.get(t.getId()));
-                series.add(t);
+                if (t!=null){
+                    t.setName(m.get(t.getId()));
+                    series.add(t);
+                }
             }
         } else {
             Map<Long, Integer> m = new HashMap<>(64);

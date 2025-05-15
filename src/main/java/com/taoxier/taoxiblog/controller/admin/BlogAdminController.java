@@ -15,6 +15,8 @@ import com.taoxier.taoxiblog.service.CategoryService;
 import com.taoxier.taoxiblog.service.CommentService;
 import com.taoxier.taoxiblog.service.TagService;
 import com.taoxier.taoxiblog.util.StringUtils;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +29,7 @@ import java.util.*;
  */
 @RestController
 @RequestMapping("/admin")
+@Api(tags = "blog管理", value = "blog管理接口")
 public class BlogAdminController {
     @Autowired
     BlogService blogService;
@@ -152,15 +155,17 @@ public class BlogAdminController {
 
     /**
     * @Description 保存草稿或发布新文章
-     * @param BlogDTO
+     * @param blogDTO
     * @Author: taoxier
     * @Date: 2025/5/8
     * @Return: com.taoxier.taoxiblog.model.vo.ResultVO
     */
     @OperationLogger("发布博客")
     @PostMapping("/blog")
-    public ResultVO saveBlog(@RequestBody BlogDTO BlogDTO) {
-        return getResult(BlogDTO,"save");
+    @ApiOperation(value = "发布博客")
+    public ResultVO saveBlog(@RequestBody BlogDTO blogDTO) {
+        System.out.println("发布："+blogDTO.toString());
+        return getResult(blogDTO,"save");
     }
 
     @OperationLogger("更新博客")
@@ -178,6 +183,7 @@ public class BlogAdminController {
     * @Return: com.taoxier.taoxiblog.model.vo.ResultVO
     */
     private ResultVO getResult(BlogDTO blogDTO, String type) {
+
         //验证普通字段
         if (StringUtils.isEmpty(blogDTO.getTitle(), blogDTO.getFirstPicture(), blogDTO.getContent(), blogDTO.getDescription()) || blogDTO.getWords() == null || blogDTO.getWords() < 0) {
             return ResultVO.error("参数有误");
@@ -247,19 +253,19 @@ public class BlogAdminController {
             user.setId(1L);
             blogDTO.setUser(user);
 
-            blogService.saveBlog(blogDTO);
+            Blog newBlog=blogService.saveBlog(blogDTO);
             //关联博客和标签(维护 blog_tag 表)
             for (Tag t:tags){
-                blogService.saveBlogTag(blogDTO.getId(),t.getId());
+                blogService.saveBlogTag(newBlog.getId(),t.getId());
             }
             return ResultVO.ok("添加成功");
         }else {
             blogDTO.setUpdateTime(date);
-            blogService.updateBlog(blogDTO);
+            Blog newBlog=blogService.updateBlog(blogDTO);
             //关联博客和标签(维护 blog_tag 表)
-            blogService.deleteBlogTagByBlogId(blogDTO.getId());
+            blogService.deleteBlogTagByBlogId(newBlog.getId());
             for (Tag t:tags){
-                blogService.saveBlogTag(blogDTO.getId(),t.getId());
+                blogService.saveBlogTag(newBlog.getId(),t.getId());
             }
             return ResultVO.ok("更新成功");
         }

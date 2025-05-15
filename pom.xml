@@ -84,7 +84,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <scope>provided</scope> <!-- 正确的 Lombok 作用域 -->
         </dependency>
         <!-- jwt -->
         <dependency>
@@ -194,6 +194,12 @@
             <version>2.3.3</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+            <version>3.0.3</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -204,5 +210,6 @@
             </plugin>
         </plugins>
     </build>
+
 
 </project>

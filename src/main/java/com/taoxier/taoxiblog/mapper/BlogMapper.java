@@ -1,6 +1,7 @@
 package com.taoxier.taoxiblog.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.taoxier.taoxiblog.model.dto.BlogDTO;
 import com.taoxier.taoxiblog.model.entity.Blog;
 import com.taoxier.taoxiblog.model.vo.ArchiveBlogVO;
 import com.taoxier.taoxiblog.model.vo.BlogDetailVO;
@@ -28,4 +29,6 @@ public interface BlogMapper extends BaseMapper<Blog> {
     BlogDetailVO getBlogDetailByIdAndIsPublished(Long id);
 
     List<CategoryBlogCountVO> getCategoryBlogCountList();
+
+    Blog getBlogById(Long id);
 }

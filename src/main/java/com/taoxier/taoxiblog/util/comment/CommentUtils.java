@@ -85,7 +85,7 @@ public class CommentUtils {
      * @Return: void
      */
     public void judgeSendNotify(CommentDTO comment, boolean isVisitorComment, CommentEntity parentComment) {
-        if (parentComment != null && !parentComment.getIsAdminComment() && parentComment.getIsNotice()) {
+        if (parentComment != null && !parentComment.getAdminComment() && parentComment.getNotice()) {
             //我回复访客的评论，且对方接收提醒，邮件提醒对方(3)
             //访客回复访客的评论(即使是访客自己先前的评论)，且对方接收提醒，邮件提醒对方(6)
             sendMailToParentComment(parentComment, comment);

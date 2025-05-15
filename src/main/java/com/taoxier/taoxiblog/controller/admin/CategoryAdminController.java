@@ -8,6 +8,7 @@ import com.taoxier.taoxiblog.model.vo.ResultVO;
 import com.taoxier.taoxiblog.service.BlogService;
 import com.taoxier.taoxiblog.service.CategoryService;
 import com.taoxier.taoxiblog.util.StringUtils;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -49,6 +50,7 @@ public class CategoryAdminController {
     */
     @OperationLogger("添加分类")
     @PostMapping("/category")
+//    @ApiOperation(value = "添加分类")
     public ResultVO saveCategory(@RequestBody Category category) {
         return getResult(category, "save");
     }

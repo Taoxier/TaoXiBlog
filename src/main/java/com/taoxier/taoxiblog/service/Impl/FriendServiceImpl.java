@@ -76,7 +76,7 @@ public class FriendServiceImpl extends ServiceImpl<FriendMapper, Friend> impleme
     public void updateFriendPublishedById(Long friendId, Boolean published) {
         Friend friend = new Friend();
         friend.setId(friendId);
-        friend.setIsPublished(published);
+        friend.setPublished(published);
         if (!updateById(friend)) {
             throw new PersistenceException("操作失败");
         }

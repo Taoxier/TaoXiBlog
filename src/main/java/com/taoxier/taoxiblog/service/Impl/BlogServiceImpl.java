@@ -2,7 +2,6 @@ package com.taoxier.taoxiblog.service.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -17,10 +16,10 @@ import com.taoxier.taoxiblog.model.dto.BlogViewDTO;
 import com.taoxier.taoxiblog.model.dto.BlogVisibilityDTO;
 import com.taoxier.taoxiblog.model.entity.Blog;
 import com.taoxier.taoxiblog.model.entity.BlogTag;
+import com.taoxier.taoxiblog.model.entity.Category;
+import com.taoxier.taoxiblog.model.entity.User;
 import com.taoxier.taoxiblog.model.vo.*;
-import com.taoxier.taoxiblog.service.BlogService;
-import com.taoxier.taoxiblog.service.RedisService;
-import com.taoxier.taoxiblog.service.TagService;
+import com.taoxier.taoxiblog.service.*;
 import com.taoxier.taoxiblog.util.JacksonUtils;
 import com.taoxier.taoxiblog.util.markdown.MarkdownUtils;
 import org.apache.commons.beanutils.BeanUtils;
@@ -50,6 +49,10 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
     TagService tagService;
     @Autowired
     RedisService redisService;
+    @Autowired
+    CategoryService categoryService;
+    @Autowired
+    UserService userService;
 
     //随机博客显示5条
     private static final int randomBlogLimitNum = 5;
@@ -133,7 +136,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
     public List<SearchBlogVO> getSearchBlogListByQueryAndIsPublished(String query) {
         String upperCaseQuery = query.toUpperCase();//大写
         LambdaQueryWrapper<Blog> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(Blog::getIsPublished, true)
+        queryWrapper.eq(Blog::getPublished, true)
                 .eq(Blog::getPassword, "")
                 .like(Blog::getContent, query);
 
@@ -190,7 +193,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         // 自动调用 page.close() 清理上下文
         try (Page<Blog> page = PageHelper.startPage(1, newBlogPageSize)) {
             LambdaQueryWrapper<Blog> queryWrapper = new LambdaQueryWrapper<>();
-            queryWrapper.eq(Blog::getIsPublished, true)
+            queryWrapper.eq(Blog::getPublished, true)
                     .orderByDesc(Blog::getCreateTime);
             List<Blog> blogList = blogMapper.selectList(queryWrapper);
 
@@ -382,8 +385,8 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
     @Override
     public List<RandomBlogVO> getRandomBlogListByLimitNumAndIsPublishedAndIsRecommend() {
         LambdaQueryWrapper<Blog> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(Blog::getIsPublished, true)
-                .eq(Blog::getIsRecommend, true);
+        queryWrapper.eq(Blog::getPublished, true)
+                .eq(Blog::getRecommend, true);
 //        queryWrapper.apply("ORDER BY rand() LIMIT ?", randomBlogLimitNum);
         // 直接拼接参数（适用于内部可控参数，避免 SQL 注入）
         queryWrapper.last("ORDER BY rand() LIMIT " + randomBlogLimitNum);
@@ -456,16 +459,28 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
      */
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public void saveBlog(BlogDTO blogDTO) {
+    public Blog saveBlog(BlogDTO blogDTO) {
         Blog blog = new Blog();
         try {
-            BeanUtils.copyProperties(blog, blogDTO);
+            org.springframework.beans.BeanUtils.copyProperties(blogDTO, blog, "userId", "categoryId");
             if (blogDTO.getCategory() != null) {
                 blog.setCategoryId(blogDTO.getCategory().getId());
+
+                Category category= categoryService.getById(blogDTO.getCategory().getId());
+                blog.setCategory(category);
+
             }
             if (blogDTO.getUser() != null) {
-                blog.setUserId(blogDTO.getId());
+                blog.setUserId(blogDTO.getUser().getId());
+
+                User user= userService.getById(blogDTO.getUser().getId());
+                blog.setUser(user);
             }
+
+//            if (blogDTO.getTagList()!=null){
+//                blog.setTags(blogDTO.getTagList());
+//            }
+
         } catch (Exception e) {
             e.printStackTrace();
             throw new PersistenceException("DTO转换为entity时出错");
@@ -474,8 +489,13 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         if (blogMapper.insert(blog) != 1) {
             throw new PersistenceException("添加博客失败");
         }
+
+        System.out.println("saveService"+blog);
+
         redisService.saveKVToHash(RedisKeyConstants.BLOG_VIEWS_MAP, blog.getId(), 0);
         deleteBlogRedisCache();
+
+        return blog;
     }
 
     /**
@@ -492,6 +512,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         BlogTag blogTag = new BlogTag();
         blogTag.setBlogId(blogId);
         blogTag.setTagId(tagId);
+        System.out.println("博客标签："+ blogTag);
         if (blogTagMapper.insert(blogTag) != 1) {
             throw new PersistenceException("维护博客标签关联表失败");
         }
@@ -510,11 +531,11 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
     public void updateBlogVisibilityById(Long blogId, BlogVisibilityDTO blogVisibility) {
         LambdaUpdateWrapper<Blog> updateWrapper = new LambdaUpdateWrapper<>();
         updateWrapper.eq(Blog::getId, blogId)
-                .set(Blog::getIsAppreciation, blogVisibility.getAppreciation())
-                .set(Blog::getIsRecommend, blogVisibility.getRecommend())
-                .set(Blog::getIsCommentEnabled, blogVisibility.getCommentEnabled())
-                .set(Blog::getIsTop, blogVisibility.getTop())
-                .set(Blog::getIsPublished, blogVisibility.getPublished())
+                .set(Blog::getAppreciation, blogVisibility.getAppreciation())
+                .set(Blog::getRecommend, blogVisibility.getRecommend())
+                .set(Blog::getCommentEnabled, blogVisibility.getCommentEnabled())
+                .set(Blog::getTop, blogVisibility.getTop())
+                .set(Blog::getPublished, blogVisibility.getPublished())
                 .set(Blog::getPassword, blogVisibility.getPassword());
         if (blogMapper.update(null, updateWrapper) != 1) {
             throw new PersistenceException("操作失败");
@@ -537,7 +558,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
     public void updateBlogRecommendById(Long blogId, Boolean recommend) {
         LambdaUpdateWrapper<Blog> updateWrapper = new LambdaUpdateWrapper<>();
         updateWrapper.eq(Blog::getId, blogId)
-                .set(Blog::getIsRecommend, recommend);
+                .set(Blog::getRecommend, recommend);
 
         if (blogMapper.update(null, updateWrapper) != 1) {
             throw new PersistenceException("操作失败");
@@ -557,7 +578,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
     public void updateBlogTop(Long blogId, Boolean top) {
         LambdaUpdateWrapper<Blog> updateWrapper = new LambdaUpdateWrapper<>();
         updateWrapper.eq(Blog::getId, blogId)
-                .set(Blog::getIsTop, top);
+                .set(Blog::getTop, top);
         if (blogMapper.update(null, updateWrapper) != 1) {
             throw new PersistenceException("操作失败");
         }
@@ -604,7 +625,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
      */
     @Override
     public Blog getBlogById(Long id) {
-        Blog blog = this.getById(id);
+        Blog blog = blogMapper.getBlogById(id);
         if (blog == null) {
             throw new NotFoundException("博客不存在");
         }
@@ -687,10 +708,10 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
      */
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public void updateBlog(BlogDTO blogDTO) {
+    public Blog updateBlog(BlogDTO blogDTO) {
         Blog blog = new Blog();
         try {
-            BeanUtils.copyProperties(blog, blogDTO);
+            BeanUtils.copyProperties(blogDTO,blog);
             if (blogDTO.getCategory() != null) {
                 blog.setCategoryId(blogDTO.getCategory().getId());
             }
@@ -703,6 +724,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         }
         deleteBlogRedisCache();
         redisService.saveKVToHash(RedisKeyConstants.BLOG_VIEWS_MAP, blog.getId(), blog.getViews());
+        return blog;
     }
 
     /**
@@ -715,7 +737,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
     @Override
     public int countBlogByIsPublished() {
         LambdaQueryWrapper<Blog> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(Blog::getIsPublished, true);
+        queryWrapper.eq(Blog::getPublished, true);
         return Math.toIntExact(blogMapper.selectCount(queryWrapper));
     }
 
@@ -758,9 +780,9 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
     public Boolean getCommentEnabledByBlogId(Long blogId) {
         LambdaQueryWrapper<Blog> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(Blog::getId, blogId);
-        queryWrapper.select(Blog::getIsCommentEnabled);
+        queryWrapper.select(Blog::getCommentEnabled);
         Blog blog = blogMapper.selectOne(queryWrapper);
-        return blog != null ? blog.getIsCommentEnabled():null;
+        return blog != null ? blog.getCommentEnabled():null;
     }
 
     /**
@@ -774,9 +796,9 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
     public Boolean getPublishedByBlogId(Long blogId){
         LambdaQueryWrapper<Blog> queryWrapper=new LambdaQueryWrapper<>();
         queryWrapper.eq(Blog::getId, blogId);
-        queryWrapper.select(Blog::getIsPublished);
+        queryWrapper.select(Blog::getPublished);
         Blog blog = blogMapper.selectOne(queryWrapper);
-        return blog != null ? blog.getIsPublished():null;
+        return blog != null ? blog.getPublished():null;
     }
 
 }

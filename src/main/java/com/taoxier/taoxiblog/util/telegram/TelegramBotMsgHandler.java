@@ -255,7 +255,7 @@ public class TelegramBotMsgHandler {
         moment.setCreateTime(new Date());
         moment.setContent(content);
         moment.setLikes(0);
-        moment.setIsPublished(true);
+        moment.setPublished(true);
         momentService.saveMoment(moment);
 
         return String.format(
@@ -268,7 +268,7 @@ public class TelegramBotMsgHandler {
                         "状态：%s [<a href=\"%s\">管理动态</a>]\n",
                 content,
                 simpleDateFormat.format(moment.getCreateTime()),
-                moment.getIsPublished() ? "公开" : "隐藏",
+                moment.getPublished() ? "公开" : "隐藏",
                 blogProperties.getCms() + "/blog/moment/list"
         );
     }

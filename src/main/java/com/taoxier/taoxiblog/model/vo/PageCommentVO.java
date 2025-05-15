@@ -19,7 +19,7 @@ public class PageCommentVO {
 	private String avatar;//头像(图片路径)
 	private Date createTime;//评论时间
 	private String website;//个人网站
-	private Boolean adminComment;//博主回复
+	private Boolean isAdminComment;//博主回复
 	private String parentCommentId;//父评论id
 	private String parentCommentNickname;//父评论昵称
 

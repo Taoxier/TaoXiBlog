@@ -19,9 +19,9 @@ public class BlogDetailVO {
 	private Long id;
 	private String title;//文章标题
 	private String content;//文章正文
-	private Boolean appreciation;//赞赏开关
-	private Boolean commentEnabled;//评论开关
-	private Boolean top;//是否置顶
+	private Boolean isAppreciation;//赞赏开关
+	private Boolean isCommentEnabled;//评论开关
+	private Boolean isTop;//是否置顶
 	private Date createTime;//创建时间
 	private Date updateTime;//更新时间
 	private Integer views;//浏览次数

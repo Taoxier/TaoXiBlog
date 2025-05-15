@@ -14,4 +14,14 @@
             and c1.is_published=true
             order by c1.create_time desc
     </select>
+
+    <!--按id查询评论-->
+    <select id="getCommentById" resultType="com.taoxier.taoxiblog.model.entity.CommentEntity">
+            select c.id, c.nickname, c.email, c.content, c.avatar, c.create_time, c.ip, c.is_published, c.is_admin_comment, c.page,
+                   c.is_notice, c.parent_comment_id, c.website, c.qq, c.blog_id, b.title
+            from comment as c left join blog as b on c.blog_id=b.id
+            where c.id=#{id}
+    </select>
+
+
 </mapper>

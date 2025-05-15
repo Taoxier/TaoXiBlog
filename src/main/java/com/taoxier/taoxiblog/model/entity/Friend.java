@@ -2,6 +2,8 @@ package com.taoxier.taoxiblog.model.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
 /**
@@ -36,7 +38,8 @@ public class Friend implements Serializable {
     /**
      * 公开或隐藏
      */
-    private Boolean isPublished;
+    @TableField("is_published")
+    private Boolean published;
 
     /**
      * 点击次数
