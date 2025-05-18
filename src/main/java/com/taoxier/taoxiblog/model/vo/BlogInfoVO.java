@@ -1,5 +1,7 @@
 package com.taoxier.taoxiblog.model.vo;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.taoxier.taoxiblog.model.entity.Category;
 import com.taoxier.taoxiblog.model.entity.Tag;
 import lombok.*;
@@ -16,17 +18,19 @@ import java.util.List;
  */
 @Data
 public class BlogInfoVO {
-	private Long id;
-	private String title;//文章标题
-	private String description;//描述
-	private Date createTime;//创建时间
-	private Integer views;//浏览次数
-	private Integer words;//文章字数
-	private Integer readTime;//阅读时长(分钟)
-	private Boolean isTop;//是否置顶
-	private String password;//文章密码
-	private Boolean privacy;//是否私密文章
+    private Long id;
+    private String title;//文章标题
+    private String description;//描述
+    private Date createTime;//创建时间
+    private Integer views;//浏览次数
+    private Integer words;//文章字数
+    private Integer readTime;//阅读时长(分钟)
+    //	@JsonProperty("isTop")
+    @TableField("is_top")
+    private Boolean top;//是否置顶
+    private String password;//文章密码
+    private Boolean privacy;//是否私密文章
 
-	private Category category;//文章分类
-	private List<Tag> tags = new ArrayList<>();//文章标签
+    private Category category;//文章分类
+    private List<Tag> tags = new ArrayList<>();//文章标签
 }

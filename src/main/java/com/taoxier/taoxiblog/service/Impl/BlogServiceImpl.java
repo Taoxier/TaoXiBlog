@@ -2,6 +2,7 @@ package com.taoxier.taoxiblog.service.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -108,7 +109,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
                         BlogViewDTO::getId,
                         BlogViewDTO::getViews,
                         //合并函数(当出现重复键时，保留已存在的值（existing），丢弃新值（replacement）---map需要key唯一)
-                        (existing,replacement) -> existing
+                        (existing, replacement) -> existing
                 ));
     }
 
@@ -122,6 +123,9 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
      */
     @Override
     public List<Blog> getListByTitleAndCategoryId(String title, Integer categoryId) {
+//        List<Blog> blogs=blogMapper.getListByTitleAndCategoryId(title, categoryId);
+//        System.out.println("blogs:"+blogs.toString());
+//        return  blogs;
         return blogMapper.getListByTitleAndCategoryId(title, categoryId);
     }
 
@@ -161,12 +165,12 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
     }
 
     /**
-    * @Description 查询所有博客id和title
+     * @Description 查询所有博客id和title
      * @param
-    * @Author: taoxier
-    * @Date: 2025/5/7
-    * @Return: java.util.List<com.taoxier.taoxiblog.model.entity.Blog>
-    */
+     * @Author: taoxier
+     * @Date: 2025/5/7
+     * @Return: java.util.List<com.taoxier.taoxiblog.model.entity.Blog>
+     */
     @Override
     public List<Blog> getIdAndTitleList() {
         LambdaQueryWrapper<Blog> queryWrapper = new LambdaQueryWrapper<>();
@@ -197,25 +201,25 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
                     .orderByDesc(Blog::getCreateTime);
             List<Blog> blogList = blogMapper.selectList(queryWrapper);
 
-        //将blog转为newblog
-        List<NewBlogVO> newBlogList = blogList.stream()
-                .map(blog -> {
-                    NewBlogVO newBlog = new NewBlogVO();
-                    newBlog.setId(blog.getId());
-                    newBlog.setTitle(blog.getTitle());
-                    newBlog.setPassword(blog.getPassword());
-                    if (!"".equals(blog.getPassword())) {
-                        newBlog.setPrivacy(true);
-                        newBlog.setPassword("");//返回给前端的数据中，不会包含真实的密码信息
-                    } else {
-                        newBlog.setPrivacy(false);
-                    }
-                    return newBlog;
-                }).collect(Collectors.toList());
-        //保存到redis
-        redisService.saveListToValue(redisKey, newBlogList);
-        return newBlogList;
-    }
+            //将blog转为newblog
+            List<NewBlogVO> newBlogList = blogList.stream()
+                    .map(blog -> {
+                        NewBlogVO newBlog = new NewBlogVO();
+                        newBlog.setId(blog.getId());
+                        newBlog.setTitle(blog.getTitle());
+                        newBlog.setPassword(blog.getPassword());
+                        if (!"".equals(blog.getPassword())) {
+                            newBlog.setPrivacy(true);
+                            newBlog.setPassword("");//返回给前端的数据中，不会包含真实的密码信息
+                        } else {
+                            newBlog.setPrivacy(false);
+                        }
+                        return newBlog;
+                    }).collect(Collectors.toList());
+            //保存到redis
+            redisService.saveListToValue(redisKey, newBlogList);
+            return newBlogList;
+        }
     }
 
 
@@ -234,12 +238,15 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         //redis已经有了当前页的缓存
         if (pageResultFromRedis != null) {
             setBlogViewsFromRedisToPageResult(pageResultFromRedis);
+//            System.out.println("已经有了当前页的缓存");
+//            System.out.println("redis缓存："+ pageResultFromRedis);
             return pageResultFromRedis;
         }
 
         //redis没有缓存，从数据库查询，并添加缓存
         PageHelper.startPage(pageNum, pageSize, orderBy);
         List<BlogInfoVO> blogInfos = processBlogInfosPassword(blogMapper.getBlogInfoListByIsPublished());
+//        System.out.println("bloginfo:"+blogInfos.toString());
         PageInfo<BlogInfoVO> pageInfo = new PageInfo<>(blogInfos);
         PageResultVO<BlogInfoVO> pageResult = new PageResultVO<>(pageInfo.getPages(), pageInfo.getList());
         setBlogViewsFromRedisToPageResult(pageResult);
@@ -391,6 +398,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         // 直接拼接参数（适用于内部可控参数，避免 SQL 注入）
         queryWrapper.last("ORDER BY rand() LIMIT " + randomBlogLimitNum);
         List<Blog> blogs = blogMapper.selectList(queryWrapper);
+//        System.out.println("获得随机博客"+blogs);
 
         return blogs.stream()
                 .map(blog -> {
@@ -445,7 +453,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void deleteBlogTagByBlogId(Long blogId) {
-        if (blogTagMapper.deleteById(blogId) == 0) {
+        if (blogMapper.deleteBlogTagByBlogId(blogId) == 0) {
             throw new PersistenceException("维护博客标签关联表失败");
         }
     }
@@ -466,14 +474,14 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
             if (blogDTO.getCategory() != null) {
                 blog.setCategoryId(blogDTO.getCategory().getId());
 
-                Category category= categoryService.getById(blogDTO.getCategory().getId());
+                Category category = categoryService.getById(blogDTO.getCategory().getId());
                 blog.setCategory(category);
 
             }
             if (blogDTO.getUser() != null) {
                 blog.setUserId(blogDTO.getUser().getId());
 
-                User user= userService.getById(blogDTO.getUser().getId());
+                User user = userService.getById(blogDTO.getUser().getId());
                 blog.setUser(user);
             }
 
@@ -490,7 +498,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
             throw new PersistenceException("添加博客失败");
         }
 
-        System.out.println("saveService"+blog);
+        System.out.println("saveService" + blog);
 
         redisService.saveKVToHash(RedisKeyConstants.BLOG_VIEWS_MAP, blog.getId(), 0);
         deleteBlogRedisCache();
@@ -512,7 +520,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         BlogTag blogTag = new BlogTag();
         blogTag.setBlogId(blogId);
         blogTag.setTagId(tagId);
-        System.out.println("博客标签："+ blogTag);
+        System.out.println("博客标签：" + blogTag);
         if (blogTagMapper.insert(blogTag) != 1) {
             throw new PersistenceException("维护博客标签关联表失败");
         }
@@ -709,21 +717,66 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
     @Transactional(rollbackFor = Exception.class)
     @Override
     public Blog updateBlog(BlogDTO blogDTO) {
-        Blog blog = new Blog();
+        if (blogDTO == null || blogDTO.getId() == null) {
+            throw new IllegalArgumentException("更新博客时ID不能为空");
+        }
+
+        // 先查询原博客数据
+        Blog blog = blogMapper.selectById(blogDTO.getId());
+        if (blog == null) {
+            throw new PersistenceException("博客不存在，ID: " + blogDTO.getId());
+        }
+
         try {
-            BeanUtils.copyProperties(blogDTO,blog);
+            // 复制非空属性到原博客对象
+            org.springframework.beans.BeanUtils.copyProperties(blogDTO, blog, "id", "userId", "categoryId", "createTime", "views");
+
+            // 处理分类ID
             if (blogDTO.getCategory() != null) {
                 blog.setCategoryId(blogDTO.getCategory().getId());
+                Category category = categoryService.getById(blogDTO.getCategory().getId());
+                blog.setCategory(category);
             }
-            if (blogMapper.updateById(blog) != 1) {
-                throw new PersistenceException("更新博客失败");
+
+            // 处理用户ID
+            if (blogDTO.getUser() != null) {
+                blog.setUserId(blogDTO.getUser().getId());
+                User user = userService.getById(blogDTO.getUser().getId());
+                blog.setUser(user);
+            }
+
+            // 使用 UpdateWrapper 避免 null 值覆盖
+            UpdateWrapper<Blog> wrapper = new UpdateWrapper<>();
+            wrapper.eq("id", blog.getId());
+
+            // 只更新非空字段
+            if (blog.getTitle() != null) wrapper.set("title", blog.getTitle());
+            if (blog.getContent() != null) wrapper.set("content", blog.getContent());
+            if (blog.getFirstPicture() != null) wrapper.set("first_picture", blog.getFirstPicture());
+            if (blog.getDescription() != null) wrapper.set("description", blog.getDescription());
+            if (blog.getCategoryId() != null) wrapper.set("category_id", blog.getCategoryId());
+            if (blog.getUserId() != null) wrapper.set("user_id", blog.getUserId());
+            if (blog.getPublished() != null) wrapper.set("is_published", blog.getPublished());
+            if (blog.getRecommend() != null) wrapper.set("is_recommend", blog.getRecommend());
+            if (blog.getAppreciation() != null) wrapper.set("is_appreciation", blog.getAppreciation());
+            if (blog.getCommentEnabled() != null) wrapper.set("is_comment_enabled", blog.getCommentEnabled());
+            if (blog.getTop() != null) wrapper.set("is_top", blog.getTop());
+            if (blog.getPassword() != null) wrapper.set("password", blog.getPassword());
+            if (blog.getUpdateTime() != null) wrapper.set("update_time", blog.getUpdateTime());
+
+            int rows = blogMapper.update(null, wrapper);
+            if (rows != 1) {
+                throw new PersistenceException("更新博客失败，ID: " + blog.getId());
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            throw new PersistenceException("DTO转换为entity时出错");
+            log.error("DTO转换为entity时出错", e);
+            throw new PersistenceException("DTO转换为entity时出错", e);
         }
+
+        // 更新缓存
         deleteBlogRedisCache();
         redisService.saveKVToHash(RedisKeyConstants.BLOG_VIEWS_MAP, blog.getId(), blog.getViews());
+
         return blog;
     }
 
@@ -782,23 +835,23 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         queryWrapper.eq(Blog::getId, blogId);
         queryWrapper.select(Blog::getCommentEnabled);
         Blog blog = blogMapper.selectOne(queryWrapper);
-        return blog != null ? blog.getCommentEnabled():null;
+        return blog != null ? blog.getCommentEnabled() : null;
     }
 
     /**
-    * @Description 查询博客是否公开
+     * @Description 查询博客是否公开
      * @param blogId
-    * @Author: taoxier
-    * @Date: 2025/4/29
-    * @Return: java.lang.Boolean
-    */
+     * @Author: taoxier
+     * @Date: 2025/4/29
+     * @Return: java.lang.Boolean
+     */
     @Override
-    public Boolean getPublishedByBlogId(Long blogId){
-        LambdaQueryWrapper<Blog> queryWrapper=new LambdaQueryWrapper<>();
+    public Boolean getPublishedByBlogId(Long blogId) {
+        LambdaQueryWrapper<Blog> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(Blog::getId, blogId);
         queryWrapper.select(Blog::getPublished);
         Blog blog = blogMapper.selectOne(queryWrapper);
-        return blog != null ? blog.getPublished():null;
+        return blog != null ? blog.getPublished() : null;
     }
 
 }

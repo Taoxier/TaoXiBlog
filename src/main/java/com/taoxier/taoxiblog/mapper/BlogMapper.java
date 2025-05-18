@@ -31,4 +31,7 @@ public interface BlogMapper extends BaseMapper<Blog> {
     List<CategoryBlogCountVO> getCategoryBlogCountList();
 
     Blog getBlogById(Long id);
+
+    int deleteBlogTagByBlogId(Long blogId);
+
 }

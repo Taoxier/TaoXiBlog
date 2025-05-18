@@ -17,8 +17,11 @@ import java.util.List;
 @Mapper
 @Repository
 public interface CommentMapper extends BaseMapper<CommentEntity> {
-    List<PageCommentVO> selectPageCommentList(QueryWrapper<PageCommentVO> wrapper);
 
     CommentEntity getCommentById(Long id);
+
+    List<PageCommentVO> getPageCommentListByPageAndParentCommentId(Integer page, Long blogId, Long parentCommentId);
+
+    List<CommentEntity> getListByPageAndParentCommentId(Integer page, Long blogId, Long parentCommentId);
 
 }

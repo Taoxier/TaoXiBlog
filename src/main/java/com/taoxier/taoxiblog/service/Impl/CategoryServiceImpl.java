@@ -54,12 +54,15 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> i
         String redisKey = RedisKeyConstants.CATEGORY_NAME_LIST;
         List<Category> categoryListFromRedis = redisService.getListByKey(redisKey);
         if (categoryListFromRedis != null) {
+//            System.out.println("分类已有缓存");
+//            System.out.println("redis-category"+categoryListFromRedis);
             return categoryListFromRedis;
         }
         QueryWrapper<Category> wrapper = new QueryWrapper<>();
-        wrapper.select("category_name").orderByDesc("id");
+        wrapper.orderByDesc("id");
         List<Category> categoryList = categoryMapper.selectList(wrapper);
         redisService.saveListToValue(redisKey, categoryList);
+//        System.out.println("没有缓存，分类列表是："+categoryList.toString());
         return categoryList;
     }
 

@@ -38,7 +38,7 @@ public class TagServiceImpl extends ServiceImpl<TagMapper, Tag> implements TagSe
     @Override
     public List<Tag> getTagList() {
         QueryWrapper<Tag> queryWrapper = new QueryWrapper<>();
-        queryWrapper.orderByDesc("id");
+        queryWrapper.orderByAsc("id");
         return tagMapper.selectList(queryWrapper);
     }
 
@@ -57,8 +57,7 @@ public class TagServiceImpl extends ServiceImpl<TagMapper, Tag> implements TagSe
             return tagListFromRedis;
         }
         QueryWrapper<Tag> queryWrapper = new QueryWrapper<>();
-        queryWrapper.select("tag_name", "color");
-        queryWrapper.orderByDesc("id");
+        queryWrapper.orderByAsc("id");
         return tagMapper.selectList(queryWrapper);
     }
 

@@ -96,6 +96,7 @@ public class DashboardServiceImpl implements DashboardService {
         List<CategoryBlogCountVO> categoryBlogCountList = blogMapper.getCategoryBlogCountList();
         // 查询所有分类的 id 和名称
         List<Category> categoryList = categoryMapper.selectList(null);
+        System.out.println("dash:"+categoryList);
         // 所有分类名称的 List
         List<String> legend = new ArrayList<>();
         for (Category category : categoryList) {

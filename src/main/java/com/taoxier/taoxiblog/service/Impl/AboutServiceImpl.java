@@ -103,7 +103,7 @@ public class AboutServiceImpl extends ServiceImpl<AboutMapper, About> implements
     @Transactional(rollbackFor = Exception.class)
     public void updateOneAbout(String nameEn, String value) {
         UpdateWrapper<About> updateWrapper = new UpdateWrapper<>();
-        updateWrapper.eq("name_em", nameEn);
+        updateWrapper.eq("name_en", nameEn);
         About about = new About();
         about.setValue(value);
 

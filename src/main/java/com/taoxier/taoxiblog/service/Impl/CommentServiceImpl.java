@@ -38,16 +38,9 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, CommentEntity
     */
     @Override
     public List<CommentEntity> getListByPageAndParentCommentId(Integer page, Long blogId, Long parentCommentId) {
-        QueryWrapper<CommentEntity> wrapper = new QueryWrapper<>();
-        if (page != null) {
-            wrapper.eq("c.page", page);
-        }
-        if (page == 0 && blogId != null) {
-            wrapper.eq("c.blog_id", blogId);
-        }
-        wrapper.eq("c.parent_comment_id", parentCommentId);
-        List<CommentEntity> comments = commentMapper.selectList(wrapper);
+        List<CommentEntity> comments = commentMapper.getListByPageAndParentCommentId(page, blogId, parentCommentId);
         for (CommentEntity c : comments) {
+            //递归查询子评论及其子评论
             List<CommentEntity> replyComments = getListByPageAndParentCommentId(page, blogId, c.getId());
             c.setReplyComments(replyComments);
         }
@@ -121,15 +114,7 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, CommentEntity
     */
     @Override
     public List<PageCommentVO> getPageCommentListByPageAndParentCommentId(Integer page, Long blogId, Long parentCommentId) {
-        QueryWrapper<PageCommentVO> wrapper = new QueryWrapper<>();
-        wrapper.eq("c1.page", page);
-        if (page == 0 && blogId != null) {
-            wrapper.eq("c1.blog_id", blogId);
-        }
-        wrapper.eq("c1.parent_comment_id", parentCommentId);
-        wrapper.eq("c1.is_published", true);
-        wrapper.orderByDesc("c1.create_time");
-        List<PageCommentVO> comments = commentMapper.selectPageCommentList(wrapper);
+        List<PageCommentVO> comments = commentMapper.getPageCommentListByPageAndParentCommentId(page, blogId, parentCommentId);
         for (PageCommentVO c : comments) {
             List<PageCommentVO> replyComments = getPageCommentListByPageAndParentCommentId(page, blogId, c.getId());
             c.setReplyComments(replyComments);
