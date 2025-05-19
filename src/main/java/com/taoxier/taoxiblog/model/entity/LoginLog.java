@@ -65,7 +65,7 @@ public class LoginLog implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public LoginLog(String username, String ip, boolean status, String description, String userAgent) {
+    public LoginLog(String username, String ip, Boolean status, String description, String userAgent) {
         this.username = username;
         this.ip = ip;
         this.status = status;

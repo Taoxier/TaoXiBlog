@@ -1,32 +1,32 @@
-package com.taoxier.taoxiblog.config.properties;
-
-import lombok.*;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.http.client.SimpleClientHttpRequestFactory;
-
-/**
- * @Description ：代理配置(目前用于RestTemplate发送tg消息)(用不上)
- * @Author taoxier
- * @Date 2025/4/21
- */
-@Data
-@Configuration
-@ConfigurationProperties(prefix = "http.proxy.server")
-public class ProxyProperties {
-
-    /**
-     * 代理服务器地址
-     */
-    private String host;
-
-    /**
-     * 代理服务器端口
-     */
-    private Integer port;
-
-    /**
-     * 连接超时(单位毫秒)，通常不应该为0，0为无限超时时间，-1为系统的默认超时时间
-     */
-    private Integer timeout;
-}
+//package com.taoxier.taoxiblog.config.properties;
+//
+//import lombok.*;
+//import org.springframework.boot.context.properties.ConfigurationProperties;
+//import org.springframework.context.annotation.Configuration;
+//import org.springframework.http.client.SimpleClientHttpRequestFactory;
+//
+///**
+// * @Description ：代理配置(目前用于RestTemplate发送tg消息)
+// * @Author taoxier
+// * @Date 2025/4/21
+// */
+//@Data
+//@Configuration
+//@ConfigurationProperties(prefix = "http.proxy.server")
+//public class ProxyProperties {
+//
+//    /**
+//     * 代理服务器地址
+//     */
+//    private String host;
+//
+//    /**
+//     * 代理服务器端口
+//     */
+//    private Integer port;
+//
+//    /**
+//     * 连接超时(单位毫秒)，通常不应该为0，0为无限超时时间，-1为系统的默认超时时间
+//     */
+//    private Integer timeout;
+//}

@@ -25,10 +25,10 @@ public class UploadUtils {
     private static RestTemplate restTemplate;
     private static FileUploadChannel uploadChannel;
 
-    @Autowired
-    public void setRestTemplate(RestTemplate restTemplate) {
-        UploadUtils.restTemplate = restTemplate;
-    }
+//    @Autowired
+//    public void setRestTemplate(RestTemplate restTemplate) {
+//        UploadUtils.restTemplate = restTemplate;
+//    }
 
     @Value("${upload.channel}")
     public void setNotifyChannel(String channelName) {
