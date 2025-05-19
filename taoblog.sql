@@ -70,7 +70,7 @@ CREATE TABLE `blog` (
   PRIMARY KEY (`id`) USING BTREE,
   KEY `type_id` (`category_id`) USING BTREE,
   KEY `user_id` (`user_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -79,7 +79,7 @@ CREATE TABLE `blog` (
 
 LOCK TABLES `blog` WRITE;
 /*!40000 ALTER TABLE `blog` DISABLE KEYS */;
-INSERT INTO `blog` VALUES (4,'The first','https://cdn.jsdelivr.net/gh/Taoxier/resources/img8.jpg','「お前、花火嫌いなの？」 \n「そうじゃないけど、花火より好きなものがあるから」\n\n![first](https://cdn.jsdelivr.net/gh/Taoxier/resources/img6.jpg)','梦开始的地方\n\n![first](https://cdn.jsdelivr.net/gh/Taoxier/resources/img3.jpg)',_binary '',_binary '',_binary '\0',_binary '','2025-05-19 04:18:58','2025-05-19 04:39:09',0,1612,8,4,_binary '','',1),(5,'sleep','https://cdn.jsdelivr.net/gh/Taoxier/resources/img9.jpg','睡觉\n\n![](https://cdn.jsdelivr.net/gh/Taoxier/resources/img11.jpg)','so sleepy\n\n![](https://cdn.jsdelivr.net/gh/Taoxier/resources/img9.jpg)',_binary '',_binary '',_binary '\0',_binary '','2025-05-19 05:09:45','2025-05-19 05:09:45',0,1216,6,5,_binary '\0','',1);
+INSERT INTO `blog` VALUES (4,'The first','https://cdn.jsdelivr.net/gh/Taoxier/resources/img8.jpg','「お前、花火嫌いなの？」 \n「そうじゃないけど、花火より好きなものがあるから」\n\n![first](https://cdn.jsdelivr.net/gh/Taoxier/resources/img6.jpg)','梦开始的地方\n\n![first](https://cdn.jsdelivr.net/gh/Taoxier/resources/img3.jpg)',_binary '',_binary '',_binary '\0',_binary '','2025-05-19 04:18:58','2025-05-19 04:39:09',0,1612,8,4,_binary '','',1),(5,'sleep','https://cdn.jsdelivr.net/gh/Taoxier/resources/img9.jpg','睡觉\n\n![](https://cdn.jsdelivr.net/gh/Taoxier/resources/img11.jpg)','so sleepy\n\n![](https://cdn.jsdelivr.net/gh/Taoxier/resources/img9.jpg)',_binary '',_binary '',_binary '\0',_binary '','2025-05-19 05:09:45','2025-05-19 05:09:45',0,1216,6,5,_binary '\0','',1),(6,'进食','https://cdn.jsdelivr.net/gh/Taoxier/resources/img5.jpg','努力成为人类的第一天，学会进食\n![](https://cdn.jsdelivr.net/gh/Taoxier/resources/img5.jpg)','人类，需要进食\n![](https://cdn.jsdelivr.net/gh/Taoxier/resources/img5.jpg)',_binary '',_binary '',_binary '\0',_binary '','2025-05-19 12:08:13','2025-05-19 12:08:13',0,1212,6,6,_binary '\0','',1);
 /*!40000 ALTER TABLE `blog` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -102,7 +102,7 @@ CREATE TABLE `blog_tag` (
 
 LOCK TABLES `blog_tag` WRITE;
 /*!40000 ALTER TABLE `blog_tag` DISABLE KEYS */;
-INSERT INTO `blog_tag` VALUES (4,4),(5,5),(5,6),(5,7),(5,8);
+INSERT INTO `blog_tag` VALUES (4,4),(5,5),(5,6),(5,7),(5,8),(6,9);
 /*!40000 ALTER TABLE `blog_tag` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -117,7 +117,7 @@ CREATE TABLE `category` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `category_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -126,7 +126,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (4,'first'),(5,'sleep');
+INSERT INTO `category` VALUES (4,'first'),(5,'sleep'),(6,'进食');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -177,7 +177,7 @@ CREATE TABLE `comment` (
   `website` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '个人网站',
   `qq` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '如果评论昵称为QQ号，则将昵称和头像置为QQ昵称和QQ头像，并将此字段置为QQ号备份',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -186,7 +186,7 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-INSERT INTO `comment` VALUES (2,'Admin','admin@taoxier.top','初めまして','/img/avatar.jpg','2025-05-19 04:16:38','localhost',_binary '',_binary '',1,_binary '\0',NULL,-1,'/',NULL),(3,'Admin','admin@taoxier.top','本当に幸せでした','/img/avatar.jpg','2025-05-19 04:22:26',NULL,_binary '',_binary '',0,_binary '\0',4,-1,'/',NULL);
+INSERT INTO `comment` VALUES (6,'yukina','1803173059@qq.com','诶？','/img/comment-avatar/4.jpg','2025-05-19 10:43:28',NULL,_binary '',_binary '\0',0,_binary '',4,-1,'',NULL),(14,'taoxier','admin@taoxier.top','欸？','/img/avatar.jpg','2025-05-19 11:53:24',NULL,_binary '',_binary '',0,_binary '\0',5,-1,'/',NULL),(15,'taoxier','admin@taoxier.top','本当に幸せでした','/img/avatar.jpg','2025-05-19 12:12:49',NULL,_binary '',_binary '',0,_binary '\0',4,-1,'/',NULL),(16,'taoxier','admin@taoxier.top','エターナル','/img/avatar.jpg','2025-05-19 12:13:08',NULL,_binary '',_binary '',0,_binary '\0',4,15,'/',NULL),(17,'taoxier','admin@taoxier.top','ありがとう','/img/avatar.jpg','2025-05-19 12:13:28',NULL,_binary '',_binary '',0,_binary '\0',4,-1,'/',NULL),(18,'taoxier','admin@taoxier.top','初めまして','/img/avatar.jpg','2025-05-19 12:14:33',NULL,_binary '',_binary '',1,_binary '\0',NULL,-1,'/',NULL),(19,'taoxier','admin@taoxier.top','累累的，，，','/img/avatar.jpg','2025-05-19 12:15:06',NULL,_binary '',_binary '',0,_binary '\0',5,-1,'/',NULL),(20,'taoxier','admin@taoxier.top','饿饿的，，，','/img/avatar.jpg','2025-05-19 12:15:25',NULL,_binary '',_binary '',0,_binary '\0',6,-1,'/',NULL),(21,'taoxier','taoxierer@gmail.com','吃饭！！','/img/avatar.jpg','2025-05-19 12:18:36',NULL,_binary '',_binary '',0,_binary '\0',6,-1,'/',NULL),(22,'ahiru','2212895662@qq.com','泥嚎哇','/img/comment-avatar/3.jpg','2025-05-19 12:20:31','localhost',_binary '',_binary '\0',0,_binary '',4,17,'',NULL);
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -272,7 +272,7 @@ CREATE TABLE `login_log` (
   `create_time` datetime NOT NULL COMMENT '登录时间',
   `user_agent` varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'user-agent用户代理',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -281,7 +281,7 @@ CREATE TABLE `login_log` (
 
 LOCK TABLES `login_log` WRITE;
 /*!40000 ALTER TABLE `login_log` DISABLE KEYS */;
-INSERT INTO `login_log` VALUES (1,'Admin',NULL,'','Windows NT ??','Chrome 136',_binary '','登录成功','2025-05-18 18:56:04','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36');
+INSERT INTO `login_log` VALUES (1,'Admin',NULL,'','Windows NT ??','Chrome 136',_binary '','登录成功','2025-05-18 18:56:04','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36'),(2,'taoxier',NULL,'','Windows NT ??','Chrome 136',_binary '','登录成功','2025-05-19 11:40:49','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36'),(3,'admin',NULL,'','Windows NT ??','Chrome 136',_binary '','登录成功','2025-05-19 11:47:04','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36'),(4,'taoxier',NULL,'','Windows NT ??','Chrome 136',_binary '','登录成功','2025-05-19 12:05:13','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36');
 /*!40000 ALTER TABLE `login_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -446,7 +446,7 @@ CREATE TABLE `tag` (
   `tag_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `color` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT '标签颜色(可选)',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -455,7 +455,7 @@ CREATE TABLE `tag` (
 
 LOCK TABLES `tag` WRITE;
 /*!40000 ALTER TABLE `tag` DISABLE KEYS */;
-INSERT INTO `tag` VALUES (4,'first','orange'),(5,'sleep','yellow'),(6,'tired','violet'),(7,'clod','blue'),(8,'hungry','olive');
+INSERT INTO `tag` VALUES (4,'first','orange'),(5,'sleep','yellow'),(6,'tired','violet'),(7,'clod','blue'),(8,'hungry','olive'),(9,'进食','brown');
 /*!40000 ALTER TABLE `tag` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -486,7 +486,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'Admin','$2a$10$4wnwMW8Z4Bn6wR4K1YlbquQunlHM/4rvudVBX8oyfx16xeVtI6i7C','Admin','/img/avatar.jpg','admin@taoxier.top','2025-04-20 16:47:18','2025-04-20 16:47:22','ROLE_admin');
+INSERT INTO `user` VALUES (1,'taoxier','$2a$10$IiGp9SMe7ToElPTjTUstVOFqyWis5fHTAnmtEa5t7JMt6MfXn.8zC','taoxier','/img/avatar.jpg','taoxierer@gmail.com','2025-04-20 16:47:18','2025-04-20 16:47:22','ROLE_admin');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -594,4 +594,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-19  5:19:04
+-- Dump completed on 2025-05-19 12:41:11
