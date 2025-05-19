@@ -23,8 +23,8 @@ public class ChannelFactory {
                 return SpringContextUtils.getBean(LocalChannel.class);
             case UploadConstants.GITHUB:
                 return SpringContextUtils.getBean(GithubChannel.class);
-            case UploadConstants.UPYUN:
-                return SpringContextUtils.getBean(UpyunChannel.class);
+//            case UploadConstants.UPYUN:
+//                return SpringContextUtils.getBean(UpyunChannel.class);
         }
         throw new RuntimeException("Unsupported value in [application.properties]: [upload.channel]");
     }

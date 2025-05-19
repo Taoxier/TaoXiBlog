@@ -8476,3 +8476,17 @@ Unconditional classes:
 
 
 
+2025-05-19 13:37:06.499  WARN 31384 --- [HikariPool-2 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Thread starvation or clock leap detected (housekeeper delta=17m40s211ms157µs).
+2025-05-19 13:44:34.649  INFO 31384 --- [Thread-8] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-05-19 13:44:34.656  INFO 31384 --- [Thread-8] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2025-05-19 13:44:34.656  INFO 31384 --- [Thread-8] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2025-05-19 13:44:34.656  INFO 31384 --- [Thread-8] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2025-05-19 13:44:34.656  INFO 31384 --- [Thread-8] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-05-19 13:44:34.656  INFO 31384 --- [Thread-8] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2025-05-19 13:44:34.665  INFO 31384 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2025-05-19 13:44:34.681  INFO 31384 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2025-05-19 13:44:35.067  INFO 31384 --- [restartedMain] c.t.taoxiblog.TaoXiBlogApplication       : Starting TaoXiBlogApplication on yukina with PID 31384 (D:\IdeaProjects\TaoXiBlog\target\classes started by 18031 in D:\IdeaProjects\TaoXiBlog)
+2025-05-19 13:44:35.067  INFO 31384 --- [restartedMain] c.t.taoxiblog.TaoXiBlogApplication       : No active profile set, falling back to default profiles: default
+2025-05-19 13:44:35.482  INFO 31384 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2025-05-19 13:44:35.482  INFO 31384 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-05-19 13:44:35.508  INFO 31384 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25ms. Found 0 Redis repository interfaces.
