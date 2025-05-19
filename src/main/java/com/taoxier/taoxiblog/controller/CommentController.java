@@ -244,7 +244,7 @@ public class CommentController {
     * @Date: 2025/5/8
     * @Return: com.taoxier.taoxiblog.model.vo.ResultVO
     */
-    @AccessLimit(seconds = 30, maxCount = 1, msg = "30秒内只能提交一次评论")
+    @AccessLimit(seconds = 10, maxCount = 1, msg = "10秒内只能提交一次评论")
     @PostMapping("/comment")
     public ResultVO postComment(@RequestBody CommentDTO comment,
                                 HttpServletRequest request,

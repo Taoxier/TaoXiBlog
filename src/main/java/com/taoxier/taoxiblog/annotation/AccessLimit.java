@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * @Description ：访问控制（30秒内评论一次、重复点赞限制）
+ * @Description ：访问控制（10秒内评论一次、重复点赞限制）
  * @Author taoxier
  * @Date 2025/4/22
  */

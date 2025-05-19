@@ -18,7 +18,7 @@ public class UploadConstants {
     /**
      * 评论中QQ头像存储方式-又拍云
      */
-    public static final String UPYUN = "upyun";
+//    public static final String UPYUN = "upyun";
     /**
      * 图片ContentType
      */
