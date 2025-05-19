@@ -8490,3 +8490,97 @@ Unconditional classes:
 2025-05-19 13:44:35.482  INFO 31384 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
 2025-05-19 13:44:35.482  INFO 31384 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
 2025-05-19 13:44:35.508  INFO 31384 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25ms. Found 0 Redis repository interfaces.
+2025-05-19 13:44:35.710  INFO 31384 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2025-05-19 13:44:35.710  INFO 31384 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-19 13:44:35.710  INFO 31384 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.34]
+2025-05-19 13:44:35.732  INFO 31384 --- [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-05-19 13:44:35.732  INFO 31384 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 665 ms
+2025-05-19 13:44:35.847  WARN 31384 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.taoxier.taoxiblog.model.entity.BlogTag".
+2025-05-19 13:44:35.847  WARN 31384 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.taoxier.taoxiblog.model.entity.BlogTag ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-19 13:44:35.863  WARN 31384 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.taoxier.taoxiblog.model.entity.CityVisitor".
+2025-05-19 13:44:35.863  WARN 31384 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.taoxier.taoxiblog.model.entity.CityVisitor ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-19 13:44:35.962  WARN 31384 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.taoxier.taoxiblog.model.entity.ScheduleJobEntity".
+2025-05-19 13:44:35.962  WARN 31384 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.taoxier.taoxiblog.model.entity.ScheduleJobEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-19 13:44:36.124  INFO 31384 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : 
+2025-05-19 13:44:36.124  INFO 31384 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : /-----------------------------------------------------------\
+2025-05-19 13:44:36.124  INFO 31384 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : | Yauaa 7.11.0 (v7.11.0 @ 2023-01-24T21:50:03Z)             |
+2025-05-19 13:44:36.124  INFO 31384 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : +-----------------------------------------------------------+
+2025-05-19 13:44:36.124  INFO 31384 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : | For more information: https://yauaa.basjes.nl             |
+2025-05-19 13:44:36.124  INFO 31384 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : | Copyright (C) 2013-2023 Niels Basjes - License Apache 2.0 |
+2025-05-19 13:44:36.124  INFO 31384 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : \-----------------------------------------------------------/
+2025-05-19 13:44:36.124  INFO 31384 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : 
+2025-05-19 13:44:36.197  INFO 31384 --- [restartedMain] n.b.parse.useragent.config.ConfigLoader  : - Loaded 111 files in   73 ms using expression: classpath*:UserAgents/**/*.yaml
+2025-05-19 13:44:36.880  INFO 31384 --- [restartedMain] n.b.p.u.a.UserAgentStringMatchMaker      : Building all needed matchers for the requested 11 fields.
+2025-05-19 13:44:37.185  INFO 31384 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2025-05-19 13:44:37.185  INFO 31384 --- [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-05-19 13:44:37.185  INFO 31384 --- [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2025-05-19 13:44:37.185  INFO 31384 --- [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2025-05-19 13:44:37.185  INFO 31384 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2025-05-19 13:44:37.185  INFO 31384 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-05-19 13:44:37.185  INFO 31384 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2025-05-19 13:44:37.185  INFO 31384 --- [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@18eb46cd
+2025-05-19 13:44:37.193  INFO 31384 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2025-05-19 13:44:37.202  INFO 31384 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2025-05-19 13:44:37.279  WARN 31384 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2025-05-19 13:44:37.320  WARN 31384 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'uploadUtils': Injection of autowired dependencies failed; nested exception is java.lang.NoClassDefFoundError: com/taoxier/taoxiblog/util/upload/channel/ChannelFactory
+2025-05-19 13:44:37.320  INFO 31384 --- [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2025-05-19 13:44:37.320  INFO 31384 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2025-05-19 13:44:37.320  INFO 31384 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-05-19 13:44:37.320  INFO 31384 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2025-05-19 13:44:37.320  INFO 31384 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2025-05-19 13:44:37.329  INFO 31384 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2025-05-19 13:44:37.440  INFO 31384 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-05-19 13:44:37.442  INFO 31384 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2025-05-19 13:44:37.448 ERROR 31384 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'uploadUtils': Injection of autowired dependencies failed; nested exception is java.lang.NoClassDefFoundError: com/taoxier/taoxiblog/util/upload/channel/ChannelFactory
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:405) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1422) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:895) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:878) ~[spring-context-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550) ~[spring-context-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141) ~[spring-boot-2.2.7.RELEASE.jar:2.2.7.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747) ~[spring-boot-2.2.7.RELEASE.jar:2.2.7.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397) ~[spring-boot-2.2.7.RELEASE.jar:2.2.7.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) ~[spring-boot-2.2.7.RELEASE.jar:2.2.7.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226) ~[spring-boot-2.2.7.RELEASE.jar:2.2.7.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215) ~[spring-boot-2.2.7.RELEASE.jar:2.2.7.RELEASE]
+	at com.taoxier.taoxiblog.TaoXiBlogApplication.main(TaoXiBlogApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) ~[spring-boot-devtools-2.2.7.RELEASE.jar:2.2.7.RELEASE]
+Caused by: java.lang.NoClassDefFoundError: com/taoxier/taoxiblog/util/upload/channel/ChannelFactory
+	at com.taoxier.taoxiblog.util.upload.UploadUtils.setNotifyChannel(UploadUtils.java:35) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:755) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:130) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	... 22 common frames omitted
+Caused by: java.lang.ClassNotFoundException: com.taoxier.taoxiblog.util.upload.channel.ChannelFactory
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:520) ~[na:na]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:144) ~[spring-boot-devtools-2.2.7.RELEASE.jar:2.2.7.RELEASE]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:520) ~[na:na]
+	... 30 common frames omitted
+
