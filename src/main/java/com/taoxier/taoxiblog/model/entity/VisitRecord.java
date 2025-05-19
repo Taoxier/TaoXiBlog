@@ -32,4 +32,10 @@ public class VisitRecord implements Serializable {
     private String date;
 
     private static final long serialVersionUID = 1L;
+
+    public VisitRecord(Integer pv, Integer uv, String date) {
+        this.pv = pv;
+        this.uv = uv;
+        this.date = date;
+    }
 }

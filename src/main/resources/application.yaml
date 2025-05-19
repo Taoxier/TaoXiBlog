@@ -56,6 +56,7 @@ comment:
   notify:
     channel: mail
   default-open: true
+
 tg:
   bot:
     api: https://api.telegram.org/bot
@@ -64,6 +65,7 @@ tg:
     use-proxy: false
     use-reverse-proxy: true
     reverse-proxy-url: https://tg-api-open.naccl.workers.dev
+
 http:
   proxy:
     server:

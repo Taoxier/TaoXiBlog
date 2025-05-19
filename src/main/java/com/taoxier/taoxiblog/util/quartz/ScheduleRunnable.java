@@ -5,6 +5,7 @@ import org.springframework.util.ReflectionUtils;
 import org.springframework.util.StringUtils;
 
 import java.lang.reflect.Method;
+import java.util.logging.Logger;
 
 /**
  * @Description ：执行定时任务
@@ -29,6 +30,7 @@ public class ScheduleRunnable  implements Runnable{
     @Override
     public void run() {
         try {
+            System.out.println("执行任务: {}#{}"+target.getClass().getName()+method.getName());
             ReflectionUtils.makeAccessible(method);
             if (StringUtils.hasText(params)) {
                 method.invoke(target, params);

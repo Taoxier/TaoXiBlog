@@ -1,6 +1,6 @@
 package com.taoxier.taoxiblog.model.dto;
 
-import lombok.Data;
+import lombok.*;
 
 import java.util.Date;
 
@@ -10,6 +10,11 @@ import java.util.Date;
  * @Date 2025/4/25
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
 public class VisitLogUuidTimeDTO {
     private String uuid;
     private Date time;
