@@ -4971,3 +4971,703 @@ java.lang.NullPointerException: null
 2025-05-19 05:19:19.248  INFO 26348 --- [SpringContextShutdownHook] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
 2025-05-19 05:19:19.249  INFO 26348 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2025-05-19 05:19:19.259  INFO 26348 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-19 09:02:43.454  INFO 36828 --- [restartedMain] c.t.taoxiblog.TaoXiBlogApplication       : Starting TaoXiBlogApplication on yukina with PID 36828 (D:\IdeaProjects\TaoXiBlog\target\classes started by 18031 in D:\IdeaProjects\TaoXiBlog)
+2025-05-19 09:02:43.456  INFO 36828 --- [restartedMain] c.t.taoxiblog.TaoXiBlogApplication       : No active profile set, falling back to default profiles: default
+2025-05-19 09:02:43.482  INFO 36828 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-05-19 09:02:43.483  INFO 36828 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-05-19 09:02:44.265  INFO 36828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2025-05-19 09:02:44.266  INFO 36828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-05-19 09:02:44.300  INFO 36828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 23ms. Found 0 Redis repository interfaces.
+2025-05-19 09:02:44.633  INFO 36828 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.retry.annotation.RetryConfiguration' of type [org.springframework.retry.annotation.RetryConfiguration$$EnhancerBySpringCGLIB$$6ef3cf63] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-05-19 09:02:44.893  INFO 36828 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2025-05-19 09:02:44.900  INFO 36828 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-19 09:02:44.901  INFO 36828 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.34]
+2025-05-19 09:02:44.983  INFO 36828 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-19 09:02:44.984  INFO 36828 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1501 ms
+2025-05-19 09:02:45.720  WARN 36828 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.taoxier.taoxiblog.model.entity.BlogTag".
+2025-05-19 09:02:45.721  WARN 36828 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.taoxier.taoxiblog.model.entity.BlogTag ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-19 09:02:45.741  WARN 36828 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.taoxier.taoxiblog.model.entity.CityVisitor".
+2025-05-19 09:02:45.742  WARN 36828 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.taoxier.taoxiblog.model.entity.CityVisitor ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-19 09:02:45.813  WARN 36828 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.taoxier.taoxiblog.model.entity.ScheduleJobEntity".
+2025-05-19 09:02:45.813  WARN 36828 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.taoxier.taoxiblog.model.entity.ScheduleJobEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-19 09:02:45.928  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : 
+2025-05-19 09:02:45.929  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : /-----------------------------------------------------------\
+2025-05-19 09:02:45.930  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : | Yauaa 7.11.0 (v7.11.0 @ 2023-01-24T21:50:03Z)             |
+2025-05-19 09:02:45.930  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : +-----------------------------------------------------------+
+2025-05-19 09:02:45.930  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : | For more information: https://yauaa.basjes.nl             |
+2025-05-19 09:02:45.930  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : | Copyright (C) 2013-2023 Niels Basjes - License Apache 2.0 |
+2025-05-19 09:02:45.930  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : \-----------------------------------------------------------/
+2025-05-19 09:02:45.930  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : 
+2025-05-19 09:02:46.010  INFO 36828 --- [restartedMain] n.b.parse.useragent.config.ConfigLoader  : - Loaded 111 files in   76 ms using expression: classpath*:UserAgents/**/*.yaml
+2025-05-19 09:02:46.640  INFO 36828 --- [restartedMain] n.b.p.u.a.UserAgentStringMatchMaker      : Building all needed matchers for the requested 11 fields.
+2025-05-19 09:02:46.803  INFO 36828 --- [restartedMain] io.lettuce.core.EpollProvider            : Starting without optional epoll library
+2025-05-19 09:02:46.804  INFO 36828 --- [restartedMain] io.lettuce.core.KqueueProvider           : Starting without optional kqueue library
+2025-05-19 09:02:47.003  WARN 36828 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2025-05-19 09:02:47.129  INFO 36828 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2025-05-19 09:02:47.138  INFO 36828 --- [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-05-19 09:02:47.138  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2025-05-19 09:02:47.138  INFO 36828 --- [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2025-05-19 09:02:47.139  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2025-05-19 09:02:47.139  INFO 36828 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-05-19 09:02:47.139  INFO 36828 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2025-05-19 09:02:47.139  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@42cf8c74
+2025-05-19 09:02:47.170  INFO 36828 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-19 09:02:47.305  INFO 36828 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-19 09:02:47.685  INFO 36828 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2025-05-19 09:02:47.713  INFO 36828 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-05-19 09:02:47.954  INFO 36828 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@291849a9, org.springframework.security.web.context.SecurityContextPersistenceFilter@6304c68, org.springframework.security.web.header.HeaderWriterFilter@bb99d3d, org.springframework.web.filter.CorsFilter@200761c4, org.springframework.security.web.authentication.logout.LogoutFilter@482a3f0a, com.taoxier.taoxiblog.config.JwtLoginFilter@7f2d73f2, com.taoxier.taoxiblog.config.JwtFilter@2a1fa1f8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@356aada, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@320269fd, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@41a1f013, org.springframework.security.web.session.SessionManagementFilter@109f58db, org.springframework.security.web.access.ExceptionTranslationFilter@31b39770, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1d5141fb]
+2025-05-19 09:02:48.263  INFO 36828 --- [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2025-05-19 09:02:48.263  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2025-05-19 09:02:48.279  INFO 36828 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8090 (http) with context path ''
+2025-05-19 09:02:48.281  INFO 36828 --- [restartedMain] c.t.taoxiblog.TaoXiBlogApplication       : Started TaoXiBlogApplication in 5.08 seconds (JVM running for 5.71)
+2025-05-19 09:03:25.106  INFO 36828 --- [http-nio-8090-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-05-19 09:03:25.106  INFO 36828 --- [http-nio-8090-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-05-19 09:03:25.115  INFO 36828 --- [http-nio-8090-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2025-05-19 09:14:33.696  INFO 36828 --- [Thread-4] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-05-19 09:14:33.699  INFO 36828 --- [Thread-4] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2025-05-19 09:14:33.702  INFO 36828 --- [Thread-4] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2025-05-19 09:14:33.702  INFO 36828 --- [Thread-4] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2025-05-19 09:14:33.702  INFO 36828 --- [Thread-4] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-05-19 09:14:33.702  INFO 36828 --- [Thread-4] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2025-05-19 09:14:33.703  INFO 36828 --- [Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-05-19 09:14:33.713  INFO 36828 --- [Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-05-19 09:14:33.928  INFO 36828 --- [restartedMain] c.t.taoxiblog.TaoXiBlogApplication       : Starting TaoXiBlogApplication on yukina with PID 36828 (D:\IdeaProjects\TaoXiBlog\target\classes started by 18031 in D:\IdeaProjects\TaoXiBlog)
+2025-05-19 09:14:33.928  INFO 36828 --- [restartedMain] c.t.taoxiblog.TaoXiBlogApplication       : No active profile set, falling back to default profiles: default
+2025-05-19 09:14:34.259  INFO 36828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2025-05-19 09:14:34.259  INFO 36828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-05-19 09:14:34.276  INFO 36828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16ms. Found 0 Redis repository interfaces.
+2025-05-19 09:14:34.347  INFO 36828 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.retry.annotation.RetryConfiguration' of type [org.springframework.retry.annotation.RetryConfiguration$$EnhancerBySpringCGLIB$$6ef3cf63] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-05-19 09:14:34.387  INFO 36828 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2025-05-19 09:14:34.387  INFO 36828 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-19 09:14:34.387  INFO 36828 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.34]
+2025-05-19 09:14:34.403  INFO 36828 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-05-19 09:14:34.403  INFO 36828 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 473 ms
+2025-05-19 09:14:34.435  WARN 36828 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'securityConfig': Unsatisfied dependency expressed through method 'setContentNegotationStrategy' parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration$EnableWebMvcConfiguration': Unsatisfied dependency expressed through method 'setConfigurers' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'webConfig' defined in file [D:\IdeaProjects\TaoXiBlog\target\classes\com\taoxier\taoxiblog\config\WebConfig.class]: Post-processing of merged bean definition failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.taoxier.taoxiblog.config.WebConfig] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@bbe9f07]
+2025-05-19 09:14:34.435  INFO 36828 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-05-19 09:14:34.439  INFO 36828 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2025-05-19 09:14:34.443 ERROR 36828 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'securityConfig': Unsatisfied dependency expressed through method 'setContentNegotationStrategy' parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration$EnableWebMvcConfiguration': Unsatisfied dependency expressed through method 'setConfigurers' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'webConfig' defined in file [D:\IdeaProjects\TaoXiBlog\target\classes\com\taoxier\taoxiblog\config\WebConfig.class]: Post-processing of merged bean definition failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.taoxier.taoxiblog.config.WebConfig] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@bbe9f07]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:723) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:130) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1422) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:895) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:878) ~[spring-context-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550) ~[spring-context-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141) ~[spring-boot-2.2.7.RELEASE.jar:2.2.7.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747) ~[spring-boot-2.2.7.RELEASE.jar:2.2.7.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397) ~[spring-boot-2.2.7.RELEASE.jar:2.2.7.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) ~[spring-boot-2.2.7.RELEASE.jar:2.2.7.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226) ~[spring-boot-2.2.7.RELEASE.jar:2.2.7.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215) ~[spring-boot-2.2.7.RELEASE.jar:2.2.7.RELEASE]
+	at com.taoxier.taoxiblog.TaoXiBlogApplication.main(TaoXiBlogApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) ~[spring-boot-devtools-2.2.7.RELEASE.jar:2.2.7.RELEASE]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration$EnableWebMvcConfiguration': Unsatisfied dependency expressed through method 'setConfigurers' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'webConfig' defined in file [D:\IdeaProjects\TaoXiBlog\target\classes\com\taoxier\taoxiblog\config\WebConfig.class]: Post-processing of merged bean definition failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.taoxier.taoxiblog.config.WebConfig] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@bbe9f07]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:723) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:130) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1422) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:409) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1338) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1306) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1226) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:715) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	... 24 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'webConfig' defined in file [D:\IdeaProjects\TaoXiBlog\target\classes\com\taoxier\taoxiblog\config\WebConfig.class]: Post-processing of merged bean definition failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.taoxier.taoxiblog.config.WebConfig] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@bbe9f07]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:572) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.addCandidateEntry(DefaultListableBeanFactory.java:1524) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1488) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveMultipleBeans(DefaultListableBeanFactory.java:1377) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1264) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1226) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:715) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	... 46 common frames omitted
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [com.taoxier.taoxiblog.config.WebConfig] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@bbe9f07]
+	at org.springframework.util.ReflectionUtils.getDeclaredFields(ReflectionUtils.java:734) ~[spring-core-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.util.ReflectionUtils.doWithLocalFields(ReflectionUtils.java:666) ~[spring-core-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.buildResourceMetadata(CommonAnnotationBeanPostProcessor.java:366) ~[spring-context-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.findResourceMetadata(CommonAnnotationBeanPostProcessor.java:347) ~[spring-context-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessMergedBeanDefinition(CommonAnnotationBeanPostProcessor.java:295) ~[spring-context-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyMergedBeanDefinitionPostProcessors(AbstractAutowireCapableBeanFactory.java:1094) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	... 58 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: com/taoxier/taoxiblog/interceptor/AccessLimitInterceptor
+	at java.base/java.lang.Class.getDeclaredFields0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.privateGetDeclaredFields(Class.java:3297) ~[na:na]
+	at java.base/java.lang.Class.getDeclaredFields(Class.java:2371) ~[na:na]
+	at org.springframework.util.ReflectionUtils.getDeclaredFields(ReflectionUtils.java:729) ~[spring-core-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	... 64 common frames omitted
+Caused by: java.lang.ClassNotFoundException: com.taoxier.taoxiblog.interceptor.AccessLimitInterceptor
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:520) ~[na:na]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:144) ~[spring-boot-devtools-2.2.7.RELEASE.jar:2.2.7.RELEASE]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:520) ~[na:na]
+	... 68 common frames omitted
+
+2025-05-19 09:15:42.713  INFO 36828 --- [restartedMain] c.t.taoxiblog.TaoXiBlogApplication       : Starting TaoXiBlogApplication on yukina with PID 36828 (D:\IdeaProjects\TaoXiBlog\target\classes started by 18031 in D:\IdeaProjects\TaoXiBlog)
+2025-05-19 09:15:42.714  INFO 36828 --- [restartedMain] c.t.taoxiblog.TaoXiBlogApplication       : No active profile set, falling back to default profiles: default
+2025-05-19 09:15:43.007  INFO 36828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2025-05-19 09:15:43.008  INFO 36828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-05-19 09:15:43.022  INFO 36828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13ms. Found 0 Redis repository interfaces.
+2025-05-19 09:15:43.087  INFO 36828 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.retry.annotation.RetryConfiguration' of type [org.springframework.retry.annotation.RetryConfiguration$$EnhancerBySpringCGLIB$$6ef3cf63] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-05-19 09:15:43.122  INFO 36828 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2025-05-19 09:15:43.122  INFO 36828 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-19 09:15:43.122  INFO 36828 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.34]
+2025-05-19 09:15:43.137  INFO 36828 --- [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-05-19 09:15:43.137  INFO 36828 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 422 ms
+2025-05-19 09:15:43.161  WARN 36828 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'securityConfig': Unsatisfied dependency expressed through method 'setContentNegotationStrategy' parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration$EnableWebMvcConfiguration': Unsatisfied dependency expressed through method 'setConfigurers' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'webConfig' defined in file [D:\IdeaProjects\TaoXiBlog\target\classes\com\taoxier\taoxiblog\config\WebConfig.class]: Post-processing of merged bean definition failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.taoxier.taoxiblog.config.WebConfig] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@176dbc3]
+2025-05-19 09:15:43.161  INFO 36828 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-05-19 09:15:43.164  INFO 36828 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2025-05-19 09:15:43.165 ERROR 36828 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'securityConfig': Unsatisfied dependency expressed through method 'setContentNegotationStrategy' parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration$EnableWebMvcConfiguration': Unsatisfied dependency expressed through method 'setConfigurers' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'webConfig' defined in file [D:\IdeaProjects\TaoXiBlog\target\classes\com\taoxier\taoxiblog\config\WebConfig.class]: Post-processing of merged bean definition failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.taoxier.taoxiblog.config.WebConfig] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@176dbc3]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:723) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:130) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1422) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:895) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:878) ~[spring-context-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550) ~[spring-context-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:141) ~[spring-boot-2.2.7.RELEASE.jar:2.2.7.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:747) ~[spring-boot-2.2.7.RELEASE.jar:2.2.7.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397) ~[spring-boot-2.2.7.RELEASE.jar:2.2.7.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315) ~[spring-boot-2.2.7.RELEASE.jar:2.2.7.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226) ~[spring-boot-2.2.7.RELEASE.jar:2.2.7.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1215) ~[spring-boot-2.2.7.RELEASE.jar:2.2.7.RELEASE]
+	at com.taoxier.taoxiblog.TaoXiBlogApplication.main(TaoXiBlogApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) ~[spring-boot-devtools-2.2.7.RELEASE.jar:2.2.7.RELEASE]
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration$EnableWebMvcConfiguration': Unsatisfied dependency expressed through method 'setConfigurers' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'webConfig' defined in file [D:\IdeaProjects\TaoXiBlog\target\classes\com\taoxier\taoxiblog\config\WebConfig.class]: Post-processing of merged bean definition failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.taoxier.taoxiblog.config.WebConfig] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@176dbc3]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:723) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:130) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:399) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1422) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:409) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1338) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1306) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1226) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:715) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	... 24 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'webConfig' defined in file [D:\IdeaProjects\TaoXiBlog\target\classes\com\taoxier\taoxiblog\config\WebConfig.class]: Post-processing of merged bean definition failed; nested exception is java.lang.IllegalStateException: Failed to introspect Class [com.taoxier.taoxiblog.config.WebConfig] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@176dbc3]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:572) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.addCandidateEntry(DefaultListableBeanFactory.java:1524) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1488) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveMultipleBeans(DefaultListableBeanFactory.java:1377) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1264) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1226) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:715) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	... 46 common frames omitted
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [com.taoxier.taoxiblog.config.WebConfig] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@176dbc3]
+	at org.springframework.util.ReflectionUtils.getDeclaredFields(ReflectionUtils.java:734) ~[spring-core-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.util.ReflectionUtils.doWithLocalFields(ReflectionUtils.java:666) ~[spring-core-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.buildResourceMetadata(CommonAnnotationBeanPostProcessor.java:366) ~[spring-context-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.findResourceMetadata(CommonAnnotationBeanPostProcessor.java:347) ~[spring-context-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessMergedBeanDefinition(CommonAnnotationBeanPostProcessor.java:295) ~[spring-context-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyMergedBeanDefinitionPostProcessors(AbstractAutowireCapableBeanFactory.java:1094) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569) ~[spring-beans-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	... 58 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: com/taoxier/taoxiblog/interceptor/AccessLimitInterceptor
+	at java.base/java.lang.Class.getDeclaredFields0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.privateGetDeclaredFields(Class.java:3297) ~[na:na]
+	at java.base/java.lang.Class.getDeclaredFields(Class.java:2371) ~[na:na]
+	at org.springframework.util.ReflectionUtils.getDeclaredFields(ReflectionUtils.java:729) ~[spring-core-5.2.6.RELEASE.jar:5.2.6.RELEASE]
+	... 64 common frames omitted
+Caused by: java.lang.ClassNotFoundException: com.taoxier.taoxiblog.interceptor.AccessLimitInterceptor
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:520) ~[na:na]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:144) ~[spring-boot-devtools-2.2.7.RELEASE.jar:2.2.7.RELEASE]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:520) ~[na:na]
+	... 68 common frames omitted
+
+2025-05-19 09:17:10.879  INFO 36828 --- [restartedMain] c.t.taoxiblog.TaoXiBlogApplication       : Starting TaoXiBlogApplication on yukina with PID 36828 (D:\IdeaProjects\TaoXiBlog\target\classes started by 18031 in D:\IdeaProjects\TaoXiBlog)
+2025-05-19 09:17:10.879  INFO 36828 --- [restartedMain] c.t.taoxiblog.TaoXiBlogApplication       : No active profile set, falling back to default profiles: default
+2025-05-19 09:17:11.078  INFO 36828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2025-05-19 09:17:11.078  INFO 36828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-05-19 09:17:11.092  INFO 36828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13ms. Found 0 Redis repository interfaces.
+2025-05-19 09:17:11.145  INFO 36828 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.retry.annotation.RetryConfiguration' of type [org.springframework.retry.annotation.RetryConfiguration$$EnhancerBySpringCGLIB$$6ef3cf63] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-05-19 09:17:11.177  INFO 36828 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2025-05-19 09:17:11.177  INFO 36828 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-19 09:17:11.177  INFO 36828 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.34]
+2025-05-19 09:17:11.192  INFO 36828 --- [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-05-19 09:17:11.192  INFO 36828 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 312 ms
+2025-05-19 09:17:11.287  WARN 36828 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.taoxier.taoxiblog.model.entity.BlogTag".
+2025-05-19 09:17:11.287  WARN 36828 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.taoxier.taoxiblog.model.entity.BlogTag ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-19 09:17:11.298  WARN 36828 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.taoxier.taoxiblog.model.entity.CityVisitor".
+2025-05-19 09:17:11.299  WARN 36828 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.taoxier.taoxiblog.model.entity.CityVisitor ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-19 09:17:11.348  WARN 36828 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.taoxier.taoxiblog.model.entity.ScheduleJobEntity".
+2025-05-19 09:17:11.348  WARN 36828 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.taoxier.taoxiblog.model.entity.ScheduleJobEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-19 09:17:11.413  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : 
+2025-05-19 09:17:11.413  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : /-----------------------------------------------------------\
+2025-05-19 09:17:11.413  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : | Yauaa 7.11.0 (v7.11.0 @ 2023-01-24T21:50:03Z)             |
+2025-05-19 09:17:11.413  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : +-----------------------------------------------------------+
+2025-05-19 09:17:11.413  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : | For more information: https://yauaa.basjes.nl             |
+2025-05-19 09:17:11.413  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : | Copyright (C) 2013-2023 Niels Basjes - License Apache 2.0 |
+2025-05-19 09:17:11.413  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : \-----------------------------------------------------------/
+2025-05-19 09:17:11.413  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : 
+2025-05-19 09:17:11.487  INFO 36828 --- [restartedMain] n.b.parse.useragent.config.ConfigLoader  : - Loaded 111 files in   73 ms using expression: classpath*:UserAgents/**/*.yaml
+2025-05-19 09:17:12.063  INFO 36828 --- [restartedMain] n.b.p.u.a.UserAgentStringMatchMaker      : Building all needed matchers for the requested 11 fields.
+2025-05-19 09:17:12.170  WARN 36828 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2025-05-19 09:17:12.247  INFO 36828 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2025-05-19 09:17:12.247  INFO 36828 --- [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-05-19 09:17:12.247  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2025-05-19 09:17:12.247  INFO 36828 --- [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2025-05-19 09:17:12.247  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2025-05-19 09:17:12.247  INFO 36828 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-05-19 09:17:12.247  INFO 36828 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2025-05-19 09:17:12.247  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@4cb0dfaf
+2025-05-19 09:17:12.253  INFO 36828 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-05-19 09:17:12.258  INFO 36828 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-05-19 09:17:12.429  INFO 36828 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2025-05-19 09:17:12.436  INFO 36828 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-05-19 09:17:12.494  INFO 36828 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@42ffe28f, org.springframework.security.web.context.SecurityContextPersistenceFilter@760bbc77, org.springframework.security.web.header.HeaderWriterFilter@548f54f7, org.springframework.web.filter.CorsFilter@aa2f8d6, org.springframework.security.web.authentication.logout.LogoutFilter@7afdc318, com.taoxier.taoxiblog.config.JwtLoginFilter@25385fdd, com.taoxier.taoxiblog.config.JwtFilter@69186824, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3b065f71, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@15808c0a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@544e1412, org.springframework.security.web.session.SessionManagementFilter@5f336937, org.springframework.security.web.access.ExceptionTranslationFilter@162b6d7a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4ed04791]
+2025-05-19 09:17:12.639  INFO 36828 --- [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2025-05-19 09:17:12.639  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2025-05-19 09:17:12.646  INFO 36828 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8090 (http) with context path ''
+2025-05-19 09:17:12.647  INFO 36828 --- [restartedMain] c.t.taoxiblog.TaoXiBlogApplication       : Started TaoXiBlogApplication in 1.778 seconds (JVM running for 870.076)
+2025-05-19 09:17:12.649  INFO 36828 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-05-19 09:43:43.654  INFO 36828 --- [Thread-8] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-05-19 09:43:43.656  INFO 36828 --- [Thread-8] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2025-05-19 09:43:43.657  INFO 36828 --- [Thread-8] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2025-05-19 09:43:43.657  INFO 36828 --- [Thread-8] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2025-05-19 09:43:43.657  INFO 36828 --- [Thread-8] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-05-19 09:43:43.657  INFO 36828 --- [Thread-8] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2025-05-19 09:43:43.658  INFO 36828 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2025-05-19 09:43:43.659  INFO 36828 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2025-05-19 09:43:43.851  INFO 36828 --- [restartedMain] c.t.taoxiblog.TaoXiBlogApplication       : Starting TaoXiBlogApplication on yukina with PID 36828 (D:\IdeaProjects\TaoXiBlog\target\classes started by 18031 in D:\IdeaProjects\TaoXiBlog)
+2025-05-19 09:43:43.851  INFO 36828 --- [restartedMain] c.t.taoxiblog.TaoXiBlogApplication       : No active profile set, falling back to default profiles: default
+2025-05-19 09:43:44.146  INFO 36828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2025-05-19 09:43:44.146  INFO 36828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-05-19 09:43:44.160  INFO 36828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13ms. Found 0 Redis repository interfaces.
+2025-05-19 09:43:44.223  INFO 36828 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.retry.annotation.RetryConfiguration' of type [org.springframework.retry.annotation.RetryConfiguration$$EnhancerBySpringCGLIB$$6ef3cf63] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-05-19 09:43:44.260  INFO 36828 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2025-05-19 09:43:44.261  INFO 36828 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-19 09:43:44.261  INFO 36828 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.34]
+2025-05-19 09:43:44.275  INFO 36828 --- [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-05-19 09:43:44.275  INFO 36828 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 423 ms
+2025-05-19 09:43:44.368  WARN 36828 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.taoxier.taoxiblog.model.entity.BlogTag".
+2025-05-19 09:43:44.368  WARN 36828 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.taoxier.taoxiblog.model.entity.BlogTag ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-19 09:43:44.376  WARN 36828 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.taoxier.taoxiblog.model.entity.CityVisitor".
+2025-05-19 09:43:44.376  WARN 36828 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.taoxier.taoxiblog.model.entity.CityVisitor ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-19 09:43:44.431  WARN 36828 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.taoxier.taoxiblog.model.entity.ScheduleJobEntity".
+2025-05-19 09:43:44.431  WARN 36828 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.taoxier.taoxiblog.model.entity.ScheduleJobEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-19 09:43:44.524  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : 
+2025-05-19 09:43:44.524  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : /-----------------------------------------------------------\
+2025-05-19 09:43:44.524  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : | Yauaa 7.11.0 (v7.11.0 @ 2023-01-24T21:50:03Z)             |
+2025-05-19 09:43:44.524  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : +-----------------------------------------------------------+
+2025-05-19 09:43:44.524  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : | For more information: https://yauaa.basjes.nl             |
+2025-05-19 09:43:44.524  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : | Copyright (C) 2013-2023 Niels Basjes - License Apache 2.0 |
+2025-05-19 09:43:44.524  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : \-----------------------------------------------------------/
+2025-05-19 09:43:44.524  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : 
+2025-05-19 09:43:44.580  INFO 36828 --- [restartedMain] n.b.parse.useragent.config.ConfigLoader  : - Loaded 111 files in   55 ms using expression: classpath*:UserAgents/**/*.yaml
+2025-05-19 09:43:45.161  INFO 36828 --- [restartedMain] n.b.p.u.a.UserAgentStringMatchMaker      : Building all needed matchers for the requested 11 fields.
+2025-05-19 09:43:45.278  WARN 36828 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2025-05-19 09:43:45.355  INFO 36828 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2025-05-19 09:43:45.356  INFO 36828 --- [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-05-19 09:43:45.356  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2025-05-19 09:43:45.356  INFO 36828 --- [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2025-05-19 09:43:45.356  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2025-05-19 09:43:45.356  INFO 36828 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-05-19 09:43:45.356  INFO 36828 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2025-05-19 09:43:45.356  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@2fd5e92e
+2025-05-19 09:43:45.362  INFO 36828 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2025-05-19 09:43:45.369  INFO 36828 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2025-05-19 09:43:45.605  INFO 36828 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2025-05-19 09:43:45.616  INFO 36828 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-05-19 09:43:45.697  INFO 36828 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@40bf3634, org.springframework.security.web.context.SecurityContextPersistenceFilter@5f08d110, org.springframework.security.web.header.HeaderWriterFilter@3901cd15, org.springframework.web.filter.CorsFilter@4a0455c5, org.springframework.security.web.authentication.logout.LogoutFilter@4287aee9, com.taoxier.taoxiblog.config.JwtLoginFilter@78f54dab, com.taoxier.taoxiblog.config.JwtFilter@44f4a089, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5587ba13, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@62d9bcd3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7d4320b5, org.springframework.security.web.session.SessionManagementFilter@76e9f2e9, org.springframework.security.web.access.ExceptionTranslationFilter@4469cd97, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2e8257f3]
+2025-05-19 09:43:45.864  INFO 36828 --- [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2025-05-19 09:43:45.864  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2025-05-19 09:43:45.869  INFO 36828 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8090 (http) with context path ''
+2025-05-19 09:43:45.870  INFO 36828 --- [restartedMain] c.t.taoxiblog.TaoXiBlogApplication       : Started TaoXiBlogApplication in 2.035 seconds (JVM running for 2463.299)
+2025-05-19 09:43:45.871  INFO 36828 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-05-19 09:46:11.391  INFO 36828 --- [Thread-19] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-05-19 09:46:11.391  INFO 36828 --- [Thread-19] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2025-05-19 09:46:11.392  INFO 36828 --- [Thread-19] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2025-05-19 09:46:11.392  INFO 36828 --- [Thread-19] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2025-05-19 09:46:11.392  INFO 36828 --- [Thread-19] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-05-19 09:46:11.392  INFO 36828 --- [Thread-19] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2025-05-19 09:46:11.393  INFO 36828 --- [Thread-19] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2025-05-19 09:46:11.394  INFO 36828 --- [Thread-19] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2025-05-19 09:46:11.582  INFO 36828 --- [restartedMain] c.t.taoxiblog.TaoXiBlogApplication       : Starting TaoXiBlogApplication on yukina with PID 36828 (D:\IdeaProjects\TaoXiBlog\target\classes started by 18031 in D:\IdeaProjects\TaoXiBlog)
+2025-05-19 09:46:11.583  INFO 36828 --- [restartedMain] c.t.taoxiblog.TaoXiBlogApplication       : No active profile set, falling back to default profiles: default
+2025-05-19 09:46:11.812  INFO 36828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2025-05-19 09:46:11.812  INFO 36828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-05-19 09:46:11.827  INFO 36828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14ms. Found 0 Redis repository interfaces.
+2025-05-19 09:46:11.883  INFO 36828 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.retry.annotation.RetryConfiguration' of type [org.springframework.retry.annotation.RetryConfiguration$$EnhancerBySpringCGLIB$$6ef3cf63] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-05-19 09:46:11.912  INFO 36828 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2025-05-19 09:46:11.912  INFO 36828 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-19 09:46:11.912  INFO 36828 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.34]
+2025-05-19 09:46:11.926  INFO 36828 --- [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-05-19 09:46:11.926  INFO 36828 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 343 ms
+2025-05-19 09:46:12.006  WARN 36828 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.taoxier.taoxiblog.model.entity.BlogTag".
+2025-05-19 09:46:12.006  WARN 36828 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.taoxier.taoxiblog.model.entity.BlogTag ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-19 09:46:12.013  WARN 36828 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.taoxier.taoxiblog.model.entity.CityVisitor".
+2025-05-19 09:46:12.013  WARN 36828 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.taoxier.taoxiblog.model.entity.CityVisitor ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-19 09:46:12.055  WARN 36828 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.taoxier.taoxiblog.model.entity.ScheduleJobEntity".
+2025-05-19 09:46:12.055  WARN 36828 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.taoxier.taoxiblog.model.entity.ScheduleJobEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-19 09:46:12.117  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : 
+2025-05-19 09:46:12.117  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : /-----------------------------------------------------------\
+2025-05-19 09:46:12.117  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : | Yauaa 7.11.0 (v7.11.0 @ 2023-01-24T21:50:03Z)             |
+2025-05-19 09:46:12.117  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : +-----------------------------------------------------------+
+2025-05-19 09:46:12.117  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : | For more information: https://yauaa.basjes.nl             |
+2025-05-19 09:46:12.117  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : | Copyright (C) 2013-2023 Niels Basjes - License Apache 2.0 |
+2025-05-19 09:46:12.117  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : \-----------------------------------------------------------/
+2025-05-19 09:46:12.117  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : 
+2025-05-19 09:46:12.173  INFO 36828 --- [restartedMain] n.b.parse.useragent.config.ConfigLoader  : - Loaded 111 files in   55 ms using expression: classpath*:UserAgents/**/*.yaml
+2025-05-19 09:46:12.781  INFO 36828 --- [restartedMain] n.b.p.u.a.UserAgentStringMatchMaker      : Building all needed matchers for the requested 11 fields.
+2025-05-19 09:46:12.900  WARN 36828 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2025-05-19 09:46:12.982  INFO 36828 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2025-05-19 09:46:12.983  INFO 36828 --- [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-05-19 09:46:12.983  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2025-05-19 09:46:12.983  INFO 36828 --- [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2025-05-19 09:46:12.983  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2025-05-19 09:46:12.983  INFO 36828 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-05-19 09:46:12.983  INFO 36828 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2025-05-19 09:46:12.983  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@550d616e
+2025-05-19 09:46:12.988  INFO 36828 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2025-05-19 09:46:12.992  INFO 36828 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2025-05-19 09:46:13.133  INFO 36828 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2025-05-19 09:46:13.138  INFO 36828 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-05-19 09:46:13.191  INFO 36828 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@474b90d5, org.springframework.security.web.context.SecurityContextPersistenceFilter@7f496f85, org.springframework.security.web.header.HeaderWriterFilter@448fab1f, org.springframework.web.filter.CorsFilter@409f0e0f, org.springframework.security.web.authentication.logout.LogoutFilter@7bc763e6, com.taoxier.taoxiblog.config.JwtLoginFilter@1fae6f31, com.taoxier.taoxiblog.config.JwtFilter@4b2a988, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5849aaa, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3c6a1e56, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1f644cf3, org.springframework.security.web.session.SessionManagementFilter@3be906d9, org.springframework.security.web.access.ExceptionTranslationFilter@21f051b, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2217320e]
+2025-05-19 09:46:13.300  INFO 36828 --- [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2025-05-19 09:46:13.301  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2025-05-19 09:46:13.306  INFO 36828 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8090 (http) with context path ''
+2025-05-19 09:46:13.306  INFO 36828 --- [restartedMain] c.t.taoxiblog.TaoXiBlogApplication       : Started TaoXiBlogApplication in 1.738 seconds (JVM running for 2610.735)
+2025-05-19 09:46:13.307  INFO 36828 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-05-19 09:47:08.338  INFO 36828 --- [Thread-24] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-05-19 09:47:08.338  INFO 36828 --- [Thread-24] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2025-05-19 09:47:08.339  INFO 36828 --- [Thread-24] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2025-05-19 09:47:08.339  INFO 36828 --- [Thread-24] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2025-05-19 09:47:08.339  INFO 36828 --- [Thread-24] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-05-19 09:47:08.339  INFO 36828 --- [Thread-24] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2025-05-19 09:47:08.339  INFO 36828 --- [Thread-24] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2025-05-19 09:47:08.340  INFO 36828 --- [Thread-24] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2025-05-19 09:47:08.518  INFO 36828 --- [restartedMain] c.t.taoxiblog.TaoXiBlogApplication       : Starting TaoXiBlogApplication on yukina with PID 36828 (D:\IdeaProjects\TaoXiBlog\target\classes started by 18031 in D:\IdeaProjects\TaoXiBlog)
+2025-05-19 09:47:08.518  INFO 36828 --- [restartedMain] c.t.taoxiblog.TaoXiBlogApplication       : No active profile set, falling back to default profiles: default
+2025-05-19 09:47:08.759  INFO 36828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2025-05-19 09:47:08.759  INFO 36828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-05-19 09:47:08.777  INFO 36828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17ms. Found 0 Redis repository interfaces.
+2025-05-19 09:47:08.834  INFO 36828 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.retry.annotation.RetryConfiguration' of type [org.springframework.retry.annotation.RetryConfiguration$$EnhancerBySpringCGLIB$$6ef3cf63] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-05-19 09:47:08.870  INFO 36828 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2025-05-19 09:47:08.870  INFO 36828 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-19 09:47:08.870  INFO 36828 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.34]
+2025-05-19 09:47:08.885  INFO 36828 --- [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-05-19 09:47:08.885  INFO 36828 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 366 ms
+2025-05-19 09:47:08.968  WARN 36828 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.taoxier.taoxiblog.model.entity.BlogTag".
+2025-05-19 09:47:08.968  WARN 36828 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.taoxier.taoxiblog.model.entity.BlogTag ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-19 09:47:08.976  WARN 36828 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.taoxier.taoxiblog.model.entity.CityVisitor".
+2025-05-19 09:47:08.976  WARN 36828 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.taoxier.taoxiblog.model.entity.CityVisitor ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-19 09:47:09.015  WARN 36828 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.taoxier.taoxiblog.model.entity.ScheduleJobEntity".
+2025-05-19 09:47:09.016  WARN 36828 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.taoxier.taoxiblog.model.entity.ScheduleJobEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-19 09:47:09.061  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : 
+2025-05-19 09:47:09.061  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : /-----------------------------------------------------------\
+2025-05-19 09:47:09.061  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : | Yauaa 7.11.0 (v7.11.0 @ 2023-01-24T21:50:03Z)             |
+2025-05-19 09:47:09.061  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : +-----------------------------------------------------------+
+2025-05-19 09:47:09.061  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : | For more information: https://yauaa.basjes.nl             |
+2025-05-19 09:47:09.061  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : | Copyright (C) 2013-2023 Niels Basjes - License Apache 2.0 |
+2025-05-19 09:47:09.061  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : \-----------------------------------------------------------/
+2025-05-19 09:47:09.061  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : 
+2025-05-19 09:47:09.126  INFO 36828 --- [restartedMain] n.b.parse.useragent.config.ConfigLoader  : - Loaded 111 files in   65 ms using expression: classpath*:UserAgents/**/*.yaml
+2025-05-19 09:47:09.695  INFO 36828 --- [restartedMain] n.b.p.u.a.UserAgentStringMatchMaker      : Building all needed matchers for the requested 11 fields.
+2025-05-19 09:47:09.792  WARN 36828 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2025-05-19 09:47:09.869  INFO 36828 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2025-05-19 09:47:09.870  INFO 36828 --- [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-05-19 09:47:09.870  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2025-05-19 09:47:09.870  INFO 36828 --- [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2025-05-19 09:47:09.870  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2025-05-19 09:47:09.870  INFO 36828 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-05-19 09:47:09.870  INFO 36828 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2025-05-19 09:47:09.870  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@5e6bdc07
+2025-05-19 09:47:09.875  INFO 36828 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2025-05-19 09:47:09.879  INFO 36828 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2025-05-19 09:47:10.030  INFO 36828 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2025-05-19 09:47:10.035  INFO 36828 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-05-19 09:47:10.083  INFO 36828 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1d6f17c3, org.springframework.security.web.context.SecurityContextPersistenceFilter@19cfcfa, org.springframework.security.web.header.HeaderWriterFilter@8b297cc, org.springframework.web.filter.CorsFilter@7185fa1, org.springframework.security.web.authentication.logout.LogoutFilter@4a4e908b, com.taoxier.taoxiblog.config.JwtLoginFilter@3b99ac98, com.taoxier.taoxiblog.config.JwtFilter@3e9b0282, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@26f22eaa, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3ae2c14f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5bafdb9d, org.springframework.security.web.session.SessionManagementFilter@52f89bf7, org.springframework.security.web.access.ExceptionTranslationFilter@3112db78, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@9b196c7]
+2025-05-19 09:47:10.199  INFO 36828 --- [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2025-05-19 09:47:10.199  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2025-05-19 09:47:10.204  INFO 36828 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8090 (http) with context path ''
+2025-05-19 09:47:10.204  INFO 36828 --- [restartedMain] c.t.taoxiblog.TaoXiBlogApplication       : Started TaoXiBlogApplication in 1.698 seconds (JVM running for 2667.633)
+2025-05-19 09:47:10.206  INFO 36828 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-05-19 09:48:08.740  INFO 36828 --- [Thread-29] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-05-19 09:48:08.740  INFO 36828 --- [Thread-29] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2025-05-19 09:48:08.743  INFO 36828 --- [Thread-29] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2025-05-19 09:48:08.743  INFO 36828 --- [Thread-29] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2025-05-19 09:48:08.743  INFO 36828 --- [Thread-29] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-05-19 09:48:08.744  INFO 36828 --- [Thread-29] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2025-05-19 09:48:08.745  INFO 36828 --- [Thread-29] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2025-05-19 09:48:08.747  INFO 36828 --- [Thread-29] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2025-05-19 09:48:09.009  INFO 36828 --- [restartedMain] c.t.taoxiblog.TaoXiBlogApplication       : Starting TaoXiBlogApplication on yukina with PID 36828 (D:\IdeaProjects\TaoXiBlog\target\classes started by 18031 in D:\IdeaProjects\TaoXiBlog)
+2025-05-19 09:48:09.009  INFO 36828 --- [restartedMain] c.t.taoxiblog.TaoXiBlogApplication       : No active profile set, falling back to default profiles: default
+2025-05-19 09:48:09.438  INFO 36828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2025-05-19 09:48:09.438  INFO 36828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-05-19 09:48:09.468  INFO 36828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29ms. Found 0 Redis repository interfaces.
+2025-05-19 09:48:09.621  INFO 36828 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.retry.annotation.RetryConfiguration' of type [org.springframework.retry.annotation.RetryConfiguration$$EnhancerBySpringCGLIB$$6ef3cf63] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-05-19 09:48:09.702  INFO 36828 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2025-05-19 09:48:09.702  INFO 36828 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-19 09:48:09.702  INFO 36828 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.34]
+2025-05-19 09:48:09.754  INFO 36828 --- [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-05-19 09:48:09.754  INFO 36828 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 745 ms
+2025-05-19 09:48:09.959  WARN 36828 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.taoxier.taoxiblog.model.entity.BlogTag".
+2025-05-19 09:48:09.959  WARN 36828 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.taoxier.taoxiblog.model.entity.BlogTag ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-19 09:48:09.979  WARN 36828 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.taoxier.taoxiblog.model.entity.CityVisitor".
+2025-05-19 09:48:09.979  WARN 36828 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.taoxier.taoxiblog.model.entity.CityVisitor ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-19 09:48:10.102  WARN 36828 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.taoxier.taoxiblog.model.entity.ScheduleJobEntity".
+2025-05-19 09:48:10.102  WARN 36828 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.taoxier.taoxiblog.model.entity.ScheduleJobEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-19 09:48:10.255  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : 
+2025-05-19 09:48:10.255  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : /-----------------------------------------------------------\
+2025-05-19 09:48:10.255  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : | Yauaa 7.11.0 (v7.11.0 @ 2023-01-24T21:50:03Z)             |
+2025-05-19 09:48:10.255  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : +-----------------------------------------------------------+
+2025-05-19 09:48:10.255  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : | For more information: https://yauaa.basjes.nl             |
+2025-05-19 09:48:10.255  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : | Copyright (C) 2013-2023 Niels Basjes - License Apache 2.0 |
+2025-05-19 09:48:10.255  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : \-----------------------------------------------------------/
+2025-05-19 09:48:10.255  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : 
+2025-05-19 09:48:10.418  INFO 36828 --- [restartedMain] n.b.parse.useragent.config.ConfigLoader  : - Loaded 111 files in  167 ms using expression: classpath*:UserAgents/**/*.yaml
+2025-05-19 09:48:11.218  INFO 36828 --- [restartedMain] n.b.p.u.a.UserAgentStringMatchMaker      : Building all needed matchers for the requested 11 fields.
+2025-05-19 09:48:11.330  WARN 36828 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2025-05-19 09:48:11.412  INFO 36828 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2025-05-19 09:48:11.412  INFO 36828 --- [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-05-19 09:48:11.412  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2025-05-19 09:48:11.412  INFO 36828 --- [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2025-05-19 09:48:11.412  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2025-05-19 09:48:11.412  INFO 36828 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-05-19 09:48:11.412  INFO 36828 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2025-05-19 09:48:11.412  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@7bd61dee
+2025-05-19 09:48:11.417  INFO 36828 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2025-05-19 09:48:11.420  INFO 36828 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2025-05-19 09:48:11.612  INFO 36828 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2025-05-19 09:48:11.624  INFO 36828 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-05-19 09:48:11.702  INFO 36828 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@48225d6c, org.springframework.security.web.context.SecurityContextPersistenceFilter@7f9ebccf, org.springframework.security.web.header.HeaderWriterFilter@6f63182d, org.springframework.web.filter.CorsFilter@27961c27, org.springframework.security.web.authentication.logout.LogoutFilter@179faa0a, com.taoxier.taoxiblog.config.JwtLoginFilter@5f442aac, com.taoxier.taoxiblog.config.JwtFilter@1485596c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@74d791ad, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3025d6a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4e16afad, org.springframework.security.web.session.SessionManagementFilter@5079d10f, org.springframework.security.web.access.ExceptionTranslationFilter@816871, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@a98324a]
+2025-05-19 09:48:11.832  INFO 36828 --- [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2025-05-19 09:48:11.832  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2025-05-19 09:48:11.840  INFO 36828 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8090 (http) with context path ''
+2025-05-19 09:48:11.841  INFO 36828 --- [restartedMain] c.t.taoxiblog.TaoXiBlogApplication       : Started TaoXiBlogApplication in 2.858 seconds (JVM running for 2729.27)
+2025-05-19 09:48:11.842  INFO 36828 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-05-19 09:50:06.877  INFO 36828 --- [Thread-34] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-05-19 09:50:06.878  INFO 36828 --- [Thread-34] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2025-05-19 09:50:06.879  INFO 36828 --- [Thread-34] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2025-05-19 09:50:06.880  INFO 36828 --- [Thread-34] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2025-05-19 09:50:06.880  INFO 36828 --- [Thread-34] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-05-19 09:50:06.880  INFO 36828 --- [Thread-34] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2025-05-19 09:50:06.881  INFO 36828 --- [Thread-34] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2025-05-19 09:50:06.883  INFO 36828 --- [Thread-34] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
+2025-05-19 09:50:07.086  INFO 36828 --- [restartedMain] c.t.taoxiblog.TaoXiBlogApplication       : Starting TaoXiBlogApplication on yukina with PID 36828 (D:\IdeaProjects\TaoXiBlog\target\classes started by 18031 in D:\IdeaProjects\TaoXiBlog)
+2025-05-19 09:50:07.086  INFO 36828 --- [restartedMain] c.t.taoxiblog.TaoXiBlogApplication       : No active profile set, falling back to default profiles: default
+2025-05-19 09:50:07.410  INFO 36828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2025-05-19 09:50:07.410  INFO 36828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-05-19 09:50:07.428  INFO 36828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17ms. Found 0 Redis repository interfaces.
+2025-05-19 09:50:07.503  INFO 36828 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.retry.annotation.RetryConfiguration' of type [org.springframework.retry.annotation.RetryConfiguration$$EnhancerBySpringCGLIB$$6ef3cf63] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-05-19 09:50:07.543  INFO 36828 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2025-05-19 09:50:07.543  INFO 36828 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-19 09:50:07.543  INFO 36828 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.34]
+2025-05-19 09:50:07.561  INFO 36828 --- [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-05-19 09:50:07.561  INFO 36828 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 474 ms
+2025-05-19 09:50:07.659  WARN 36828 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.taoxier.taoxiblog.model.entity.BlogTag".
+2025-05-19 09:50:07.659  WARN 36828 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.taoxier.taoxiblog.model.entity.BlogTag ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-19 09:50:07.669  WARN 36828 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.taoxier.taoxiblog.model.entity.CityVisitor".
+2025-05-19 09:50:07.669  WARN 36828 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.taoxier.taoxiblog.model.entity.CityVisitor ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-19 09:50:07.708  WARN 36828 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.taoxier.taoxiblog.model.entity.ScheduleJobEntity".
+2025-05-19 09:50:07.708  WARN 36828 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.taoxier.taoxiblog.model.entity.ScheduleJobEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-19 09:50:07.755  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : 
+2025-05-19 09:50:07.755  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : /-----------------------------------------------------------\
+2025-05-19 09:50:07.755  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : | Yauaa 7.11.0 (v7.11.0 @ 2023-01-24T21:50:03Z)             |
+2025-05-19 09:50:07.755  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : +-----------------------------------------------------------+
+2025-05-19 09:50:07.755  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : | For more information: https://yauaa.basjes.nl             |
+2025-05-19 09:50:07.755  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : | Copyright (C) 2013-2023 Niels Basjes - License Apache 2.0 |
+2025-05-19 09:50:07.755  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : \-----------------------------------------------------------/
+2025-05-19 09:50:07.755  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : 
+2025-05-19 09:50:07.821  INFO 36828 --- [restartedMain] n.b.parse.useragent.config.ConfigLoader  : - Loaded 111 files in   67 ms using expression: classpath*:UserAgents/**/*.yaml
+2025-05-19 09:50:08.401  INFO 36828 --- [restartedMain] n.b.p.u.a.UserAgentStringMatchMaker      : Building all needed matchers for the requested 11 fields.
+2025-05-19 09:50:08.499  WARN 36828 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2025-05-19 09:50:08.569  INFO 36828 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2025-05-19 09:50:08.569  INFO 36828 --- [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-05-19 09:50:08.569  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2025-05-19 09:50:08.569  INFO 36828 --- [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2025-05-19 09:50:08.569  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2025-05-19 09:50:08.569  INFO 36828 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-05-19 09:50:08.569  INFO 36828 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2025-05-19 09:50:08.569  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@17c31671
+2025-05-19 09:50:08.574  INFO 36828 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
+2025-05-19 09:50:08.579  INFO 36828 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
+2025-05-19 09:50:08.749  INFO 36828 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2025-05-19 09:50:08.755  INFO 36828 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-05-19 09:50:08.807  INFO 36828 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@17a460d8, org.springframework.security.web.context.SecurityContextPersistenceFilter@6b14feb5, org.springframework.security.web.header.HeaderWriterFilter@51d75a9e, org.springframework.web.filter.CorsFilter@3965340a, org.springframework.security.web.authentication.logout.LogoutFilter@24c1ba3c, com.taoxier.taoxiblog.config.JwtLoginFilter@1cc2031a, com.taoxier.taoxiblog.config.JwtFilter@5fc59fa, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1873a5ea, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@739b1fd0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@31ea4b3d, org.springframework.security.web.session.SessionManagementFilter@3f048d1c, org.springframework.security.web.access.ExceptionTranslationFilter@4a472a6f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7d3ce86]
+2025-05-19 09:50:08.929  INFO 36828 --- [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2025-05-19 09:50:08.930  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2025-05-19 09:50:08.934  INFO 36828 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8090 (http) with context path ''
+2025-05-19 09:50:08.935  INFO 36828 --- [restartedMain] c.t.taoxiblog.TaoXiBlogApplication       : Started TaoXiBlogApplication in 1.866 seconds (JVM running for 2846.364)
+2025-05-19 09:50:08.937  INFO 36828 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-05-19 09:50:56.995  INFO 36828 --- [Thread-39] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-05-19 09:50:56.995  INFO 36828 --- [Thread-39] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2025-05-19 09:50:56.997  INFO 36828 --- [Thread-39] o.s.s.quartz.SchedulerFactoryBean        : Shutting down Quartz Scheduler
+2025-05-19 09:50:56.997  INFO 36828 --- [Thread-39] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2025-05-19 09:50:56.997  INFO 36828 --- [Thread-39] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2025-05-19 09:50:56.997  INFO 36828 --- [Thread-39] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2025-05-19 09:50:56.998  INFO 36828 --- [Thread-39] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown initiated...
+2025-05-19 09:50:57.000  INFO 36828 --- [Thread-39] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown completed.
+2025-05-19 09:50:57.207  INFO 36828 --- [restartedMain] c.t.taoxiblog.TaoXiBlogApplication       : Starting TaoXiBlogApplication on yukina with PID 36828 (D:\IdeaProjects\TaoXiBlog\target\classes started by 18031 in D:\IdeaProjects\TaoXiBlog)
+2025-05-19 09:50:57.207  INFO 36828 --- [restartedMain] c.t.taoxiblog.TaoXiBlogApplication       : No active profile set, falling back to default profiles: default
+2025-05-19 09:50:57.592  INFO 36828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2025-05-19 09:50:57.592  INFO 36828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-05-19 09:50:57.615  INFO 36828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22ms. Found 0 Redis repository interfaces.
+2025-05-19 09:50:57.702  INFO 36828 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.retry.annotation.RetryConfiguration' of type [org.springframework.retry.annotation.RetryConfiguration$$EnhancerBySpringCGLIB$$6ef3cf63] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-05-19 09:50:57.740  INFO 36828 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8090 (http)
+2025-05-19 09:50:57.740  INFO 36828 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-05-19 09:50:57.740  INFO 36828 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.34]
+2025-05-19 09:50:57.755  INFO 36828 --- [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-05-19 09:50:57.755  INFO 36828 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 547 ms
+2025-05-19 09:50:57.884  WARN 36828 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.taoxier.taoxiblog.model.entity.BlogTag".
+2025-05-19 09:50:57.884  WARN 36828 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.taoxier.taoxiblog.model.entity.BlogTag ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-19 09:50:57.894  WARN 36828 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.taoxier.taoxiblog.model.entity.CityVisitor".
+2025-05-19 09:50:57.894  WARN 36828 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.taoxier.taoxiblog.model.entity.CityVisitor ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-19 09:50:57.943  WARN 36828 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : Can not find table primary key in Class: "com.taoxier.taoxiblog.model.entity.ScheduleJobEntity".
+2025-05-19 09:50:57.943  WARN 36828 --- [restartedMain] c.b.m.core.injector.DefaultSqlInjector   : class com.taoxier.taoxiblog.model.entity.ScheduleJobEntity ,Not found @TableId annotation, Cannot use Mybatis-Plus 'xxById' Method.
+2025-05-19 09:50:58.005  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : 
+2025-05-19 09:50:58.005  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : /-----------------------------------------------------------\
+2025-05-19 09:50:58.005  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : | Yauaa 7.11.0 (v7.11.0 @ 2023-01-24T21:50:03Z)             |
+2025-05-19 09:50:58.005  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : +-----------------------------------------------------------+
+2025-05-19 09:50:58.005  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : | For more information: https://yauaa.basjes.nl             |
+2025-05-19 09:50:58.005  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : | Copyright (C) 2013-2023 Niels Basjes - License Apache 2.0 |
+2025-05-19 09:50:58.005  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : \-----------------------------------------------------------/
+2025-05-19 09:50:58.005  INFO 36828 --- [restartedMain] n.b.parse.useragent.utils.YauaaVersion   : 
+2025-05-19 09:50:58.083  INFO 36828 --- [restartedMain] n.b.parse.useragent.config.ConfigLoader  : - Loaded 111 files in   77 ms using expression: classpath*:UserAgents/**/*.yaml
+2025-05-19 09:50:58.865  INFO 36828 --- [restartedMain] n.b.p.u.a.UserAgentStringMatchMaker      : Building all needed matchers for the requested 11 fields.
+2025-05-19 09:50:58.997  WARN 36828 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2025-05-19 09:50:59.089  INFO 36828 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Using default implementation for ThreadExecutor
+2025-05-19 09:50:59.097  INFO 36828 --- [restartedMain] org.quartz.core.SchedulerSignalerImpl    : Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2025-05-19 09:50:59.097  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : Quartz Scheduler v.2.3.2 created.
+2025-05-19 09:50:59.097  INFO 36828 --- [restartedMain] org.quartz.simpl.RAMJobStore             : RAMJobStore initialized.
+2025-05-19 09:50:59.097  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler meta-data: Quartz Scheduler (v2.3.2) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2025-05-19 09:50:59.097  INFO 36828 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2025-05-19 09:50:59.097  INFO 36828 --- [restartedMain] org.quartz.impl.StdSchedulerFactory      : Quartz scheduler version: 2.3.2
+2025-05-19 09:50:59.097  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@c3d7d21
+2025-05-19 09:50:59.099  INFO 36828 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
+2025-05-19 09:50:59.108  INFO 36828 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Start completed.
+2025-05-19 09:50:59.257  INFO 36828 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2025-05-19 09:50:59.266  INFO 36828 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-05-19 09:50:59.326  INFO 36828 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@293364ce, org.springframework.security.web.context.SecurityContextPersistenceFilter@76fe22, org.springframework.security.web.header.HeaderWriterFilter@6d221fb4, org.springframework.web.filter.CorsFilter@c946e6e, org.springframework.security.web.authentication.logout.LogoutFilter@53b289f6, com.taoxier.taoxiblog.config.JwtLoginFilter@432ff120, com.taoxier.taoxiblog.config.JwtFilter@1815083a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@39205db8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@44822a97, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2ab21ae2, org.springframework.security.web.session.SessionManagementFilter@1796e6d3, org.springframework.security.web.access.ExceptionTranslationFilter@75898cd8, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@48a2686f]
+2025-05-19 09:50:59.435  INFO 36828 --- [restartedMain] o.s.s.quartz.SchedulerFactoryBean        : Starting Quartz Scheduler now
+2025-05-19 09:50:59.435  INFO 36828 --- [restartedMain] org.quartz.core.QuartzScheduler          : Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2025-05-19 09:50:59.440  INFO 36828 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8090 (http) with context path ''
+2025-05-19 09:50:59.440  INFO 36828 --- [restartedMain] c.t.taoxiblog.TaoXiBlogApplication       : Started TaoXiBlogApplication in 2.251 seconds (JVM running for 2896.87)
+2025-05-19 09:50:59.442  INFO 36828 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
