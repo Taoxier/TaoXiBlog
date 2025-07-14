@@ -44,6 +44,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 //开启跨域支持
                 .cors().and()
+
+                // 允许特定请求头通过
+                .headers()
+                .frameOptions().sameOrigin() // 允许同源iframe
+                .and()
+
                 //基于Token，不创建会话
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests()

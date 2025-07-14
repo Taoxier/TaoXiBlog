@@ -5,7 +5,9 @@ import java.util.Date;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @Description ：
@@ -13,6 +15,7 @@ import lombok.Data;
  * @Date 2025/4/22
  */
 @Data
+
 public class ExceptionLog implements Serializable {
     @TableId(type = IdType.AUTO)
     private Long id;
@@ -73,4 +76,14 @@ public class ExceptionLog implements Serializable {
     private String userAgent;
 
     private static final long serialVersionUID = 1L;
+
+    public ExceptionLog(String uri, String method, String description, String error, String ip, String userAgent) {
+        this.uri = uri;
+        this.method = method;
+        this.description = description;
+        this.error = error;
+        this.ip = ip;
+        this.createTime = new Date();
+        this.userAgent = userAgent;
+    }
 }

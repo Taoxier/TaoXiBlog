@@ -262,7 +262,7 @@ public class BlogAdminController {
         }else {
             blogDTO.setUpdateTime(date);
             Blog newBlog=blogService.updateBlog(blogDTO);
-            System.out.println("更新："+newBlog.toString());
+//            System.out.println("更新："+newBlog.toString());
             //关联博客和标签(维护 blog_tag 表)
             blogService.deleteBlogTagByBlogId(newBlog.getId());
             for (Tag t:tags){

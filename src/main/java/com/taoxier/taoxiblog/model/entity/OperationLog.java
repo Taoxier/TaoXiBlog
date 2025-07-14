@@ -78,4 +78,15 @@ public class OperationLog implements Serializable {
     private String userAgent;
 
     private static final long serialVersionUID = 1L;
+
+    public OperationLog(String username, String uri, String method, String description, String ip, Integer times, String userAgent) {
+        this.username = username;
+        this.uri = uri;
+        this.method = method;
+        this.description = description;
+        this.ip = ip;
+        this.times = times;
+        this.createTime = new Date();
+        this.userAgent = userAgent;
+    }
 }

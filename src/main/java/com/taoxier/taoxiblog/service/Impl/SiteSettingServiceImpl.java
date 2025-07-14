@@ -51,6 +51,7 @@ public class SiteSettingServiceImpl extends ServiceImpl<SiteSettingMapper, SiteS
         List<SiteSetting> type1 = new ArrayList<>();
         List<SiteSetting> type2 = new ArrayList<>();
         List<SiteSetting> type3 = new ArrayList<>();
+//        1基础设置，2页脚徽标，3资料卡
         for (SiteSetting s : siteSettings) {
             switch (s.getType()) {
                 case 1:
@@ -97,6 +98,7 @@ public class SiteSettingServiceImpl extends ServiceImpl<SiteSettingMapper, SiteS
             switch (s.getType()) {
                 case 1:
                     if (SiteSettingConstants.COPYRIGHT.equals(s.getNameEn())) {
+                        //版权信息
                         CopyrightVO copyright = JacksonUtils.readValue(s.getValue(), CopyrightVO.class);
                         siteInfo.put(s.getNameEn(), copyright);
                     } else {

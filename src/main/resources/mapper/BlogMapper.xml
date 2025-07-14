@@ -92,6 +92,7 @@
         where c.category_name=#{categoryName} and b.is_published=true
     </select>
 
+<!--    根据标签名查询公开博客信息-->
     <select id="getBlogInfoListByTagNameAndIsPublished" resultMap="blogInfo">
         select b.id, b.title, b.description, b.is_top, b.create_time, b.views, b.words, b.read_time, b.password, c.category_name
         from (((tag as t left join blog_tag as bt on t.id=bt.tag_id) left join blog as b on bt.blog_id=b.id) left join category as c on b.category_id=c.id)
@@ -157,6 +158,7 @@
             select category_id, count(category_id) as blog_count from blog group by category_id
     </select>
 
+<!--    根据id查blog-->
     <select id="getBlogById" resultMap="blog">
         select
             b.id, b.title, b.first_picture, b.content, b.description,

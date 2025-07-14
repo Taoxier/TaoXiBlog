@@ -32,7 +32,7 @@ public class JwtUtils {
         JwtUtils.secretKey = secretKey;
     }
 
-    @Value("259200000") //即3天
+    @Value("259200000") //即2.5天
     public void setExpireTime(long expireTime) {
         JwtUtils.expireTime = expireTime;
     }

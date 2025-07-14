@@ -14,6 +14,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
 import java.util.List;
 
 /**
@@ -59,9 +64,21 @@ public class VisitLogServiceImpl extends ServiceImpl<VisitLogMapper, VisitLog> i
     */
     @Override
     public List<VisitLogUuidTimeDTO> getUUIDAndCreateTimeByYesterday() {
+        // 获取昨天的开始和结束时间
+        LocalDate yesterday = LocalDate.now().minusDays(1);
+        LocalDateTime startOfDay = yesterday.atStartOfDay();
+        LocalDateTime endOfDay = yesterday.atTime(LocalTime.MAX);
+
+        // 转换为数据库支持的时间格式
+        // 假设数据库字段类型为 datetime，使用相同的时区
+        ZoneId zoneId = ZoneId.systemDefault();
+        Timestamp startTime = Timestamp.valueOf(startOfDay);
+        Timestamp endTime = Timestamp.valueOf(endOfDay);
+
         QueryWrapper<VisitLog> wrapper = new QueryWrapper<>();
-        wrapper.apply("date(create_time) = date_sub(curdate(), interval 1 day)")
+        wrapper.between("create_time", startTime, endTime)
                 .orderByDesc("create_time");
+
         return visitLogMapper.selectUUIDAndCreateTimeByYesterday(wrapper);
     }
 
@@ -75,6 +92,7 @@ public class VisitLogServiceImpl extends ServiceImpl<VisitLogMapper, VisitLog> i
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void saveVisitLog(VisitLog log) {
+//        System.out.println("saveLog传入参数："+log);
         String ipSource = IpAddressUtils.getCityInfo(log.getIp());
         UserAgentDTO userAgentDTO = userAgentUtils.parseOsAndBrowser(log.getUserAgent());
         log.setIpSource(ipSource);

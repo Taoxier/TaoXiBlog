@@ -63,4 +63,14 @@ public class Visitor implements Serializable {
     private String userAgent;
 
     private static final long serialVersionUID = 1L;
+
+    public Visitor(String uuid, String ip, String userAgent) {
+        this.uuid = uuid;
+        this.ip = ip;
+        Date date = new Date();
+        this.createTime = date;
+        this.lastTime = date;
+        this.pv = 0;
+        this.userAgent = userAgent;
+    }
 }

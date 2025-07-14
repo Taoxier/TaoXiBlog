@@ -88,4 +88,17 @@ public class VisitLog implements Serializable {
     private String userAgent;
 
     private static final long serialVersionUID = 1L;
+
+    public VisitLog(String uuid, String uri, String method, String behavior, String content, String remark, String ip, Integer times, String userAgent) {
+        this.uuid = uuid;
+        this.uri = uri;
+        this.method = method;
+        this.behavior = behavior;
+        this.content = content;
+        this.remark = remark;
+        this.ip = ip;
+        this.times = times;
+        this.createTime = new Date();
+        this.userAgent = userAgent;
+    }
 }
