@@ -10,7 +10,6 @@
                     ${ew.sqlSegment}
                 </if>
             </where>
-            order by create_time desc
         </select>
 
 </mapper>

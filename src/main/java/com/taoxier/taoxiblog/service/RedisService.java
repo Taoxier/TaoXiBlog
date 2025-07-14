@@ -19,6 +19,8 @@ public interface RedisService {
 
     void saveMapToHash(String hash, Map map);
 
+    Map getMapByHash(String hash);
+
     Object getValueByHashKey(String hash, Object key);
 
     void deleteByHashKey(String hash, Object key);

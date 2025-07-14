@@ -72,7 +72,16 @@ public class OperationLogAspect {
         String userAgent = request.getHeader("User-Agent");
         OperationLog log = new OperationLog(username, uri, method, description, ip, times, userAgent);
         Map<String, Object> requestParams = AopUtils.getRequestParams(joinPoint);
-        log.setParam(StringUtils.substring(JacksonUtils.writeValueAsString(requestParams), 0, 2000));
+        try {
+            String paramsJson = JacksonUtils.writeValueAsString(requestParams);
+            // 检查字符串长度，如果长度小于2000则截取到字符串末尾
+            int endIndex = Math.min(paramsJson.length(), 2000);
+            log.setParam(paramsJson.substring(0, endIndex));
+        } catch (Exception ex) {
+            // 处理可能的JSON转换异常
+            log.setParam("Failed to convert request params to JSON");
+        }
         return log;
     }
+
 }
