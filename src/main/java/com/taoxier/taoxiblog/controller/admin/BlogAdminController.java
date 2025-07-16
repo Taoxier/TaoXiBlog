@@ -244,10 +244,11 @@ public class BlogAdminController {
         //计算字数
         if (blogDTO.getContent()!=null && blogDTO.getContent().length()>0) {
             String plainText=blogDTO.getContent().replace("\\<.*?\\>","");
-            int wordCount=plainText.length();
+            String contentWithoutUrls=plainText.replaceAll("https?://\\S+","");
+            int wordCount=contentWithoutUrls.length();
             blogDTO.setWords(wordCount);
         }
-            blogDTO.setReadTime(Math.max(1,blogDTO.getWords() / 300));//计算阅读时长，至少1分钟
+            blogDTO.setReadTime((int)Math.max(1,Math.round(blogDTO.getWords() / 300.0)));//计算阅读时长，至少1分钟
         System.out.println("result时长："+blogDTO.getReadTime());
         if (blogDTO.getViews() == null || blogDTO.getViews() < 0) {
             blogDTO.setViews(0);

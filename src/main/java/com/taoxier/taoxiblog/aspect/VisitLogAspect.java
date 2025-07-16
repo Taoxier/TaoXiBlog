@@ -206,8 +206,15 @@ public class VisitLogAspect {
                 }
                 break;
             case SEARCH:
-                if (result.getCode() == 200) {
-                    String query = (String) requestParams.get("query");
+                if (result != null && result.getCode() == 200) {
+                    Object queryParam = requestParams.get("query");
+                    String query = "";
+                    if (queryParam instanceof String[]) {
+                        String[] arr = (String[]) queryParam;
+                        query = arr.length > 0 ? arr[0] : "";
+                    } else if (queryParam instanceof String) {
+                        query = (String) queryParam;
+                    }
                     content = query;
                     remark = "搜索内容：" + query;
                 }
@@ -227,7 +234,15 @@ public class VisitLogAspect {
                 remark = "分类名称：" + categoryName + "，第" + requestParams.get("pageNum") + "页";
                 break;
             case TAG:
-                String tagName = (String) requestParams.get("tagName");
+                Object tagParam = requestParams.get("tagName");
+                String tagName = "";
+                // 处理数组（服务器场景）和字符串（本地场景）
+                if (tagParam instanceof String[]) {
+                    String[] arr = (String[]) tagParam;
+                    tagName = arr.length > 0 ? arr[0] : "";
+                } else if (tagParam instanceof String) {
+                    tagName = (String) tagParam;
+                }
                 content = tagName;
                 remark = "标签名称：" + tagName + "，第" + requestParams.get("pageNum") + "页";
                 break;
