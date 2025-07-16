@@ -185,7 +185,7 @@ public class BlogAdminController {
     private ResultVO getResult(BlogDTO blogDTO, String type) {
 
         //验证普通字段
-        if (StringUtils.isEmpty(blogDTO.getTitle(), blogDTO.getFirstPicture(), blogDTO.getContent(), blogDTO.getDescription()) || blogDTO.getWords() == null || blogDTO.getWords() < 0) {
+        if (StringUtils.isEmpty(blogDTO.getTitle(), blogDTO.getFirstPicture(), blogDTO.getContent(), blogDTO.getDescription()) ) {
             return ResultVO.error("参数有误");
         }
 
@@ -240,9 +240,15 @@ public class BlogAdminController {
         }
 
         Date date=new Date();
-        if (blogDTO.getReadTime()==null||blogDTO.getReadTime()<0){
-            blogDTO.setReadTime((int)Math.round(blogDTO.getWords()/200.0));//粗略计算阅读时长
+
+        //计算字数
+        if (blogDTO.getContent()!=null && blogDTO.getContent().length()>0) {
+            String plainText=blogDTO.getContent().replace("\\<.*?\\>","");
+            int wordCount=plainText.length();
+            blogDTO.setWords(wordCount);
         }
+            blogDTO.setReadTime(Math.max(1,blogDTO.getWords() / 300));//计算阅读时长，至少1分钟
+        System.out.println("result时长："+blogDTO.getReadTime());
         if (blogDTO.getViews() == null || blogDTO.getViews() < 0) {
             blogDTO.setViews(0);
         }

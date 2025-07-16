@@ -494,6 +494,8 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
             throw new PersistenceException("DTO转换为entity时出错");
         }
 
+
+
         if (blogMapper.insert(blog) != 1) {
             throw new PersistenceException("添加博客失败");
         }
@@ -763,6 +765,9 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
             if (blog.getTop() != null) wrapper.set("is_top", blog.getTop());
             if (blog.getPassword() != null) wrapper.set("password", blog.getPassword());
             if (blog.getUpdateTime() != null) wrapper.set("update_time", blog.getUpdateTime());
+            if (blog.getWords()!= null) wrapper.set("words", blog.getWords());
+            if (blog.getReadTime()!= null) wrapper.set("read_time", blog.getReadTime());
+            System.out.println("时长："+blog.getReadTime());
 
             int rows = blogMapper.update(null, wrapper);
             if (rows != 1) {
