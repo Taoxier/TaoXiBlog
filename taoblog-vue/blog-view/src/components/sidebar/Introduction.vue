@@ -9,6 +9,7 @@
 					<div class="header">{{ introduction.name }}</div>
 					<!--彩色滚动字体-->
 					<div id="rollText" class="m-margin-top" v-if="introduction.rollText.length!=0"></div>
+										<!-- <div id="rollText"  ></div> -->
 				</div>
 				<div class="extra content" align="center">
 					<a :href="introduction.github" v-if="introduction.github" target="_blank" class="ui circular icon button">

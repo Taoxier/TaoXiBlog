@@ -39,8 +39,8 @@ mybatis:
 logging:
   level:
     root: info
-    top.naccl: debug
-  file: blog-api/log/blog-dev
+    com.taoxier.taoxiblog: debug
+    org.apache.ibatis: DEBUG
 
 mybatis-plus:
   type-aliases-package: com.taoxier.taoxiblog.model.entity

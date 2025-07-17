@@ -7,7 +7,7 @@
 						<SvgIcon icon-class="pv" class-name="card-panel-icon"/>
 					</div>
 					<div class="card-panel-description">
-						<div class="card-panel-text">今日PV</div>
+						<div class="card-panel-text">今日访问量</div>
 						<span class="card-panel-num">{{ pv }}</span>
 					</div>
 				</el-card>
@@ -19,7 +19,7 @@
 						<SvgIcon icon-class="yonghu" class-name="card-panel-icon"/>
 					</div>
 					<div class="card-panel-description">
-						<div class="card-panel-text">今日UV</div>
+						<div class="card-panel-text">今日访客量</div>
 						<span class="card-panel-num">{{ uv }}</span>
 					</div>
 				</el-card>

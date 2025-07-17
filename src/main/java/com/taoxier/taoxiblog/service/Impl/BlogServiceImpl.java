@@ -409,7 +409,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
                     randomBlog.setCreateTime(blog.getCreateTime());
                     randomBlog.setFirstPicture(blog.getFirstPicture());
 
-                    if ("".equals(randomBlog.getPassword())) {
+                    if (!"".equals(randomBlog.getPassword())) {
                         randomBlog.setPrivacy(true);
                         randomBlog.setPassword("");
                     } else {

@@ -42,17 +42,17 @@
 			<el-row :gutter="20">
 				<el-col :span="8">
 					<el-form-item label="字数" prop="words">
-						<el-input v-model="form.words" placeholder="请输入文章字数（自动计算阅读时长）" type="number"></el-input>
+						<el-input v-model="form.words"  type="number"></el-input>
 					</el-form-item>
 				</el-col>
 				<el-col :span="8">
 					<el-form-item label="阅读时长(分钟)" prop="readTime">
-						<el-input v-model="form.readTime" placeholder="请输入阅读时长（可选）默认 Math.round(字数 / 200)" type="number"></el-input>
+						<el-input v-model="form.readTime"  type="number"></el-input>
 					</el-form-item>
 				</el-col>
 				<el-col :span="8">
 					<el-form-item label="浏览次数" prop="views">
-						<el-input v-model="form.views" placeholder="请输入文章字数（可选）默认为 0" type="number"></el-input>
+						<el-input v-model="form.views"  type="number"></el-input>
 					</el-form-item>
 				</el-col>
 			</el-row>
@@ -143,8 +143,11 @@
 		},
 		watch: {
 			'form.words'(newValue) {
-				this.form.readTime = newValue ? Math.round(newValue / 200) : null
+				this.form.readTime = newValue ?  Math.max(1, Math.round(newValue / 300)) : null;
 			},
+			'form.content'(newValue) {
+				this.form.words=newValue?(newValue.replace(/<.*?>/g,'').replace(/https?:\/\/\S+/g,'')).length : 0
+			}
 		},
 		created() {
 			this.getData()
