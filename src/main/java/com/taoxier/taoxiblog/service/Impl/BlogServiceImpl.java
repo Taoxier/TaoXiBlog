@@ -8,6 +8,8 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.taoxier.taoxiblog.constant.RedisKeyConstants;
+//import com.taoxier.taoxiblog.es.model.EsBlog;
+//import com.taoxier.taoxiblog.es.repository.EsBlogRepository;
 import com.taoxier.taoxiblog.exception.NotFoundException;
 import com.taoxier.taoxiblog.exception.PersistenceException;
 import com.taoxier.taoxiblog.mapper.BlogMapper;
@@ -24,9 +26,22 @@ import com.taoxier.taoxiblog.service.*;
 import com.taoxier.taoxiblog.util.JacksonUtils;
 import com.taoxier.taoxiblog.util.markdown.MarkdownUtils;
 import org.apache.commons.beanutils.BeanUtils;
+import org.elasticsearch.common.unit.Fuzziness;
+import org.elasticsearch.index.query.MultiMatchQueryBuilder;
+import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.search.SearchHits;
+//import org.springframework.data.elasticsearch.core.SearchHits;
+//import org.springframework.data.elasticsearch.core.SearchHit;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
+import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
+import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.terracotta.quartz.collections.SerializationHelper;
+
 
 import javax.annotation.PostConstruct;
 import java.util.HashMap;
@@ -54,6 +69,10 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
     CategoryService categoryService;
     @Autowired
     UserService userService;
+//    @Autowired
+//    private EsBlogRepository esBlogRepository;
+//    @Autowired
+//    private ElasticsearchOperations elasticsearchOperations;
 
     //随机博客显示5条
     private static final int randomBlogLimitNum = 5;
@@ -162,6 +181,23 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
                     searchBlog.setContent(searchBlog.getContent().substring(index, end));
                     return searchBlog;
                 }).collect(Collectors.toList());
+
+
+//        //es搜索
+//        //1.构建多字段匹配查询（同时搜标题和内容）
+//        MultiMatchQueryBuilder multiMatchQuery=QueryBuilders.multiMatchQuery(query,"title","content").type(MultiMatchQueryBuilder.Type.BEST_FIELDS) //优先匹配得分高的字段
+//                .fuzziness(Fuzziness.AUTO); //允许一定的拼写错误
+//        //2.构建查询条件
+//        NativeSearchQuery searchQuery=new NativeSearchQueryBuilder()
+//                .withQuery(multiMatchQuery)
+//                .withFilter(QueryBuilders.termQuery("published",true)) //过滤已发布
+//                .withFilter(QueryBuilders.termQuery("password","")) //过滤无密码
+//                .withPageable(PageRequest.of(0,10))
+//                .build();
+//
+//        //3.执行es查询
+//        SearchHits<EsBlog> searchHits=elasticsearchOperations.search(searchQuery,EsBlog.class);
+
     }
 
     /**
@@ -448,6 +484,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         }
         deleteBlogRedisCache();
         redisService.deleteByHashKey(RedisKeyConstants.BLOG_VIEWS_MAP, id);
+//        esBlogRepository.deleteById(id);
     }
 
     @Transactional(rollbackFor = Exception.class)
@@ -494,8 +531,6 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
             throw new PersistenceException("DTO转换为entity时出错");
         }
 
-
-
         if (blogMapper.insert(blog) != 1) {
             throw new PersistenceException("添加博客失败");
         }
@@ -504,6 +539,14 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
 
         redisService.saveKVToHash(RedisKeyConstants.BLOG_VIEWS_MAP, blog.getId(), 0);
         deleteBlogRedisCache();
+
+//        //加到es里
+//        EsBlog esBlog=new EsBlog();
+//        esBlog.setId(blog.getId());
+//        esBlog.setTitle(blog.getTitle());
+//        esBlog.setContent(blog.getContent());
+//        esBlog.setCreateTime(blog.getCreateTime());
+//        esBlogRepository.save(esBlog);
 
         return blog;
     }
@@ -781,6 +824,14 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
         // 更新缓存
         deleteBlogRedisCache();
         redisService.saveKVToHash(RedisKeyConstants.BLOG_VIEWS_MAP, blog.getId(), blog.getViews());
+
+
+//        EsBlog esBlog=new EsBlog();
+//        esBlog.setId(blog.getId());
+//        esBlog.setTitle(blog.getTitle());
+//        esBlog.setContent(blog.getContent());
+//        esBlog.setCreateTime(blog.getCreateTime());
+//        esBlogRepository.save(esBlog);
 
         return blog;
     }

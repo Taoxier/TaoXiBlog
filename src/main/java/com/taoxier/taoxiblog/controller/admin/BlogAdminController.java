@@ -3,6 +3,8 @@ package com.taoxier.taoxiblog.controller.admin;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.taoxier.taoxiblog.annotation.OperationLogger;
+import com.taoxier.taoxiblog.model.dto.AIContentRequestDTO;
+import com.taoxier.taoxiblog.model.dto.AIContentResponseDTO;
 import com.taoxier.taoxiblog.model.dto.BlogDTO;
 import com.taoxier.taoxiblog.model.dto.BlogVisibilityDTO;
 import com.taoxier.taoxiblog.model.entity.Blog;
@@ -10,10 +12,7 @@ import com.taoxier.taoxiblog.model.entity.Category;
 import com.taoxier.taoxiblog.model.entity.Tag;
 import com.taoxier.taoxiblog.model.entity.User;
 import com.taoxier.taoxiblog.model.vo.ResultVO;
-import com.taoxier.taoxiblog.service.BlogService;
-import com.taoxier.taoxiblog.service.CategoryService;
-import com.taoxier.taoxiblog.service.CommentService;
-import com.taoxier.taoxiblog.service.TagService;
+import com.taoxier.taoxiblog.service.*;
 import com.taoxier.taoxiblog.util.StringUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -21,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @Description ：
@@ -39,6 +39,10 @@ public class BlogAdminController {
     TagService tagService;
     @Autowired
     CommentService commentService;
+    @Autowired
+    AIContentService aiContentService;
+    @Autowired
+    KeyWordExtractService keyWordExtractService;
 
     /**
      * @param title      按标题模糊查询
@@ -173,6 +177,50 @@ public class BlogAdminController {
     public ResultVO updateBlog(@RequestBody BlogDTO BlogDTO) {
         return getResult(BlogDTO,"update");
     }
+
+
+    @OperationLogger("ai润色博客内容")
+    @PostMapping("/blog/polish")
+    @ApiOperation(value = "ai润色博客内容")
+    public ResultVO polishContent(@RequestBody AIContentRequestDTO requestDTO){
+        AIContentResponseDTO responseDTO=aiContentService.polishContent(requestDTO.getContent());
+        if (responseDTO.isSuccess()){
+            return ResultVO.ok("润色成功",responseDTO.getResult());
+        }else{
+            return ResultVO.error(responseDTO.getErrorMsg());
+        }
+    }
+
+
+    @OperationLogger("AI推荐标签")
+    @PostMapping("/blog/recommend-tags")
+    public ResultVO recommendTags(@RequestBody AIContentRequestDTO requestDTO) {
+        String content = requestDTO.getContent();
+        if (StringUtils.isEmpty(content)){
+            return ResultVO.error("博客内容不能为空");
+        }
+
+        // 调用百度API前打印内容
+        System.out.println("提取关键词的内容："+content);
+        //调用ai提取关键词
+        List<String> recommendTagNames=keyWordExtractService.extractKeywords(content,6);
+        // 打印API返回的关键词列表
+        System.out.println("百度API返回的关键词："+recommendTagNames);
+
+        //检查是否已存在
+        List<Map<String,Object>> result=recommendTagNames.stream().map(tagName -> {
+            Map<String,Object> tagInfo=new HashMap<>();
+            tagInfo.put("name",tagName);
+
+            Tag existingTag=tagService.getTagByName(tagName);
+            tagInfo.put("exists",existingTag!=null);//标记是否已存在
+            tagInfo.put("id",existingTag!=null?existingTag.getId():null);//已存在的标签返回id
+            return tagInfo;
+        }).collect(Collectors.toList());
+
+        return ResultVO.ok("标签推荐成功",result);
+    }
+
 
     /**
     * @Description 执行博客添加或更新操作：校验参数是否合法，添加分类、标签，维护博客标签关联表

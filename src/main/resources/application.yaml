@@ -104,3 +104,20 @@ upload:
 #    password:
 #    path: /comment/avatar
 #    domain: https://cdn.example.com
+
+
+  elasticsearch:
+    rest:
+      uris: http://localhost:9200
+
+
+deepseek:
+  api:
+    key: sk-42b357255f4d42b3a7733ebe5bbe0469
+    url: https://api.deepseek.com/chat/completions
+
+baidu:
+  ai:
+    api-key: K5m2VguwobdVTNohPuZyQzic
+    secret-key: bLVCiLkmKv7XwD0yOA7FVX5w4iQWBXjN
+    keyword-url: https://aip.baidubce.com/rpc/2.0/nlp/v1/txt_keywords_extraction

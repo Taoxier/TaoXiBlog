@@ -90,3 +90,7 @@ upload:
 #    password: xxxxxxxxxxxxxxxxxxxxxxxx
 #    path: /comment/avatar
 #    domain: https://cdn.example.com
+
+  elasticsearch:
+    rest:
+      uris: http://localhost:9200
