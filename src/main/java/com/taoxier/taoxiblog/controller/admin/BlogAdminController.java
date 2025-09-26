@@ -191,6 +191,17 @@ public class BlogAdminController {
         }
     }
 
+    @OperationLogger("ai生成文章描述")
+    @PostMapping("/blog/generate-description")
+    @ApiOperation(value = "ai生成文章描述")
+    public ResultVO generateDescription(@RequestBody AIContentRequestDTO requestDTO){
+        AIContentResponseDTO responseDTO=aiContentService.generateDescription(requestDTO.getContent());
+        if (responseDTO.isSuccess()){
+            return ResultVO.ok("生成描述成功",responseDTO.getResult());
+        }else {
+            return ResultVO.error(responseDTO.getErrorMsg());
+        }
+    }
 
     @OperationLogger("AI推荐标签")
     @PostMapping("/blog/recommend-tags")

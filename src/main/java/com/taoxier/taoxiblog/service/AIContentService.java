@@ -10,4 +10,7 @@ import org.springframework.stereotype.Service;
  */
 public interface AIContentService {
     AIContentResponseDTO polishContent(String content);
+
+    AIContentResponseDTO generateDescription(String content);
+
 }
