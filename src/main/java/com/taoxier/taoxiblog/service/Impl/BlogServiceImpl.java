@@ -69,10 +69,8 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
     CategoryService categoryService;
     @Autowired
     UserService userService;
-//    @Autowired
-//    private EsBlogRepository esBlogRepository;
-//    @Autowired
-//    private ElasticsearchOperations elasticsearchOperations;
+    @Autowired
+    private RecommendationService recommendationService;
 
     //随机博客显示5条
     private static final int randomBlogLimitNum = 5;
@@ -548,6 +546,18 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
 //        esBlog.setCreateTime(blog.getCreateTime());
 //        esBlogRepository.save(esBlog);
 
+        // 保存成功后生成向量并更新推荐
+        if (blog.getId() != null) {
+            try {
+                recommendationService.generateEmbeddingForSingleBlog(blog.getId());
+                recommendationService.updateRecommendationsForSingleBlog(blog.getId());
+            } catch (Exception e) {
+                // 可以选择记录日志，不中断主流程
+                log.error("自动生成博客向量和推荐失败", e);
+            }
+        }
+
+
         return blog;
     }
 
@@ -832,6 +842,14 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements Bl
 //        esBlog.setContent(blog.getContent());
 //        esBlog.setCreateTime(blog.getCreateTime());
 //        esBlogRepository.save(esBlog);
+
+        // 更新成功后重新生成向量并更新推荐
+        try {
+            recommendationService.generateEmbeddingForSingleBlog(blog.getId());
+            recommendationService.updateRecommendationsForSingleBlog(blog.getId());
+        } catch (Exception e) {
+            log.error("自动更新博客向量和推荐失败", e);
+        }
 
         return blog;
     }

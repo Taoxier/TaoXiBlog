@@ -52,7 +52,7 @@ public class AIContentServiceImpl implements AIContentService {
             return response;
         }
 
-        String userPrompt="请修正以下文本的语法错误，并优化排版（合理分段、调整标题层级）：\n"+content;
+        String userPrompt="请修正以下文本的语法错误，并优化排版（合理分段、调整标题层级）。如果输入了其他指令，也请按照指令生成：\n"+content;
 
         return executeAiRequest(userPrompt,null);
 

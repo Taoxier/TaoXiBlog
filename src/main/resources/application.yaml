@@ -121,3 +121,7 @@ baidu:
     api-key: K5m2VguwobdVTNohPuZyQzic
     secret-key: bLVCiLkmKv7XwD0yOA7FVX5w4iQWBXjN
     keyword-url: https://aip.baidubce.com/rpc/2.0/nlp/v1/txt_keywords_extraction
+  # 新增百度千帆配置（用于Embeddings V2）
+  qianfan:
+    api-key: bce-v3/ALTAK-ROJhSpfzbcHvdEius6kFn/898b38e7c67d4fb52a9f92e912393259d04baeac
+    embedding-model: embedding-v1
