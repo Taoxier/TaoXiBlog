@@ -14,7 +14,8 @@
 					<div class="row m-padded-tb-small">
 						<div class="ui horizontal link list m-center">
 							<div class="item m-datetime">
-								<i class="small calendar icon"></i><span>{{ blog.createTime | dateFormat('YYYY-MM-DD') }}</span>
+								<i class="small calendar icon"></i><span>{{ blog.createTime | dateFormat('YYYY-MM-DD')
+								}}</span>
 							</div>
 							<div class="item m-views">
 								<i class="small eye icon"></i><span>{{ blog.views }}</span>
@@ -25,7 +26,7 @@
 							<div class="item m-common-black">
 								<i class="small clock icon"></i><span>阅读时长≈{{ blog.readTime }}分</span>
 							</div>
-							<a class="item m-common-black" @click.prevent="bigFontSize=!bigFontSize">
+							<a class="item m-common-black" @click.prevent="bigFontSize = !bigFontSize">
 								<div data-inverted="" data-tooltip="点击切换字体大小" data-position="top center">
 									<i class="font icon"></i>
 								</div>
@@ -38,11 +39,14 @@
 						</div>
 					</div>
 					<!--分类-->
-					<router-link :to="`/category/${blog.category.name}`" class="ui orange large ribbon label" v-if="blog.category">
+					<router-link :to="`/category/${blog.category.name}`" class="ui orange large ribbon label"
+						v-if="blog.category">
 						<i class="small folder open icon"></i><span class="m-text-500">{{ blog.category.name }}</span>
 					</router-link>
 					<!--文章Markdown正文-->
-					<div class="typo js-toc-content m-padded-tb-small match-braces rainbow-braces" v-lazy-container="{selector: 'img'}" v-viewer :class="{'m-big-fontsize':bigFontSize}" v-html="blog.content"></div>
+					<div class="typo js-toc-content m-padded-tb-small match-braces rainbow-braces"
+						v-lazy-container="{ selector: 'img' }" v-viewer :class="{ 'm-big-fontsize': bigFontSize }"
+						v-html="blog.content"></div>
 					<!--赞赏-->
 					<!-- <div style="margin: 2em auto">
 						<el-popover placement="top" width="220" trigger="click" v-if="blog.appreciation">
@@ -61,9 +65,33 @@
 					<!--标签-->
 					<div class="row m-padded-tb-no">
 						<div class="column m-padding-left-no">
-							<router-link :to="`/tag/${tag.name}`" class="ui tag label m-text-500 m-margin-small" :class="tag.color" v-for="(tag,index) in blog.tags" :key="index">{{ tag.name }}</router-link>
+							<router-link :to="`/tag/${tag.name}`" class="ui tag label m-text-500 m-margin-small"
+								:class="tag.color" v-for="(tag, index) in blog.tags" :key="index">{{
+									tag.name }}</router-link>
 						</div>
 					</div>
+
+					<el-divider v-if="relatedBlogs.length > 0"></el-divider>
+					<div v-if="relatedBlogs.length > 0" class="related-recommendations m-padded-tb-large">
+						<h3 class="ui header m-text-500">
+							<i class="link icon"></i>相关推荐
+						</h3>
+						<div class="ui five cards m-margin-top">
+							<div class="card" v-for="blog in relatedBlogs" :key="blog.id" @click="toBlog(blog)">
+								<!-- <div class="image">
+									<img :src="blog.firstPicture" onerror="this.src = '/img/error.png'"
+										class="ui rounded image">
+								</div> -->
+								<div class="content">
+									<div class="title m-text-ellipsis">{{ blog.title }}</div>
+									<div class="meta m-text-small m-margin-top-tiny">
+										<span>{{ blog.createTime | dateFormat('YYYY-MM-DD') }}</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
 				</div>
 			</div>
 		</div>
@@ -80,108 +108,165 @@
 		</div>
 		<!--评论-->
 		<div class="ui bottom teal attached segment threaded comments">
-			<CommentList :page="0" :blogId="blogId" v-if="blog.commentEnabled"/>
+			<CommentList :page="0" :blogId="blogId" v-if="blog.commentEnabled" />
 			<h3 class="ui header" v-else>评论已关闭</h3>
 		</div>
 	</div>
 </template>
 
 <script>
-	import {getBlogById} from "@/api/blog";
-	import CommentList from "@/components/comment/CommentList";
-	import {mapState} from "vuex";
-	import {SET_FOCUS_MODE, SET_IS_BLOG_RENDER_COMPLETE} from '@/store/mutations-types';
+import { getBlogById, getRelatedRecommendations } from "@/api/blog";
+import CommentList from "@/components/comment/CommentList";
+import { mapState } from "vuex";
+import { SET_FOCUS_MODE, SET_IS_BLOG_RENDER_COMPLETE } from '@/store/mutations-types';
 
-	export default {
-		name: "Blog",
-		components: {CommentList},
-		data() {
-			return {
-				blog: {},
-				bigFontSize: false,
-			}
+export default {
+	name: "Blog",
+	components: { CommentList },
+	data() {
+		return {
+			blog: {},
+			bigFontSize: false,
+			// 新增：存储推荐的博客列表
+			relatedBlogs: []
+		}
+	},
+	computed: {
+		blogId() {
+			return parseInt(this.$route.params.id)
 		},
-		computed: {
-			blogId() {
-				return parseInt(this.$route.params.id)
-			},
-			...mapState(['siteInfo', 'focusMode'])
-		},
-		beforeRouteEnter(to, from, next) {
-			//路由到博客文章页面之前，应将文章的渲染完成状态置为 false
-			next(vm => {
-				// 当 beforeRouteEnter 钩子执行前，组件实例尚未创建
-				// vm 就是当前组件的实例，可以在 next 方法中把 vm 当做 this用
-				vm.$store.commit(SET_IS_BLOG_RENDER_COMPLETE, false)
+		...mapState(['siteInfo', 'focusMode'])
+	},
+	beforeRouteEnter(to, from, next) {
+		//路由到博客文章页面之前，应将文章的渲染完成状态置为 false
+		next(vm => {
+			// 当 beforeRouteEnter 钩子执行前，组件实例尚未创建
+			// vm 就是当前组件的实例，可以在 next 方法中把 vm 当做 this用
+			vm.$store.commit(SET_IS_BLOG_RENDER_COMPLETE, false)
+		})
+	},
+	beforeRouteLeave(to, from, next) {
+		this.$store.commit(SET_FOCUS_MODE, false)
+		// 从文章页面路由到其它页面时，销毁当前组件的同时，要销毁tocbot实例
+		// 否则tocbot一直在监听页面滚动事件，而文章页面的锚点已经不存在了，会报"Uncaught TypeError: Cannot read property 'className' of null"
+		tocbot.destroy()
+		next()
+	},
+	beforeRouteUpdate(to, from, next) {
+		// 一般有两种情况会触发这个钩子
+		// ①当前文章页面跳转到其它文章页面
+		// ②点击目录跳转锚点时，路由hash值会改变，导致当前页面会重新加载，这种情况是不希望出现的
+		// 在路由 beforeRouteUpdate 中判断路径是否改变
+		// 如果跳转到其它页面，to.path!==from.path 就放行 next()
+		// 如果是跳转锚点，path不会改变，hash会改变，to.path===from.path, to.hash!==from.path 不放行路由跳转，就能让锚点正常跳转
+		if (to.path !== from.path) {
+			this.$store.commit(SET_FOCUS_MODE, false)
+			//在当前组件内路由到其它博客文章时，要重新获取文章
+			this.getBlog(to.params.id)
+			//只要路由路径有改变，且停留在当前Blog组件内，就把文章的渲染完成状态置为 false
+			this.$store.commit(SET_IS_BLOG_RENDER_COMPLETE, false)
+			next()
+		}
+	},
+	created() {
+		this.getBlog()
+	},
+	methods: {
+		getBlog(id = this.blogId) {
+			//密码保护的文章，需要发送密码验证通过后保存在localStorage的Token
+			const blogToken = window.localStorage.getItem(`blog${id}`)
+			//如果有则发送博主身份Token
+			const adminToken = window.localStorage.getItem('adminToken')
+			const token = adminToken ? adminToken : (blogToken ? blogToken : '')
+			getBlogById(token, id).then(res => {
+				if (res.code === 200) {
+					this.blog = res.data
+					document.title = this.blog.title + this.siteInfo.webTitleSuffix
+					//v-html渲染完毕后，渲染代码块样式
+					this.$nextTick(() => {
+						Prism.highlightAll()
+						//将文章渲染完成状态置为 true
+						this.$store.commit(SET_IS_BLOG_RENDER_COMPLETE, true);
+						this.getRelatedBlogs();
+					})
+				} else {
+					this.msgError(res.msg)
+				}
+			}).catch(() => {
+				this.msgError("请求失败")
 			})
 		},
-		beforeRouteLeave(to, from, next) {
-			this.$store.commit(SET_FOCUS_MODE, false)
-			// 从文章页面路由到其它页面时，销毁当前组件的同时，要销毁tocbot实例
-			// 否则tocbot一直在监听页面滚动事件，而文章页面的锚点已经不存在了，会报"Uncaught TypeError: Cannot read property 'className' of null"
-			tocbot.destroy()
-			next()
+		changeFocusMode() {
+			this.$store.commit(SET_FOCUS_MODE, !this.focusMode)
 		},
-		beforeRouteUpdate(to, from, next) {
-			// 一般有两种情况会触发这个钩子
-			// ①当前文章页面跳转到其它文章页面
-			// ②点击目录跳转锚点时，路由hash值会改变，导致当前页面会重新加载，这种情况是不希望出现的
-			// 在路由 beforeRouteUpdate 中判断路径是否改变
-			// 如果跳转到其它页面，to.path!==from.path 就放行 next()
-			// 如果是跳转锚点，path不会改变，hash会改变，to.path===from.path, to.hash!==from.path 不放行路由跳转，就能让锚点正常跳转
-			if (to.path !== from.path) {
-				this.$store.commit(SET_FOCUS_MODE, false)
-				//在当前组件内路由到其它博客文章时，要重新获取文章
-				this.getBlog(to.params.id)
-				//只要路由路径有改变，且停留在当前Blog组件内，就把文章的渲染完成状态置为 false
-				this.$store.commit(SET_IS_BLOG_RENDER_COMPLETE, false)
-				next()
-			}
+		getRelatedBlogs() {
+			getRelatedRecommendations(this.blogId).then(res => {
+				if (res.code === 200) {
+					this.relatedBlogs = res.data;
+				}
+			}).catch(() => {
+				this.msgError("获取相关推荐失败");
+			});
 		},
-		created() {
-			this.getBlog()
-		},
-		methods: {
-			getBlog(id = this.blogId) {
-				//密码保护的文章，需要发送密码验证通过后保存在localStorage的Token
-				const blogToken = window.localStorage.getItem(`blog${id}`)
-				//如果有则发送博主身份Token
-				const adminToken = window.localStorage.getItem('adminToken')
-				const token = adminToken ? adminToken : (blogToken ? blogToken : '')
-				getBlogById(token, id).then(res => {
-					if (res.code === 200) {
-						this.blog = res.data
-						document.title = this.blog.title + this.siteInfo.webTitleSuffix
-						//v-html渲染完毕后，渲染代码块样式
-						this.$nextTick(() => {
-							Prism.highlightAll()
-							//将文章渲染完成状态置为 true
-							this.$store.commit(SET_IS_BLOG_RENDER_COMPLETE, true)
-						})
-					} else {
-						this.msgError(res.msg)
-					}
-				}).catch(() => {
-					this.msgError("请求失败")
-				})
-			},
-			changeFocusMode() {
-				this.$store.commit(SET_FOCUS_MODE, !this.focusMode)
-			}
+		// 新增：跳转到推荐的博客详情页
+		toBlog(blog) {
+			this.$router.push(`/blog/${blog.id}`);
 		}
 	}
+}
 </script>
 
 <style scoped>
-	.el-divider {
-		margin: 1rem 0 !important;
-	}
+.el-divider {
+	margin: 1rem 0 !important;
+}
 
-	h1::before, h2::before, h3::before, h4::before, h5::before, h6::before {
-		display: block;
-		content: " ";
-		height: 55px;
-		margin-top: -55px;
-		visibility: hidden;
-	}
+h1::before,
+h2::before,
+h3::before,
+h4::before,
+h5::before,
+h6::before {
+	display: block;
+	content: " ";
+	height: 55px;
+	margin-top: -55px;
+	visibility: hidden;
+}
+
+.related-recommendations .card {
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.related-recommendations .card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.related-recommendations .card .image {
+	height: 140px;
+	overflow: hidden;
+}
+
+.related-recommendations .card .image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: all 0.5s ease;
+}
+
+.related-recommendations .card:hover .image img {
+	transform: scale(1.05);
+}
+
+.related-recommendations .card .content {
+	padding: 15px;
+}
+
+.m-text-ellipsis {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
 </style>

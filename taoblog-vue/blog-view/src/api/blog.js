@@ -32,3 +32,12 @@ export function getSearchBlogList(query) {
 		}
 	})
 }
+export function getRelatedRecommendations(blogId) {
+  return axios({
+    url: '/api/blog/recommendations',
+    method: 'GET',
+    params: {
+      blogId
+    }
+  })
+}

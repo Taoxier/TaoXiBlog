@@ -88,3 +88,39 @@ export function updateBlog(blog) {
 		}
 	})
 }
+
+// 在taoblog-vue/blog-cms/src/api/blog.js中添加
+export function aiPolishContent(content) {
+  return axios({
+    url: '/blog/polish',
+    method: 'POST',
+    data: {
+      content
+	  },
+	timeout: 100000
+  })
+}
+
+export function getRecommendTags(content) {
+	return axios({
+		url: '/blog/recommend-tags',
+		method: 'POST',
+		data: {
+			content
+		},
+		timeout: 100000
+	})
+}
+	
+	export function generateDescription(content) {
+  return axios({
+    url: '/blog/generate-description',
+    method: 'POST',
+    data: {
+      content: content // 传递正文内容给后端
+	  },
+			timeout: 100000
+  })
+}
+
+
